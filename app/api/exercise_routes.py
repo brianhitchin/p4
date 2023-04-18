@@ -58,3 +58,30 @@ def delete_exercise(exercise_id):
     db.session.commit()
     resp_obj = {"message": "Exercise successfully deleted."}
     return resp_obj, 200
+
+@channel_routes.route('/<exercise_id>', methods=['PUT'])
+@login_required
+def edit_channel(exercise_id):
+    user_id = user_id_generator()
+    exercise_exist = Exercise.query.get(exercise_exist)
+    if not exercise_exist:
+        error_obj = {"errors": "Exercise with the specified id could not be found."}
+        return error_obj, 404
+    if not exercise_exist.to_dict().creatorId == user_id:
+        error_obj = {"errors": "Unauthorized - only creator may delete the post."}
+        return error_obj, 403
+    try:
+        exercise_exist.topicId = request.json.get('topicId')
+        exercise_exist.name = request.json.get('name')
+        exercise_exist.preview = request.json.get('preview')
+        exercise_exist.image_url = request.json.get('image_url')
+        exercise_exist.body = request.json.get('body')
+        exercise_exist.updated_at = db.func.now()
+        db.session.commit()
+        return exercise_exist.to_dict()
+    except:
+        error_obj = {
+            "message": "Validation Error",
+            "errors": "Please fill out all the fields."
+        }
+        return error_obj, 400
