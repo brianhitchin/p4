@@ -11,6 +11,9 @@ class Topic(db.Model):
     created_at = db.Column(db.DateTime, default=db.func.now())
     updated_at = db.Column(db.DateTime, default=db.func.now())
 
+    exercisetopic = db.relationship("Exercise", back_populates="etopic")
+    storytopic = db.relationship("Story", back_populates="stopic")
+
     def to_dict(self):
         return {
             'id': self.id,
