@@ -1,6 +1,7 @@
 from flask.cli import AppGroup
 from app.models.db import db, environment, SCHEMA
-from app.models import Exercise, Story, Topic
+from app.models import User, Exercise, Story, Topic
+from sqlalchemy.sql import text
 
 # Creates a seed group to hold our commands
 # So we can type `flask seed --help`
@@ -63,10 +64,10 @@ def seed_stories():
         creatorId=1, topicId=1, title='There is hope', mood=3, preview='There is light at the end of the tunnel.', image_url='https://springschristianacademy.ca/wp-content/uploads/2020/11/Hope-Theme-web-scaled.jpg',
         body="Life can seem like an unending journey with no end in sight. However, all things come to pass. Enduring is hard, you do not have to do it alone. Please reach out to anyone, your support group, and I promise soon you will be at the finish line.")
     s2 = Story(
-        creatorId=2, topicId=2, name='How to deal with anxiety?', mood=2, preview='A question about anxiety.', image_url='https://www.solhapp.com/blog/storage/anxiety-concept-illustration-114360-8074.jpg',
+        creatorId=2, topicId=2, title='How to deal with anxiety?', mood=2, preview='A question about anxiety.', image_url='https://www.solhapp.com/blog/storage/anxiety-concept-illustration-114360-8074.jpg',
         body="I am wondering how anyone else is dealing with anxiety? Mine is through the roof. Insecurity and self-doubt clouds my judgment and thought process everyday, and I am left helpless but to wonder about the uncertain future. I would appreciate any help.")
     s3 = Story(
-        creatorId=3, topicId=2, name='No one right answer.', mood=6, preview='Like everything, anxiety is a multifaceted disease.', image_url='https://cdn.tinybuddha.com/wp-content/uploads/2013/07/Meditating-1.jpg',
+        creatorId=3, topicId=2, title='No one right answer.', mood=6, preview='Like everything, anxiety is a multifaceted disease.', image_url='https://cdn.tinybuddha.com/wp-content/uploads/2013/07/Meditating-1.jpg',
         body="Often we struggle. We fail to figure out the root of our problem, and fail even harder in finding the solution. There is no one right solution! Anxiety is a complex disease, and as such, we need to take multiple approaches to address the issue. More to follow!")
 
     db.session.add(s1)
