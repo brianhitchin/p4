@@ -47,7 +47,7 @@ def create_exercise():
 @login_required
 def delete_exercise(exercise_id):
     user_id = user_id_generator()
-    exercise_exist = Exercise.query.get(exercise_exist)
+    exercise_exist = Exercise.query.get(exercise_id)
     if not exercise_exist:
         error_obj = {"errors": "Exercise with the specified id could not be found."}
         return error_obj, 404
