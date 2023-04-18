@@ -1,4 +1,4 @@
-from flask import Blueprint
+from flask import Blueprint, request
 from app.models import Exercise, db
 from flask_login import login_required, current_user
 
@@ -26,12 +26,12 @@ def create_exercise():
     user_id = user_id_generator()
     try:
         new_exercise = Exercise(
-            creatorId = user_id
-            topicId = request.json.get('topicId'),
+            creatorId = int(user_id),
+            topicId = int(request.json.get('topicId')),
             name = request.json.get('name'),
             preview = request.json.get('preview'),
             image_url = request.json.get('image_url'),
-            body = request.json.get('body'),
+            body = request.json.get('body')
         )
         db.session.add(new_exercise)
         db.session.commit()
@@ -43,7 +43,7 @@ def create_exercise():
         }
         return error_obj, 400
 
-@channel_routes.route('/<exercise_id>', methods=['DELETE'])
+@exercise_routes.route('/<exercise_id>', methods=['DELETE'])
 @login_required
 def delete_exercise(exercise_id):
     user_id = user_id_generator()
@@ -51,7 +51,8 @@ def delete_exercise(exercise_id):
     if not exercise_exist:
         error_obj = {"errors": "Exercise with the specified id could not be found."}
         return error_obj, 404
-    if not exercise_exist.to_dict().creatorId == user_id:
+    exercise_dict = exercise_exist.to_dict()
+    if not exercise_dict.get("creatorId") == user_id:
         error_obj = {"errors": "Unauthorized - only creator may delete the post."}
         return error_obj, 403
     db.session.delete(exercise_exist)
@@ -59,15 +60,16 @@ def delete_exercise(exercise_id):
     resp_obj = {"message": "Exercise successfully deleted."}
     return resp_obj, 200
 
-@channel_routes.route('/<exercise_id>', methods=['PUT'])
+@exercise_routes.route('/<exercise_id>', methods=['PUT'])
 @login_required
 def edit_channel(exercise_id):
     user_id = user_id_generator()
-    exercise_exist = Exercise.query.get(exercise_exist)
+    exercise_exist = Exercise.query.get(exercise_id)
     if not exercise_exist:
         error_obj = {"errors": "Exercise with the specified id could not be found."}
         return error_obj, 404
-    if not exercise_exist.to_dict().creatorId == user_id:
+    exercise_dict = exercise_exist.to_dict()
+    if not exercise_dict.get("creatorId") == user_id:
         error_obj = {"errors": "Unauthorized - only creator may delete the post."}
         return error_obj, 403
     try:
