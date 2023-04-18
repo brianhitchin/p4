@@ -24,8 +24,10 @@ def one_story(story_id):
 @login_required
 def my_story():
     user_id = user_id_generator()
-    my_story = Story.query.filter(creatorId == user_id)
-    return {"my_stories": [story.to_dict for story in my_story]}
+    all_story = Story.query.all()
+    dict_story = [story.to_dict() for story in all_story]
+    filter_story = list(filter(lambda story: story["creatorId"] == user_id, dict_story))
+    return {"my_stories": filter_story}
 
 @story_routes.route('/', methods=['POST'])
 @login_required
