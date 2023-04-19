@@ -104,24 +104,24 @@ def undo_topics():
 def seed():
     if environment == 'production':
         # Before seeding, truncate all tables prefixed with schema name
-        undo_topics()
         undo_stories()
         undo_exercises()
+        undo_topics()
         undo_users()
         # Add a truncate command here for every table that will be seeded.
         db.session.commit()
     seed_users()
+    seed_topics()
     seed_exercises()
     seed_stories()
-    seed_topics()
     # Add other seed functions here
 
 
 # Creates the `flask seed undo` command
 @seed_commands.command('undo')
 def undo():
-        undo_topics()
         undo_stories()
         undo_exercises()
+        undo_topics()
         undo_users()
     # Add other undo functions here
