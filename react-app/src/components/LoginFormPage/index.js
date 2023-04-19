@@ -33,10 +33,10 @@ function LoginFormPage() {
         Welcome to NeverAlone!
       </div>
       <div className="introtxtholder">
-        <span>Ever felt truly alone?</span>
-        <span>Although everyone's journey is unique, similarities can be found with other fellow travelers.</span>
-        <span>A rough day? Or a triumph only you know about? Brand new exercise that helped you out?</span>
-        <span>Now you can read and share them all, and be NeverAlone!</span>
+        <span className="boldme biggerfont">Ever felt truly alone?</span>
+        <span className="boldme biggerfont">Although everyone's journey is unique, similarities can be found with other fellow travelers.</span>
+        <span className="boldme biggerfont">A rough day? Or a triumph only you know about? Brand new exercise that helped you out?</span>
+        <span className="boldme biggerfont">Now you can read and share them all, and be NeverAlone!</span>
       </div>
       <div className = 'LoginFormMain'>
         <h2>Welcome back!</h2>

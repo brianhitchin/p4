@@ -57,6 +57,10 @@
     font-weight: bold;
 }
 
+.biggerfont {
+    font-size: 20px;
+}
+
 .normalbutton {
   align-items: center;
   background-color: #FFFFFF;

@@ -5,6 +5,7 @@ import SignupFormPage from "./components/SignupFormPage";
 import LoginFormPage from "./components/LoginFormPage";
 import { authenticate } from "./store/session";
 import Navigation from "./components/Navigation";
+import Footerfunc from "./components/footer";
 
 function App() {
   const dispatch = useDispatch();
@@ -20,10 +21,16 @@ function App() {
       {
         (sessionUser ?
           (
-            <Navigation isLoaded={isLoaded} />
+            <>
+              <Navigation isLoaded={isLoaded} />
+              <Footerfunc />
+            </>
           ) :
           (
-            <LoginFormPage />
+            <>
+              <LoginFormPage />
+              <Footerfunc />
+            </>
           )
         )
       }
