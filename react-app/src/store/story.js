@@ -139,6 +139,24 @@ const storyReducer = (state = initialState, action) => {
             action.payload.single_story.forEach((story) => {
                 newState.single_story[story.id] = story
             });
+        case ADD_STORY:
+            newState = {...state, single_story: {}}
+            newState.all_stories[action.payload.id] = action.payload;
+            newState.my_stories[action.payload.id] = action.payload;
+            newState.single_story[action.payload.id] = action.payload;
+            return newState;
+        case EDIT_STORY:
+            newState = {...state, single_story: {}}
+            newState.all_stories[action.payload.id] = action.payload;
+            newState.my_stories[action.payload.id] = action.payload;
+            newState.single_story[action.payload.id] = action.payload;
+            return newState;
+        case DELETE_STORY:
+            newState = { ...state }
+            delete newState.all_stories[action.id];
+            delete newState.my_stories[action.id];
+            delete newState.single_story[action.id];
+            return newState 
         default:
             return state;
     }
