@@ -1,6 +1,12 @@
 /* TODO Add site wide styles */
 @import url('https://fonts.googleapis.com/css2?family=Inconsolata&display=swap');
 
+* {
+    box-sizing: border-box;
+    padding: 0;
+    margin: 10px;
+}
+
 html {
     height: 100%;
     font-family: 'Inconsolata', serif;
@@ -10,4 +16,6 @@ html {
 
 button:hover {
     cursor: pointer;
+    background-color: #015f20;
+    font-weight: bolder;
 }
