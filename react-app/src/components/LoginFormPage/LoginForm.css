@@ -25,10 +25,10 @@
 .typing {
     overflow: hidden;
     white-space: nowrap;
-    animation: typing;
-    animation-duration: 6s;
-    animation-timing-function: steps(42, end);
-    animation-fill-mode: forwards;
+    letter-spacing: .20em;
+    margin: 0 auto;
+    animation: 
+        typing 6s steps(40, end),
 }
 
 .loginform {
