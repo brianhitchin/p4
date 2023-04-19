@@ -12,8 +12,8 @@ class Topic(db.Model):
     created_at = db.Column(db.DateTime, default=db.func.now())
     updated_at = db.Column(db.DateTime, default=db.func.now())
 
-    exercisetopic = db.relationship("Exercise", back_populates="etopic")
-    storytopic = db.relationship("Story", back_populates="stopic")
+    exercisetopic = db.relationship("Exercise", back_populates="etopic", cascade="all, delete, delete-orphan")
+    storytopic = db.relationship("Story", back_populates="stopic", cascade="all, delete, delete-orphan")
     towner = db.relationship("User", back_populates="topics")
 
     def to_dict(self):

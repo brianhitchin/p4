@@ -10,7 +10,7 @@ def user_id_generator():
 @topic_routes.route('/')
 def initial():
     all_topics = Topic.query.all()
-    return {"all_stories": [topic.to_dict() for topic in all_topics]}, 200
+    return {"all_topics": [topic.to_dict() for topic in all_topics]}, 200
 
 @topic_routes.route('/', methods=['POST'])
 @login_required
@@ -54,3 +54,20 @@ def edittopic(topic_id):
             "errors": "Please fill out the topic."
         }
         return error_obj, 400
+
+@topic_routes.route('/<topic_id>', methods=['DELETE'])
+@login_required
+def deletetopic(topic_id):
+    user_id = user_id_generator()
+    topic_exist = Topic.query.get(topic_id)
+    if not topic_exist:
+        error_obj = {"errors": "Topic with the specified id could not be found."}
+        return error_obj, 404
+    topic_dict = topic_exist.to_dict()
+    if not topic_dict.get("creatorId") == user_id:
+        error_obj = {"errors": "Unauthorized - only creator may delete the topic."}
+        return error_obj, 403
+    db.session.delete(topic_exist)
+    db.session.commit()
+    resp_obj = {"message": "Topic successfully deleted."}
+    return resp_obj, 200
