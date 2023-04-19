@@ -18,6 +18,7 @@ class User(db.Model, UserMixin):
 
     exercises = db.relationship("Exercise", back_populates="eowner")
     stories = db.relationship("Story", back_populates="sowner")
+    topics = db.relationship("Topic", back_populates="towner")
 
     @property
     def password(self):

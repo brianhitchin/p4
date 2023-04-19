@@ -84,8 +84,8 @@ def undo_stories():
     db.session.commit()
 
 def seed_topics():
-    depression = Topic(topic="Depression")
-    anxiety = Topic(topic="Anxiety")
+    depression = Topic(topic="Depression", creatorId=1)
+    anxiety = Topic(topic="Anxiety", creatorId=2)
     db.session.add(depression)
     db.session.add(anxiety)
     db.session.commit()
