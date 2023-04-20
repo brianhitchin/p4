@@ -43,7 +43,7 @@ function LoginFormPage() {
         <div>Please Log in or Sign up to join the community of people with similar struggles.</div>
         <div>Not ready to sign up yet? No problem, try signing in as demo!</div>
         <form onSubmit={handleSubmit} className='loginForm'>
-          <ul>
+          <ul className="redme">
             {errors.map((error, idx) => (
               <li key={idx}>{error}</li>
             ))}

@@ -23,7 +23,7 @@ function SignupFormPage() {
   const handleSubmit = async (e) => {
     e.preventDefault();
     if (password === confirmPassword) {
-      const data = await dispatch(signUp(username, email, password));
+      const data = await dispatch(signUp(username, email, password, firstName, lastName));
       if (data) {
         setErrors(data)
       }
@@ -53,7 +53,7 @@ function SignupFormPage() {
         <div>Join the community of people with similar struggles.</div>
         <div>Not ready to sign up yet? No problem, try signing in as demo!</div>
         <form onSubmit={handleSubmit}>
-          <ul>
+          <ul className="redme">
             {errors.map((error, idx) => <li key={idx}>{error}</li>)}
           </ul>
           <div className="centerme">
@@ -129,13 +129,13 @@ function SignupFormPage() {
             </label>
           </div>
           <div className="buttonholder">
-            <button type="submit" class="normalbutton">Sign Up</button>
+            <button type="submit" className="normalbutton">Sign Up</button>
           </div>
         </form>
         <div>
-          <button type="button" class="normalbutton" onClick={() => { history.push('/') }}>Log In</button>
+          <button type="button" className="normalbutton" onClick={() => { history.push('/') }}>Log In</button>
           <span className="boldme">- OR -</span>
-          <button type="button" class="normalbutton" onClick={demoHandle}>Sign in as demo</button>
+          <button type="button" className="normalbutton" onClick={demoHandle}>Sign in as demo</button>
         </div>
       </div>
     </div>
