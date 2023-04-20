@@ -29,7 +29,7 @@ function LoginFormPage() {
 
   return (
     <div className="LoginMain">
-      <div className="superbig typing">
+      <div className="superbig type">
         Welcome to NeverAlone!
       </div>
       <div className="introtxtholder">

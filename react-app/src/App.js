@@ -22,8 +22,16 @@ function App() {
         (sessionUser ?
           (
             <>
-              <Navigation isLoaded={isLoaded} />
-              <Footerfunc />
+              <Switch>
+                <Route path="/signup" exact>
+                  <SignupFormPage />
+                  <Footerfunc />
+                </Route>
+                <Route path="/" exact>
+                  <Navigation isLoaded={isLoaded} />
+                  <Footerfunc />
+                </Route>
+              </Switch>
             </>
           ) :
           (

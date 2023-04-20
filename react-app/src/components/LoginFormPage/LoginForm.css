@@ -22,13 +22,14 @@
     to { width: 100% }
 }
 
-.typing {
+.type {
     overflow: hidden;
     white-space: nowrap;
-    letter-spacing: .20em;
-    margin: 0 auto;
-    animation: 
-        typing 6s steps(40, end),
+    width: 0;
+    animation: typing;
+    animation-duration: 5s;
+    animation-timing-function: steps(40, end);
+    animation-fill-mode: forwards;
 }
 
 .loginform {
