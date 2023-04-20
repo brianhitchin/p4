@@ -14,13 +14,13 @@ html {
 
 body {
     height: 100%;
-    background: linear-gradient(#FFFFFF, #7cbb91);
-    background-attachment: fixed;
+    background: url("./background.png");
+    background-size: cover;
     font-family: 'Inconsolata', serif;
 }
 
 button:hover {
     cursor: pointer;
-    background-color: #015f20;
     font-weight: bolder;
+    box-shadow: 7px 4px 4px purple;
 }

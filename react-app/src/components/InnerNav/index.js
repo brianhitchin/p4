@@ -1,6 +1,8 @@
 import React from 'react';
 import { NavLink, useHistory } from 'react-router-dom';
 import './index.css'
+import exercisebutton from './exercise.png'
+import storybutton from './story.png'
 
 function Innernav() {
 
@@ -8,14 +10,14 @@ function Innernav() {
 
     return (
         <div className='innerdivmain'>
-            <div>
+            <div className='boldme'>
                 Where would you like to go?
             </div>
             <div>
-                <button type='button'>Exercises</button>
+                <button type='button'><img src={exercisebutton} alt="Exercise" className="buttonimg"></img></button>
             </div>
             <div>
-                <button type='button'>Stories</button>
+                <button type='button'><img src={storybutton} alt="Story" className="buttonimg"></img></button>
             </div>
         </div>
     )
