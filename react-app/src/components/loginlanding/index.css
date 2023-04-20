@@ -19,3 +19,15 @@
     flex-wrap: wrap;
     justify-content: center;
 }
+
+.bigfont {
+    font-size: 24px;
+    padding: 10px;
+}
+
+.bottomholder {
+    display: flex;
+    width: 60%;
+    flex-direction: row;
+    justify-content: space-evenly;
+}
