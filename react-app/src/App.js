@@ -7,6 +7,7 @@ import Userlanding from "./components/loginlanding";
 import { authenticate } from "./store/session";
 import Navigation from "./components/Navigation";
 import Footerfunc from "./components/footer";
+import Innernav from "./components/InnerNav";
 
 function App() {
   const dispatch = useDispatch();
@@ -30,6 +31,7 @@ function App() {
         </Route>
         <Route path='/' exact>
           <Navigation isLoaded={isLoaded} />
+          <Innernav />
           <Userlanding />
           <Footerfunc />
         </Route>
