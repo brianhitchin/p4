@@ -4,14 +4,19 @@
 * {
     box-sizing: border-box;
     padding: 0;
-    margin: 10px;
+    margin: 5px;
 }
 
 html {
     height: 100%;
-    font-family: 'Inconsolata', serif;
+    min-height: 100%;
+}
+
+body {
+    height: 100%;
     background: linear-gradient(#FFFFFF, #7cbb91);
     background-attachment: fixed;
+    font-family: 'Inconsolata', serif;
 }
 
 button:hover {

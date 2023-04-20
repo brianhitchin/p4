@@ -4,6 +4,8 @@ import { logout } from "../../store/session";
 import OpenModalButton from "../OpenModalButton";
 import LoginFormModal from "../LoginFormModal";
 import SignupFormModal from "../SignupFormModal";
+import usericon from './usericon.png'
+import './Navigation.css';
 
 function ProfileButton({ user }) {
   const dispatch = useDispatch();
@@ -14,6 +16,11 @@ function ProfileButton({ user }) {
     if (showMenu) return;
     setShowMenu(true);
   };
+
+	useEffect(() => {
+		const script = document.createElement('script');
+		script.src = "https://kit.fontawesome.com/c5c7a1da31.js";
+	}, [])
 
   useEffect(() => {
     if (!showMenu) return;
@@ -39,17 +46,18 @@ function ProfileButton({ user }) {
 
   return (
     <>
-      <button onClick={openMenu}>
-        <i className="fas fa-user-circle" />
+      <button onClick={openMenu} className="userbutton">
+        <img src={usericon} alt={"user menu"} className='nomargin userimg'></img>
       </button>
-      <ul className={ulClassName} ref={ulRef}>
+      <div className={ulClassName} ref={ulRef}>
         {user ? (
           <>
-            <li>{user.username}</li>
-            <li>{user.email}</li>
-            <li>
-              <button onClick={handleLogout}>Log Out</button>
-            </li>
+            <span>{'Hello, ' + user.first_name + ' ' + user.last_name}</span>
+            <span>{'Logged in as ' + user.username}</span>
+            <span>{user.email}</span>
+            <span className="bordertop">
+              <button onClick={handleLogout} className="topmargin normalbutton">Log Out</button>
+            </span>
           </>
         ) : (
           <>
@@ -66,7 +74,7 @@ function ProfileButton({ user }) {
             />
           </>
         )}
-      </ul>
+      </div>
     </>
   );
 }
