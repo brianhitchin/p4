@@ -91,3 +91,8 @@
     flex-direction: column;
     align-items: center;
 }
+
+.centerme {
+    display: flex;
+    justify-content: flex-end;
+}
