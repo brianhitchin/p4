@@ -8,6 +8,7 @@ import { authenticate } from "./store/session";
 import Navigation from "./components/Navigation";
 import Footerfunc from "./components/footer";
 import Innernav from "./components/InnerNav";
+import AllStories from "./components/AllStory";
 
 function App() {
   const dispatch = useDispatch();
@@ -33,6 +34,12 @@ function App() {
           <Navigation isLoaded={isLoaded} />
           <Innernav />
           <Userlanding />
+          <Footerfunc />
+        </Route>
+        <Route path='/story' exact>
+          <Navigation isLoaded={isLoaded} />
+          <Innernav />
+          <AllStories />
           <Footerfunc />
         </Route>
       </Switch>
