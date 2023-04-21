@@ -49,6 +49,9 @@ function Userlanding(){
             <div className="bottomholder">
                 {Object.values(onestoryloaded).length >= 1 && <div className="samples">
                         <h3>Read a sample story!</h3>
+                        <div class="sampleimage">
+                            <img src={onestoryloaded[1].image_url} alt='sample story' className="sampleimageitself"></img>
+                        </div>
                         <div>
                             {onestoryloaded[1].title}
                         </div>
@@ -59,6 +62,9 @@ function Userlanding(){
                     }
                 {Object.values(oneexerciseloaded).length >= 1 && <div className="samples">
                         <h3>Try a random exercise!</h3>
+                        <div class="sampleimage">
+                            <img src={oneexerciseloaded[1].image_url} alt='sample exercise' className="sampleimageitself"></img>
+                        </div>
                         <div>
                             {oneexerciseloaded[1].name}
                         </div>

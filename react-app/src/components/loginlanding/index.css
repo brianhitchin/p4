@@ -42,3 +42,14 @@
     border-radius: 10px;
     border: 1px solid black;    
 }
+
+.sampleimage {
+    width: 200px;
+    height: 200px;
+}
+
+.sampleimageitself {
+    flex-shrink: 0;
+    max-width: 100%;
+    max-height: 100%;
+}
