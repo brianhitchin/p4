@@ -31,3 +31,14 @@
     flex-direction: row;
     justify-content: space-evenly;
 }
+
+.samples {
+    width: 50%;
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+    justify-content: center;
+    background-color: beige;
+    border-radius: 10px;
+    border: 1px solid black;    
+}

@@ -9,17 +9,29 @@ import landing from './landing.png'
 function Userlanding(){
 
     const sessionUser = useSelector((state) => state.session.user);
+    const onestoryloaded = useSelector((state) => state.story.single_story)
+    const oneexerciseloaded = useSelector((state) => state.exercise.single_exercise)
     const dispatch = useDispatch();
+    const [exstory, setExstory] = useState({})
+    const [exexercise, setExexercise] = useState({})
 
     useEffect(() => {
         dispatch(OneStoryThunk(1))
         dispatch(OneExerciseThunk(1))
     }, [])
 
+    useEffect(() => {
+        if (onestoryloaded && oneexerciseloaded) {
+            setExstory(onestoryloaded)
+            setExexercise(oneexerciseloaded)
+        }
+    }, [oneexerciseloaded])
+
     if (!sessionUser) return <Redirect to="/login" />;
 
     const today = new Date();
     const todayDate = `${today.getFullYear()} / ${today.getMonth() + 1} / ${today.getDate()}`
+    console.log(exexercise, exstory)
 
     return (
         <div className="landingmain">
@@ -35,8 +47,26 @@ function Userlanding(){
                 </div>
             </div>
             <div className="bottomholder">
-                <div>Test1</div>
-                <div>Test2</div>
+                {Object.values(onestoryloaded).length >= 1 && <div className="samples">
+                        <h3>Read a sample story!</h3>
+                        <div>
+                            {onestoryloaded[1].title}
+                        </div>
+                        <div>
+                            {onestoryloaded[1].preview}
+                        </div>
+                    </div>
+                    }
+                {Object.values(oneexerciseloaded).length >= 1 && <div className="samples">
+                        <h3>Try a random exercise!</h3>
+                        <div>
+                            {oneexerciseloaded[1].name}
+                        </div>
+                        <div>
+                            {oneexerciseloaded[1].preview}
+                        </div>
+                    </div>
+                    }
             </div>
         </div>
     )
