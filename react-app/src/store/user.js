@@ -10,7 +10,7 @@ export const AllUsers = (payload) => {
 }
 
 export const AllUsersThunk = () => async dispatch => {
-    const response = await fetch('/users/')
+    const response = await fetch('/api/users/')
 
     if (response.ok) {
         const data = await response.json()
@@ -31,3 +31,5 @@ const userReducer = (state = initialState, action) => {
             return state
     }
 }
+
+export default userReducer;

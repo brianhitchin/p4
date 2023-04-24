@@ -10,6 +10,7 @@ import Footerfunc from "./components/footer";
 import Innernav from "./components/InnerNav";
 import AllStories from "./components/AllStory";
 import AllExercises from "./components/AllExercise";
+import OneStory from "./components/SingleStory";
 
 function App() {
   const dispatch = useDispatch();
@@ -31,10 +32,10 @@ function App() {
           <LoginFormPage />
           <Footerfunc />
         </Route>
-        <Route path='/' exact>
+        <Route path='/story/:storyId'>
           <Navigation isLoaded={isLoaded} />
           <Innernav />
-          <Userlanding />
+          <OneStory />
           <Footerfunc />
         </Route>
         <Route path='/story' exact>
@@ -47,6 +48,12 @@ function App() {
           <Navigation isLoaded={isLoaded} />
           <Innernav />
           <AllExercises />
+          <Footerfunc />
+        </Route>
+        <Route path='/' exact>
+          <Navigation isLoaded={isLoaded} />
+          <Innernav />
+          <Userlanding />
           <Footerfunc />
         </Route>
       </Switch>

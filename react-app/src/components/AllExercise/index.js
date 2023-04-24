@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { Redirect, useHistory, NavLink } from "react-router-dom";
 import { AllExercise, AllExerciseThunk } from "../../store/exercise"
+import exericon from "./exericon.png"
 import "./index.css"
 
 function AllExercises() {
@@ -21,6 +22,7 @@ function AllExercises() {
                     <span>Share and read exercises.</span>
                 </div>
                 <div onClick={() => { alert('Create story') }} className="ditto">
+                    <img src={exericon} alt="Create an exercise" className="writestoryimg"></img>
                     <span className="boldd">Create an exercise!</span>
                 </div>
             </div>
