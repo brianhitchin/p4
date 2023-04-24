@@ -10,14 +10,16 @@ function Navigation({ isLoaded }){
 
 	return (
 		<div className="navbarmain">
-			<div className="nomargin">
-				<NavLink exact to="/"><img src={logo} alt={"NA logo"} className='logoimg nomargin'></img></NavLink>
-			</div>
-			{isLoaded && (
+			<div className='navbarholder'>
 				<div className="nomargin">
-					<ProfileButton user={sessionUser} />
+					<NavLink exact to="/"><img src={logo} alt={"NA logo"} className='logoimg nomargin'></img></NavLink>
 				</div>
-			)}
+				{isLoaded && (
+					<div className="nomargin">
+						<ProfileButton user={sessionUser} />
+					</div>
+				)}
+			</div>
 		</div>
 	);
 }

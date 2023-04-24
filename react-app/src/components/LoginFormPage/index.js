@@ -29,18 +29,16 @@ function LoginFormPage() {
 
   return (
     <div className="LoginMain">
-      <div className="toptxtholder">
-        <div className="superbig type">
-          Welcome to NeverAlone!
-        </div>
-        <div className="introtxtholder">
-          <span className="boldme biggerfont fadeintext">Ever felt truly alone?</span>
-          <span className="boldme biggerfont fadeintext">Although everyone's journey is unique, similarities can be found with other fellow travelers.</span>
-          <span className="boldme biggerfont fadeintext">A rough day? Or a triumph only you know about? Brand new exercise that helped you out?</span>
-          <span className="boldme biggerfont fadeintext">Now you can read and share them all, and be NeverAlone!</span>
-        </div>
+      <div className="superbig type">
+        Welcome to NeverAlone!
       </div>
-      <div className = 'LoginFormMain'>
+      <div className="introtxtholder">
+        <span className="boldme biggerfont fadeintext">Ever felt truly alone?</span>
+        <span className="boldme biggerfont fadeintext">Although everyone's journey is unique, similarities can be found with other fellow travelers.</span>
+        <span className="boldme biggerfont fadeintext">A rough day? Or a triumph only you know about? Brand new exercise that helped you out?</span>
+        <span className="boldme biggerfont fadeintext">Now you can read and share them all, and be NeverAlone!</span>
+      </div>
+      <div className='LoginFormMain'>
         <h2>Welcome back!</h2>
         <div>Please Log in or Sign up to join the community of people with similar struggles.</div>
         <div>Not ready to sign up yet? No problem, try signing in as demo!</div>
@@ -79,7 +77,7 @@ function LoginFormPage() {
           </div>
         </form>
         <div>
-          <button type="button" class="normalbutton" onClick={() => {history.push('/signup')}}>Sign up</button>
+          <button type="button" class="normalbutton" onClick={() => { history.push('/signup') }}>Sign up</button>
           <span className="boldme">- OR -</span>
           <button type="button" class="normalbutton" onClick={demoHandle}>Sign in as demo</button>
         </div>
