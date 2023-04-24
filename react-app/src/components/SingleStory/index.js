@@ -19,12 +19,14 @@ function OneStory() {
         dispatch(AllUsersThunk())
     }, [])
 
-    console.log(userstate, storystate)
-
     return (
 
         <div className='onestorymain'>
-            {storystate && <h1>{storystate.id}</h1>}
+            {Object.values(userstate).length >= 1 && <div className='onestoryinnermain'>
+                <h1>{storystate.get(2).id}</h1>
+                <div>{storystate.get(2).body}</div>
+                <div>{userstate.all_users[storystate.get(2).creatorId][first_name]}</div>
+            </div>}
         </div>
 
     )

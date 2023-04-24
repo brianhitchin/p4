@@ -14,7 +14,7 @@ export const AllUsersThunk = () => async dispatch => {
 
     if (response.ok) {
         const data = await response.json()
-        return AllUsers(data)
+        dispatch(AllUsers(data))
     }
 }
 
@@ -23,7 +23,7 @@ const userReducer = (state = initialState, action) => {
     switch (action.type) {
         case ALL_USERS:
             newState = {...state, all_users: {}}
-            action.payload.all_users.array.forEach(element => {
+            action.payload.all_users.forEach(element => {
                 newState.all_users[element.id] = element
             });
             return newState;
