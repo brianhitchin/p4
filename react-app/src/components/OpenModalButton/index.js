@@ -15,6 +15,12 @@ function OpenModalButton({
     if (onButtonClick) onButtonClick();
   };
 
+  if (buttonText == "Delete Story") {
+    return (
+      <button onClick={onClick} className="buttonme padme">{buttonText}</button>
+    );
+  }
+
   return (
     <button onClick={onClick}>{buttonText}</button>
   );

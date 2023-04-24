@@ -1,10 +1,12 @@
-import React from 'react';
+import React, { useRef } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { useParams, NavLink, useHistory } from 'react-router-dom'
 import { useEffect, useState } from 'react';
 import { OneStoryThunk } from '../../store/story';
 import { AllUsersThunk } from '../../store/user';
 import { AllTopicThunk } from '../../store/topic';
+import OpenModalButton from '../OpenModalButton'
+import DeleteStoryModal from '../DeleteStoryModal'
 import t1 from './t1.png'
 import t2 from './t2.png'
 import './index.css'
@@ -18,6 +20,8 @@ function OneStory() {
     const storystate = useSelector(state => state.story.single_story)
     const thisuserstate = useSelector(state => state.session.user)
     const topicstate = useSelector(state => state.topic.all_topics)
+    const [showMenu, setShowMenu] = useState(false);
+    const ulRef = useRef();
 
     useEffect(() => {
         dispatch(OneStoryThunk(storyId))
@@ -49,6 +53,7 @@ function OneStory() {
     }
 
     relvalue()
+
     const thistopic = gettopic()
     let tagurl = null;
     if (thistopic) {
@@ -60,14 +65,35 @@ function OneStory() {
         }
     }
 
-    return (
+    const openMenu = () => {
+        if (showMenu) return;
+        setShowMenu(true);
+    };
 
+    const closeMenu = (e) => {
+        if (!showMenu) return;
+        if (!ulRef.current.contains(e.target)) {
+            setShowMenu(false);
+        }
+    };
+
+    useEffect(() => {
+        document.addEventListener('click', closeMenu);
+        return () => document.removeEventListener("click", closeMenu);
+    }, [closeMenu]);
+
+    return (
         <div className='onestorymain'>
-            {rstory && 
+            {rstory &&
                 <>
                     <div className='ostop'>
                         <h2>{rstory.title}</h2>
-                        {ocheck() ? <div>Edit / Delete</div> : <div>Rating / Favorite</div>}
+                        {ocheck() ? <div><OpenModalButton 
+                            buttonText="Delete Story"
+                            onItemClick={closeMenu}
+                            modalComponent={<DeleteStoryModal />}
+                        />
+                        </div> : <div>Rating / Favorite</div>}
                     </div>
                     <div className='onestoryinnermain'>
                         <div className='onestoryinnertop'>
@@ -77,7 +103,7 @@ function OneStory() {
                                 <div><span className='boldme'>Written at: </span>{` ${rstory.created_at}`}</div>
                                 <div><span className='boldme'>Mood: </span>{` ${rstory.mood} / 10`}</div>
                                 {thistopic && <div className="tagholder"><span>Tag: </span>{tagurl ? <img src={tagurl} alt='tag' className='tagimg'></img> : ''}</div>}
-                                <div><span>Read more of <span onClick={() => {alert('Feature coming soon!')}} className='buttonlike'>{`${rcreator.first_name} ${rcreator.last_name}`}</span>'s stories!</span></div>
+                                <div><span>Read more of <span onClick={() => { alert('Feature coming soon!') }} className='buttonlike'>{`${rcreator.first_name} ${rcreator.last_name}`}</span>'s stories!</span></div>
                             </div>
                         </div>
                         <div className='onestoryinnerbot'>

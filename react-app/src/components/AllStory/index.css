@@ -48,7 +48,7 @@
 }
 
 .asitems {
-    background-color: #ffffffaa;
+    background-color: rgba(200, 187, 226, 0.719);
     overflow: hidden;
     display: flex;
     height: 180px;
@@ -60,6 +60,7 @@
 .asitems:hover {
     background-color: white;
     border: 3px solid black;
+    cursor: pointer;
 }
 
 .sampleimage2 {

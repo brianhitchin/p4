@@ -15,10 +15,11 @@ html {
 body {
     height: 100%;
     font-family: 'Nunito', serif;
-    background: url("./background.png") 100% 100% no-repeat;
+    background-color: #FFFDFA;
+    /*background: url("./background.png") 100% 100% no-repeat;
     background-size: cover;
     background-attachment: fixed;
-    opacity: 0.75;
+    */
 }
 
 button:hover {

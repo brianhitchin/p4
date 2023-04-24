@@ -1,0 +1,26 @@
+@import url('https://fonts.googleapis.com/css2?family=Nunito&display=swap');
+
+.deletemain {
+    border: 2px solid black;
+    display: flex;
+    flex-direction: column;
+    justify-self: center;
+    align-items: center;
+    padding: 10px;
+}
+
+.modalbutton {
+    padding: 10px;
+    border-radius: 5px;
+    font-family: 'Nunito', serif;
+    border: 1px solid black
+}
+
+.redme {
+    background-color: rgba(207, 146, 146, 0.793);
+}
+
+.modalbutton:hover {
+    font-weight: bold;
+    cursor: pointer;
+}
