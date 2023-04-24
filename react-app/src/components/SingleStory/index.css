@@ -4,7 +4,8 @@
     flex-direction: column;
     flex-wrap: wrap;
     background-color: white;
-    border: 1px solid black;
+    border-radius: 5px;
+    border: 2px solid black;
 }
 
 .onestorymain {
@@ -62,6 +63,18 @@
     width: 100%;
     display: flex;
     flex-wrap: wrap;
+    flex-direction: column;
     overflow: hidden;
-    border-bottom: 1px solid gray;
+    justify-content: center;
+    align-items: center;
+}
+
+.comments {
+    width: 90%;
+    border-radius: 10px;
+    border: 2px solid black;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: gray;
 }

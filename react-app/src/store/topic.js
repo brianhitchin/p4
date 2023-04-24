@@ -52,7 +52,7 @@ export const AddTopicThunk = (value) => async dispatch => {
     })
     if (response.ok) {
         const data = await response.json()
-        dispatch(AddChannel(data))
+        dispatch(AddTopic(data))
     }
 }
 
@@ -109,3 +109,5 @@ const topicReducer = (state = initialState, action) => {
             return state;
     }
 }
+
+export default topicReducer;

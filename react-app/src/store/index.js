@@ -4,12 +4,14 @@ import reducer from './session'
 import storyReducer from './story';
 import exerciseReducer from './exercise';
 import userReducer from './user';
+import topicReducer from './topic';
 
 const rootReducer = combineReducers({
   session: reducer,
   story: storyReducer,
   exercise: exerciseReducer,
-  user: userReducer
+  user: userReducer,
+  topic: topicReducer
 });
 
 
