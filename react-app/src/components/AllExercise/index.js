@@ -1,40 +1,38 @@
 import React, { useState, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { Redirect, useHistory, NavLink } from "react-router-dom";
-import { AllStoryThunk } from "../../store/story";
+import { AllExerciseThunk } from "../../store/exercise"
 import writestory from "./writestory.webp"
 import "./index.css"
 
 function AllStories() {
 
-    const allstorysession = useSelector((state) => state.story.all_stories)
+    const allexercisesession = useSelector((state) => state.exercise.all_exercises)
     const dispatch = useDispatch()
 
     useEffect(() => {
-        dispatch(AllStoryThunk())
+        dispatch(AllExerciseThunk())
     }, [])
-
-    console.log(allstorysession)
 
     return (
         <div className="allstorymain">
             <div className="allstorytop">
                 <div>
-                    <span className="bigfont2">Stories</span>
-                    <span>Share and read stories.</span>
+                    <span className="bigfont2">Exercises</span>
+                    <span>Share and read exercises.</span>
                 </div>
                 <div onClick={() => { alert('Create story') }} className="ditto">
                     <img src={writestory} alt="Write a story!" className="writestoryimg"></img>
-                    <span className="boldd">Write a story!</span>
+                    <span className="boldd">Create an exercise!</span>
                 </div>
             </div>
             <div className="allstorybot">
-                {allstorysession && Object.keys(allstorysession).map((istory, idx) => {
-                    const story = allstorysession[istory]
+                {allexercisesession && Object.keys(allexercisesession).map((iexercise, idx) => {
+                    const exercise = allexercisesession[iexercise]
                     return (
                         <div key={idx} className='borderme'>
-                            <NavLink exact to={`/story/${story.id}`}>
-                                <span>{story.title}</span>
+                            <NavLink exact to={`/exercise/${exercise.id}`}>
+                                <span>{exercise.name}</span>
                             </NavLink>
                             <span></span>
                         </div>

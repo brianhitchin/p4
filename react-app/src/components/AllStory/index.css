@@ -18,7 +18,7 @@
 .allstorytop {
     width: 60%;
     display: flex;
-    justify-content: stretch;
+    justify-content: space-between;
     align-items: center;
     padding-bottom: 10px;
     border-bottom: 1px solid gray;
@@ -27,4 +27,20 @@
 .writestoryimg {
     height: 30px;
     width: 30px;
+}
+
+.ditto {
+    display: flex;
+    align-items: center;
+}
+
+.allstorybot {
+    display: flex;
+    width: 60%;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.borderme {
+    border: 1px solid black;
 }
