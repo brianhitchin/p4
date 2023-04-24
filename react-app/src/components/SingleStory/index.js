@@ -13,6 +13,7 @@ function OneStory() {
     const history = useHistory()
     const userstate = useSelector(state => state.user.all_users)
     const storystate = useSelector(state => state.story.single_story)
+    const thisuserstate = useSelector(state => state.session.user)
 
     useEffect(() => {
         dispatch(OneStoryThunk(storyId))
@@ -30,9 +31,9 @@ function OneStory() {
     }
 
     const ocheck = () => {
-        if (rstory && rcreator) {
-            console.log('ocheck', rstory.creatorId, rcreator.id)
-            return rstory.creatorId == rcreator.id
+        if (rstory && thisuserstate) {
+            console.log('ocheck', rstory.creatorId, thisuserstate.id)
+            return rstory.creatorId == thisuserstate.id
         }
     }
 
@@ -45,13 +46,18 @@ function OneStory() {
                 <>
                     <div className='ostop'>
                         <h2>{rstory.title}</h2>
-                        {ocheck() ? <div>Owner</div> : <div>Not Owner</div>}
+                        {ocheck() ? <div>Edit / Delete</div> : <div>Rating / Favorite</div>}
                     </div>
                     <div className='onestoryinnermain'>
-                        <div className='onestoryimgholder'><img src={rstory.image_url} alt="Story image" className='onestoryimg'></img></div>
-                        <div><span className='boldme'>Written by:</span>{` ${rcreator.username}`}</div>
-                        <div><span className='boldme'>Written at: </span>{` ${rstory.created_at}`}</div>
-                        <div>{rstory.body}</div>
+                        <div className='onestoryinnertop'>
+                            <div className='onestoryimgholder'><img src={rstory.image_url} alt="Story image" className='onestoryimg'></img></div>
+                            <div className='ostopui'>
+                                <div><span className='boldme'>Written by:</span>{` ${rcreator.username}`}</div>
+                                <div><span>Read more of <span onClick={() => {alert('Feature coming soon!')}} className='buttonlike'>{`${rcreator.first_name} ${rcreator.last_name}`}</span>'s stories!</span></div>
+                                <div><span className='boldme'>Written at: </span>{` ${rstory.created_at}`}</div>
+                            </div>
+                        </div>
+                        <div className='onestoryinnerbot'>{rstory.body}</div>
                     </div>
                 </>
             }
