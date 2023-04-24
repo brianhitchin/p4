@@ -1,11 +1,10 @@
 import React, { useState, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { Redirect, useHistory, NavLink } from "react-router-dom";
-import { AllExerciseThunk } from "../../store/exercise"
-import writestory from "./writestory.webp"
+import { AllExercise, AllExerciseThunk } from "../../store/exercise"
 import "./index.css"
 
-function AllStories() {
+function AllExercises() {
 
     const allexercisesession = useSelector((state) => state.exercise.all_exercises)
     const dispatch = useDispatch()
@@ -22,7 +21,6 @@ function AllStories() {
                     <span>Share and read exercises.</span>
                 </div>
                 <div onClick={() => { alert('Create story') }} className="ditto">
-                    <img src={writestory} alt="Write a story!" className="writestoryimg"></img>
                     <span className="boldd">Create an exercise!</span>
                 </div>
             </div>
@@ -43,4 +41,4 @@ function AllStories() {
     )
 }
 
-export default AllStories
+export default AllExercises

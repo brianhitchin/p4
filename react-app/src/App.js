@@ -9,6 +9,7 @@ import Navigation from "./components/Navigation";
 import Footerfunc from "./components/footer";
 import Innernav from "./components/InnerNav";
 import AllStories from "./components/AllStory";
+import AllExercises from "./components/AllExercise";
 
 function App() {
   const dispatch = useDispatch();
@@ -40,6 +41,12 @@ function App() {
           <Navigation isLoaded={isLoaded} />
           <Innernav />
           <AllStories />
+          <Footerfunc />
+        </Route>
+        <Route path='/exercise' exact>
+          <Navigation isLoaded={isLoaded} />
+          <Innernav />
+          <AllExercises />
           <Footerfunc />
         </Route>
       </Switch>

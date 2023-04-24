@@ -17,7 +17,7 @@ function Innernav() {
                 <button type='button'><img src={storybutton} alt="Story" className="buttonimg" onClick={() => {history.push('/story')}}></img></button>
             </div>
             <div>
-                <button type='button'><img src={exercisebutton} alt="Exercise" className="buttonimg"></img></button>
+                <button type='button'><img src={exercisebutton} alt="Exercise" className="buttonimg" onClick={() => {history.push('/exercise')}}></img></button>
             </div>
         </div>
     )
