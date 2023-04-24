@@ -7,6 +7,7 @@
     justify-self: center;
     align-items: center;
     padding: 10px;
+    background-color: rgba(200, 187, 226, 0.719);
 }
 
 .modalbutton {
@@ -17,7 +18,7 @@
 }
 
 .redme {
-    background-color: rgba(207, 146, 146, 0.793);
+    background-color: rgba(206, 164, 164, 0.649);
 }
 
 .modalbutton:hover {

@@ -96,3 +96,8 @@
 .padme {
     padding: 10px;
 }
+
+.starimg {
+    max-width: 20px;
+    max-height: 20px;
+}

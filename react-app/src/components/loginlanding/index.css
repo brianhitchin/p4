@@ -12,7 +12,8 @@
     flex-direction: row;
     justify-content: center;
     border-radius: 10px;
-    background-color: #ffffffaa;
+    background-color: rgba(200, 187, 226, 0.719);
+    border: 2px solid black;
 }
 
 .landingintro {
@@ -42,7 +43,7 @@
     align-items: center;
     background-color: rgba(200, 187, 226, 0.719);
     border-radius: 10px;
-    border: 1px solid black;   
+    border: 2px solid black;   
     justify-content: center;
 }
 

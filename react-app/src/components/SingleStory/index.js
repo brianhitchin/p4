@@ -9,6 +9,7 @@ import OpenModalButton from '../OpenModalButton'
 import DeleteStoryModal from '../DeleteStoryModal'
 import t1 from './t1.png'
 import t2 from './t2.png'
+import starbg from './starbg.png'
 import './index.css'
 
 function OneStory() {
@@ -93,7 +94,7 @@ function OneStory() {
                             onItemClick={closeMenu}
                             modalComponent={<DeleteStoryModal />}
                         />
-                        </div> : <div>Rating / Favorite</div>}
+                        </div> : <div onClick={() => {alert('Favorite and Rating features coming soon!')}}><img src={starbg} alt='rating' className='starimg'></img></div>}
                     </div>
                     <div className='onestoryinnermain'>
                         <div className='onestoryinnertop'>
