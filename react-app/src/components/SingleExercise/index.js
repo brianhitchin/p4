@@ -1,12 +1,15 @@
-import React from 'react';
+import React, { useRef } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { useParams, NavLink, useHistory } from 'react-router-dom'
 import { useEffect, useState } from 'react';
 import { OneExerciseThunk } from '../../store/exercise';
 import { AllUsersThunk } from '../../store/user';
 import { AllTopicThunk } from '../../store/topic';
+import OpenModalButton from '../OpenModalButton'
+import DeleteExerciseModal from '../DeleteExerciseModal';
 import t1 from './t1.png'
 import t2 from './t2.png'
+import starbg from './starbg.png'
 import './index.css'
 
 function SingleExercise() {
@@ -18,6 +21,8 @@ function SingleExercise() {
     const exercisestate = useSelector(state => state.exercise.single_exercise)
     const thisuserstate = useSelector(state => state.session.user)
     const topicstate = useSelector(state => state.topic.all_topics)
+    const [showMenu, setShowMenu] = useState(false);
+    const ulRef = useRef();
 
     useEffect(() => {
         dispatch(OneExerciseThunk(exerciseId))
@@ -60,6 +65,23 @@ function SingleExercise() {
         }
     }
 
+    const openMenu = () => {
+        if (showMenu) return;
+        setShowMenu(true);
+    };
+
+    const closeMenu = (e) => {
+        if (!showMenu) return;
+        if (!ulRef.current.contains(e.target)) {
+            setShowMenu(false);
+        }
+    };
+
+    useEffect(() => {
+        document.addEventListener('click', closeMenu);
+        return () => document.removeEventListener("click", closeMenu);
+    }, [closeMenu]);
+
     return (
 
         <div className='onestorymain'>
@@ -67,7 +89,12 @@ function SingleExercise() {
                 <>
                     <div className='ostop'>
                         <h2>{rexercise.name}</h2>
-                        {ocheck() ? <div>Edit / Delete</div> : <div>Rating / Favorite</div>}
+                        {ocheck() ? <div><OpenModalButton 
+                            buttonText="Delete Exercise"
+                            onItemClick={closeMenu}
+                            modalComponent={<DeleteExerciseModal />}
+                        />
+                        </div> : <div onClick={() => {alert('Favorite and Rating features coming soon!')}}><img src={starbg} alt='rating' className='starimg'></img></div>}
                     </div>
                     <div className='onestoryinnermain'>
                         <div className='onestoryinnertop'>

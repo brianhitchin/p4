@@ -25,6 +25,8 @@
   justify-content: space-evenly;
   margin: 0px;
   align-items: center;
+  background: linear-gradient(#eee9e985, #8c91c7b1);
+  background-size: contain;
 }
 
 .logoimg {
