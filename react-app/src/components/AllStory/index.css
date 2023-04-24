@@ -21,7 +21,7 @@
     justify-content: space-between;
     align-items: center;
     padding-bottom: 10px;
-    border-bottom: 1px solid gray;
+    border-bottom: 1px solid black;
 }
 
 .writestoryimg {
@@ -60,7 +60,6 @@
 .asitems:hover {
     background-color: white;
     border: 3px solid black;
-    box-shadow: 3px 3px 3px black;
 }
 
 .sampleimage2 {
@@ -86,7 +85,7 @@
 }
 
 .buttonme:hover {
-    border: 4px solid black;
     background-color: white;
     font-weight: bold;
+    cursor: pointer;
 }
