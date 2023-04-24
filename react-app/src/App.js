@@ -11,6 +11,7 @@ import Innernav from "./components/InnerNav";
 import AllStories from "./components/AllStory";
 import AllExercises from "./components/AllExercise";
 import OneStory from "./components/SingleStory";
+import SingleExercise from "./components/SingleExercise";
 
 function App() {
   const dispatch = useDispatch();
@@ -36,6 +37,12 @@ function App() {
           <Navigation isLoaded={isLoaded} />
           <Innernav />
           <OneStory />
+          <Footerfunc />
+        </Route>
+        <Route path='/exercise/:exerciseId'>
+          <Navigation isLoaded={isLoaded} />
+          <Innernav />
+          <SingleExercise />
           <Footerfunc />
         </Route>
         <Route path='/story' exact>

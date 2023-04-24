@@ -9,7 +9,7 @@ import t1 from './t1.png'
 import t2 from './t2.png'
 import './index.css'
 
-function OneExercise() {
+function SingleExercise() {
 
     const { exerciseId } = useParams()
     const dispatch = useDispatch()
@@ -30,7 +30,7 @@ function OneExercise() {
 
     const relvalue = () => {
         if (Object.values(userstate).length >= 1) {
-            rexercise = storystate[exerciseId]
+            rexercise = exercisestate[exerciseId]
             rcreator = userstate[exerciseId]
         }
     }
@@ -91,4 +91,4 @@ function OneExercise() {
 
 }
 
-export default OneExercise
+export default SingleExercise
