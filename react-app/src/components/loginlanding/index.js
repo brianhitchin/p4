@@ -58,8 +58,8 @@ function Userlanding(){
                             <div className="innerpreview">
                                 <div><span className="boldme">{"name: "}</span>{onestoryloaded[1].title}</div>
                                 <div className="tagholder"><img src={onestoryloaded[1].topicId == 1 ? t1 : t2} alt="tag" className="tagimg"></img></div>
-                                <div className="boldme">{onestoryloaded[1].preview}</div>
-                                <div><span className="boldme">{"written: "}</span>{onestoryloaded[1].created_at}</div>
+                                <div className="centerme">{onestoryloaded[1].preview}</div>
+                                <div><span className="boldme centerme">{"written: "}</span>{onestoryloaded[1].created_at}</div>
                             </div>
                         </div>
                     </div>
@@ -73,7 +73,7 @@ function Userlanding(){
                             <div className="innerpreview">
                                 <div><span className="boldme">{"name: "}</span>{oneexerciseloaded[1].name}</div>
                                 <div className="tagholder"><img src={oneexerciseloaded[1].topicId == 1 ? t1 : t2} alt="tag" className="tagimg"></img></div>
-                                <div className="boldme">{oneexerciseloaded[1].preview}</div>
+                                <div className="centerme">{oneexerciseloaded[1].preview}</div>
                                 <div><span className="boldme">{"written: "}</span>{oneexerciseloaded[1].created_at}</div>
                             </div>
                         </div>

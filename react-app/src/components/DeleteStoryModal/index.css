@@ -25,3 +25,13 @@
     font-weight: bold;
     cursor: pointer;
 }
+
+.grayline {
+    width: 100%;
+    border-bottom: 2px solid black;
+    padding-bottom: 10px;
+}
+
+.lineabove {
+    padding-top: 10px;
+}

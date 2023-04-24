@@ -7,6 +7,7 @@ import { AllUsersThunk } from '../../store/user';
 import { AllTopicThunk } from '../../store/topic';
 import OpenModalButton from '../OpenModalButton'
 import DeleteStoryModal from '../DeleteStoryModal'
+import EditStoryModal from '../EditStoryModal';
 import t1 from './t1.png'
 import t2 from './t2.png'
 import starbg from './starbg.png'
@@ -89,12 +90,22 @@ function OneStory() {
                 <>
                     <div className='ostop'>
                         <h2>{rstory.title}</h2>
-                        {ocheck() ? <div><OpenModalButton 
-                            buttonText="Delete Story"
-                            onItemClick={closeMenu}
-                            modalComponent={<DeleteStoryModal />}
-                        />
-                        </div> : <div onClick={() => {alert('Favorite and Rating features coming soon!')}}><img src={starbg} alt='rating' className='starimg'></img></div>}
+                        {ocheck() ? <div className="modalwrapper">
+                            <div>
+                                <OpenModalButton
+                                buttonText="Edit Story"
+                                onItemClick={closeMenu}
+                                modalComponent={<EditStoryModal />}
+                            />
+                            </div>
+                            <div>
+                                <OpenModalButton
+                                buttonText="Delete Story"
+                                onItemClick={closeMenu}
+                                modalComponent={<DeleteStoryModal />}
+                            />
+                            </div>
+                        </div> : <div onClick={() => { alert('Favorite and Rating features coming soon!') }}><img src={starbg} alt='rating' className='starimg'></img></div>}
                     </div>
                     <div className='onestoryinnermain'>
                         <div className='onestoryinnertop'>

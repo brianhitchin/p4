@@ -17,8 +17,8 @@ function DeleteStoryModal() {
     return (
         <div className="deletemain">
             <h2>Confirm Delete</h2>
-            <div>Once you confirm delete, the story is permanently gone!</div>
-            <button type="text" className="modalbutton boldme">Delete</button>
+            <div className="grayline">Once you confirm delete, the story is permanently gone!</div>
+            <button type="text" className="modalbutton boldme lineabove">Delete</button>
             <button type="text"onClick={handleSubmitN} className="modalbutton redme boldme">Go back...</button>
         </div>
     );
