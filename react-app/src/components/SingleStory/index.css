@@ -1,0 +1,34 @@
+.onestoryinnermain {
+    width: 60%;
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+    background-color: white;
+    border: 1px solid black;
+}
+
+.onestorymain {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.onestoryimgholder {
+    max-width: 300px;
+    max-height: 300px;
+}
+
+.onestoryimg {
+    flex-shrink: 0;
+    min-width: 100%;
+    max-width: 100%;
+}
+
+.ostop {
+    border-bottom: 1px solid gray;
+    display: flex;
+    justify-content: space-between;
+    width: 60%;
+}

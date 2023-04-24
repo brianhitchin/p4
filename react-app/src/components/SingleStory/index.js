@@ -29,18 +29,33 @@ function OneStory() {
         }
     }
 
+    const ocheck = () => {
+        if (rstory && rcreator) {
+            console.log('ocheck', rstory.creatorId, rcreator.id)
+            return rstory.creatorId == rcreator.id
+        }
+    }
+
     relvalue()
 
     return (
 
         <div className='onestorymain'>
-            {rstory && <div className='onestoryinnermain'>
-                <h1>{rstory.id}</h1>
-                <div>{`${rcreator.first_name} ${rcreator.last_name}`}</div>
-                <div>{rstory.body}</div>
-            </div>}
+            {rstory && 
+                <>
+                    <div className='ostop'>
+                        <h2>{rstory.title}</h2>
+                        {ocheck() ? <div>Owner</div> : <div>Not Owner</div>}
+                    </div>
+                    <div className='onestoryinnermain'>
+                        <div className='onestoryimgholder'><img src={rstory.image_url} alt="Story image" className='onestoryimg'></img></div>
+                        <div><span className='boldme'>Written by:</span>{` ${rcreator.username}`}</div>
+                        <div><span className='boldme'>Written at: </span>{` ${rstory.created_at}`}</div>
+                        <div>{rstory.body}</div>
+                    </div>
+                </>
+            }
         </div>
-
     )
 
 }
