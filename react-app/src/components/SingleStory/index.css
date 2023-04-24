@@ -80,7 +80,7 @@
 }
 
 .tagimg {
-    width: 90px;
+    width: 80px;
     height: 18px;
     border-radius: 5px;
     border: 1px solid black;
@@ -89,4 +89,5 @@
 .tagholder {
     display: flex;
     align-items: center;
+    white-space: nowrap;
 }

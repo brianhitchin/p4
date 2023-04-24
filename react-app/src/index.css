@@ -1,5 +1,5 @@
 /* TODO Add site wide styles */
-@import url('https://fonts.googleapis.com/css2?family=Inconsolata&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Nunito&display=swap');
 
 * {
     box-sizing: border-box;
@@ -14,7 +14,7 @@ html {
 
 body {
     height: 100%;
-    font-family: 'Inconsolata', serif;
+    font-family: 'Nunito', serif;
     background: url("./background.png") 100% 100% no-repeat;
     background-size: cover;
     background-attachment: fixed;

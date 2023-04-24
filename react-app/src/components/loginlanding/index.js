@@ -4,6 +4,8 @@ import { Redirect, useHistory } from "react-router-dom";
 import { OneStoryThunk } from "../../store/story";
 import { OneExerciseThunk } from "../../store/exercise";
 import './index.css'
+import t1 from './t1.png'
+import t2 from './t2.png'
 import landing from './landing.png'
 
 function Userlanding(){
@@ -14,6 +16,7 @@ function Userlanding(){
     const dispatch = useDispatch();
     const [exstory, setExstory] = useState({})
     const [exexercise, setExexercise] = useState({})
+    const history = useHistory();
 
     useEffect(() => {
         dispatch(OneStoryThunk(1))
@@ -32,13 +35,6 @@ function Userlanding(){
     const today = new Date();
     const todayDate = `${today.getFullYear()} / ${today.getMonth() + 1} / ${today.getDate()}`
     
-    function topictrans(id) {
-        if (id == 1){
-            return "depression"
-        }
-        return "anxiety"
-    }
-
     return (
         <div className="landingmain">
             <div className="topholder">
@@ -53,32 +49,32 @@ function Userlanding(){
                 </div>
             </div>
             <div className="bottomholder">
-                {Object.values(onestoryloaded).length >= 1 && <div className="samples">
+                {Object.values(onestoryloaded).length >= 1 && <div className="samples hoverme" onClick={() => {history.push('/story/1')}}>
                         <h3 className="centerh3">Read a sample story!</h3>
                         <div className="previewholder">
                             <div class="sampleimage">
                                 <img src={onestoryloaded[1].image_url} alt='sample story' className="sampleimageitself"></img>
                             </div>
                             <div className="innerpreview">
-                                <span>{"name: " + onestoryloaded[1].title}</span>
-                                <span>{"topic: " + topictrans(onestoryloaded[1].topicId)}</span>
-                                <span>{"preview: " + onestoryloaded[1].preview}</span>
-                                <span>{"written: " + onestoryloaded[1].created_at}</span>
+                                <div><span className="boldme">{"name: "}</span>{onestoryloaded[1].title}</div>
+                                <div className="tagholder"><img src={onestoryloaded[1].topicId == 1 ? t1 : t2} alt="tag" className="tagimg"></img></div>
+                                <div><span className="boldme">{"preview: "}</span>{onestoryloaded[1].preview}</div>
+                                <div><span className="boldme">{"written: "}</span>{onestoryloaded[1].created_at}</div>
                             </div>
                         </div>
                     </div>
                     }
-                {Object.values(oneexerciseloaded).length >= 1 && <div className="samples">
+                {Object.values(oneexerciseloaded).length >= 1 && <div className="samples hoverme" onClick={() => {history.push('/exercise/1')}}>
                         <h3 className="centerh3">Try a random exercise!</h3>
                         <div className="previewholder">
                             <div class="sampleimage">
                                 <img src={oneexerciseloaded[1].image_url} alt='sample exercise' className="sampleimageitself"></img>
                             </div>
                             <div className="innerpreview">
-                                <span>{"name: " + oneexerciseloaded[1].name}</span>
-                                <span>{"topic: " + topictrans(oneexerciseloaded[1].topicId)}</span>
-                                <span>{"preview: " + oneexerciseloaded[1].preview}</span>
-                                <span>{"written: " + oneexerciseloaded[1].created_at}</span>
+                                <div><span className="boldme">{"name: "}</span>{oneexerciseloaded[1].name}</div>
+                                <div className="tagholder"><img src={oneexerciseloaded[1].topicId == 1 ? t1 : t2} alt="tag" className="tagimg"></img></div>
+                                <div><span className="boldme">{"preview: "}</span>{oneexerciseloaded[1].preview}</div>
+                                <div><span className="boldme">{"written: "}</span>{oneexerciseloaded[1].created_at}</div>
                             </div>
                         </div>
                     </div>
