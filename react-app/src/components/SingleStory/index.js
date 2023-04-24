@@ -5,6 +5,8 @@ import { useEffect, useState } from 'react';
 import { OneStoryThunk } from '../../store/story';
 import { AllUsersThunk } from '../../store/user';
 import { AllTopicThunk } from '../../store/topic';
+import t1 from './t1.png'
+import t2 from './t2.png'
 import './index.css'
 
 function OneStory() {
@@ -48,6 +50,15 @@ function OneStory() {
 
     relvalue()
     const thistopic = gettopic()
+    let tagurl = null;
+    if (thistopic) {
+        if (thistopic.id == 1) {
+            tagurl = t1
+        }
+        else {
+            tagurl = t2
+        }
+    }
 
     return (
 
@@ -65,7 +76,7 @@ function OneStory() {
                                 <div><span className='boldme'>Written by:</span>{` ${rcreator.username}`}</div>
                                 <div><span className='boldme'>Written at: </span>{` ${rstory.created_at}`}</div>
                                 <div><span className='boldme'>Mood: </span>{` ${rstory.mood} / 10`}</div>
-                                {thistopic && <div><span>Tag: </span>{` ${thistopic.topic}`}</div>}
+                                {thistopic && <div className="tagholder"><span>Tag: </span>{tagurl ? <img src={tagurl} alt='tag' className='tagimg'></img> : ''}</div>}
                                 <div><span>Read more of <span onClick={() => {alert('Feature coming soon!')}} className='buttonlike'>{`${rcreator.first_name} ${rcreator.last_name}`}</span>'s stories!</span></div>
                             </div>
                         </div>

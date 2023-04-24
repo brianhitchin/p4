@@ -78,3 +78,15 @@
     align-items: center;
     background-color: gray;
 }
+
+.tagimg {
+    width: 90px;
+    height: 18px;
+    border-radius: 5px;
+    border: 1px solid black;
+}
+
+.tagholder {
+    display: flex;
+    align-items: center;
+}
