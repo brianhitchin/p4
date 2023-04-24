@@ -19,13 +19,25 @@ function OneStory() {
         dispatch(AllUsersThunk())
     }, [])
 
+    let rstory = null;
+    let rcreator = null;
+
+    const relvalue = () => {
+        if (Object.values(userstate).length >= 1) {
+            rstory = storystate[storyId]
+            rcreator = userstate[storyId]
+        }
+    }
+
+    relvalue()
+
     return (
 
         <div className='onestorymain'>
-            {Object.values(userstate).length >= 1 && <div className='onestoryinnermain'>
-                <h1>{storystate.get(2).id}</h1>
-                <div>{storystate.get(2).body}</div>
-                <div>{userstate.all_users[storystate.get(2).creatorId][first_name]}</div>
+            {rstory && <div className='onestoryinnermain'>
+                <h1>{rstory.id}</h1>
+                <div>{`${rcreator.first_name} ${rcreator.last_name}`}</div>
+                <div>{rstory.body}</div>
             </div>}
         </div>
 
