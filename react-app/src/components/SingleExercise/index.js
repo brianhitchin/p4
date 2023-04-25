@@ -7,6 +7,7 @@ import { AllUsersThunk } from '../../store/user';
 import { AllTopicThunk } from '../../store/topic';
 import OpenModalButton from '../OpenModalButton'
 import DeleteExerciseModal from '../DeleteExerciseModal';
+import EditExerciseModal from '../EditExerciseModal';
 import t1 from './t1.png'
 import t2 from './t2.png'
 import starbg from './starbg.png'
@@ -89,11 +90,21 @@ function SingleExercise() {
                 <>
                     <div className='ostop'>
                         <h2>{rexercise.name}</h2>
-                        {ocheck() ? <div><OpenModalButton 
-                            buttonText="Delete Exercise"
-                            onItemClick={closeMenu}
-                            modalComponent={<DeleteExerciseModal />}
-                        />
+                        {ocheck() ? <div className="modalwrapper">
+                            <div>
+                                <OpenModalButton
+                                buttonText="Edit Exercise"
+                                onItemClick={closeMenu}
+                                modalComponent={<EditExerciseModal />}
+                            />
+                            </div>
+                            <div>
+                                <OpenModalButton
+                                buttonText="Delete Exercise"
+                                onItemClick={closeMenu}
+                                modalComponent={<DeleteExerciseModal />}
+                            />
+                            </div>
                         </div> : <div onClick={() => {alert('Favorite and Rating features coming soon!')}}><img src={starbg} alt='rating' className='starimg'></img></div>}
                     </div>
                     <div className='onestoryinnermain'>
