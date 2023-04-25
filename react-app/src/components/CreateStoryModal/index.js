@@ -11,6 +11,7 @@ function CreateStoryModal() {
     const { closeModal } = useModal();
     const [errors, setErrors] = useState([]);
     const userId = useSelector(state => state.session.user)
+    const [topic, setTopic] = useState(0)
     const [title, setTitle] = useState("")
     const [mood, setMood] = useState(5)
     const [preview, setPreview] = useState("")
@@ -19,6 +20,11 @@ function CreateStoryModal() {
 
     if (userId) {
         const rId = userId.id
+    }
+
+    const handleSubmit = (e) => {
+        e.preventDefault();
+        console.log(topic, title, mood, preview, imageurl, body, rId)
     }
 
     const handleSubmitN = (e) => {
@@ -36,10 +42,14 @@ function CreateStoryModal() {
             </div>
             <label for="titlebox" className="boldme">Title</label>
             <input id="titlebox" placeholder="New group title" value={title} onChange={(e) => setTitle(e.target.value)} className="cminputs"></input>
+            <label for="tag">Tag</label>
+                <select id="tag" value={topic} onChange={(e) => setTopic(int(e.target.value))}>
+                    <option value="" disabled selected>(select one)</option>
+                    <option value="1">Depression</option>
+                    <option value="2">Anxiety</option>
+                </select>
             <label for="moodbox" className="boldme">Mood: {mood}</label>
-            <div>
-                <input id="moodbox" type="range" min="0" max="10" step="1" value={mood} onChange={(e) => setMood(e.target.value)}></input>
-            </div>
+            <input id="moodbox" type="range" min="0" max="10" step="1" value={mood} onChange={(e) => setMood(e.target.value)}></input>
             <label for="previewbox" className="boldme">Preview</label>
             <input id="previewbox" className="cminputs" placeholder="Preview (keep it as short as possible!)" value={preview} onChange={(e) => setPreview(e.target.value)}></input>
             <label for="urlbox" className="boldme">Title</label>
@@ -48,7 +58,7 @@ function CreateStoryModal() {
             <label for="bodybox" className="boldme">Body</label>
             <textarea id="bodybox" className="cmbox" placeholder="Please write at least 30 characters." value={body} onChange={(e) => setBody(e.target.value)}></textarea>
             <div className="modalbuttonholder">
-                <button type="text" className="modalbutton boldme lineabove">Create</button>
+                <button type="text" className="modalbutton boldme lineabove" onClick={handleSubmit}>Create</button>
                 <button type="text" onClick={handleSubmitN} className="modalbutton redme boldme">Cancel</button>
             </div>
         </div>
