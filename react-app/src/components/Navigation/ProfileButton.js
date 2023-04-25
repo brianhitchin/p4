@@ -6,6 +6,8 @@ import OpenModalButton from "../OpenModalButton";
 import LoginFormModal from "../LoginFormModal";
 import SignupFormModal from "../SignupFormModal";
 import usericon from './usericon.png'
+import gh from './gh.png'
+import li from './li.webp'
 import './Navigation.css';
 
 function ProfileButton({ user }) {
@@ -54,7 +56,7 @@ function ProfileButton({ user }) {
       <div className={ulClassName} ref={ulRef}>
         {user ? (
           <>
-            <span><i class="fa-solid fa-user"></i>{'Hello, ' + user.first_name + ' ' + user.last_name}</span>
+            <span>{'Hello, ' + user.first_name + ' ' + user.last_name}</span>
             <span>{'Logged in as ' + user.username}</span>
             <span>{user.email}</span>
             <span className="bordertop toppadding heme" onClick={() => {history.push('/story')}}>Story</span>
@@ -62,6 +64,10 @@ function ProfileButton({ user }) {
             <span className="bordertop">
               <button onClick={handleLogout} className="topmargin normalbutton">Log Out</button>
             </span>
+            <div className="bordertop centerme2">
+              <div><a href="https://github.com/brianhitchin"><img src={gh} alt="gh" className="smallsize heme"></img></a></div>
+              <div><a href="https://www.linkedin.com/in/brian-hitchin-940b57268/"><img src={li} alt="li" className="smallsize heme"></img></a></div>
+            </div>
           </>
         ) : (
           <>
