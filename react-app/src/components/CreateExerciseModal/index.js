@@ -3,7 +3,7 @@ import { useModal } from "../../context/Modal";
 import { useDispatch, useSelector } from "react-redux";
 import "./index.css"
 
-function CreateStoryModal() {
+function CreateExerciseModal() {
 
     const dispatch = useDispatch();
     const { closeModal } = useModal();
@@ -16,9 +16,9 @@ function CreateStoryModal() {
 
     return (
         <div className="createmain">
-            <h2>Write a new story!</h2>
+            <h2>Share a new exercise!</h2>
             <div className="centerme2">Please fill out the details below.</div>
-            <div className="centerme2">Thank you for sharing your story.</div>
+            <div className="centerme2">Thank you for sharing a new exercise.</div>
             <div className="grayline centerme2">You may edit any details at any time!</div>
             <div className="modalbuttonholder">
                 <button type="text" className="modalbutton boldme lineabove">Create</button>
@@ -28,4 +28,4 @@ function CreateStoryModal() {
     );
 }
 
-export default CreateStoryModal
+export default CreateExerciseModal

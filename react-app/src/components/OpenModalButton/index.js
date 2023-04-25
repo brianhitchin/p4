@@ -15,7 +15,8 @@ function OpenModalButton({
     if (onButtonClick) onButtonClick();
   };
 
-  if (buttonText == "Delete Story" || buttonText == "Delete Exercise" || buttonText == "Edit Story" || buttonText == "Edit Exercise") {
+  if (buttonText == "Delete Story" || buttonText == "Delete Exercise" || buttonText == "Edit Story" || buttonText == "Edit Exercise"
+   || buttonText == "Write Story" || buttonText == "Write Exercise") {
     return (
       <button onClick={onClick} className="buttonme padme">{buttonText}</button>
     );

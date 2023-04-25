@@ -1,7 +1,9 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useRef } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { Redirect, useHistory, NavLink } from "react-router-dom";
 import { AllExercise, AllExerciseThunk } from "../../store/exercise"
+import OpenModalButton from '../OpenModalButton'
+import CreateExerciseModal from "../CreateExerciseModal";
 import exericon from "./exericon.png"
 import "./index.css"
 import t1 from './t1.png'
@@ -12,10 +14,29 @@ function AllExercises() {
     const allexercisesession = useSelector((state) => state.exercise.all_exercises)
     const dispatch = useDispatch()
     const history = useHistory();
+    const ulRef = useRef()
+    const [showMenu, setShowMenu] = useState(false);
 
     useEffect(() => {
         dispatch(AllExerciseThunk())
     }, [])
+
+    const openMenu = () => {
+        if (showMenu) return;
+        setShowMenu(true);
+    };
+
+    const closeMenu = (e) => {
+        if (!showMenu) return;
+        if (!ulRef.current.contains(e.target)) {
+            setShowMenu(false);
+        }
+    };
+
+    useEffect(() => {
+        document.addEventListener('click', closeMenu);
+        return () => document.removeEventListener("click", closeMenu);
+    }, [closeMenu]);
 
     return (
         <div className="allstorymain">
@@ -24,9 +45,13 @@ function AllExercises() {
                     <span className="bigfont2">Exercises</span>
                     <span>Share and read exercises.</span>
                 </div>
-                <div onClick={() => { alert('Create story') }} className="ditto buttonme">
+                <div className="ditto buttonme">
                     <img src={exericon} alt="Create an exercise" className="writestoryimg"></img>
-                    <span className="boldd">Create an exercise!</span>
+                    <OpenModalButton
+                        buttonText="Write Exercise"
+                        onItemClick={closeMenu}
+                        modalComponent={<CreateExerciseModal />}
+                    />
                 </div>
             </div>
             <div className="allstorybot">
