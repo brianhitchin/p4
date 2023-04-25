@@ -18,13 +18,15 @@ function CreateStoryModal() {
     const [imageurl, setImageurl] = useState("")
     const [body, setBody] = useState("")
 
+    let rId;
     if (userId) {
-        const rId = userId.id
+        rId = userId.id
     }
 
     const handleSubmit = (e) => {
         e.preventDefault();
         console.log(topic, title, mood, preview, imageurl, body, rId)
+        closeModal()
     }
 
     const handleSubmitN = (e) => {
@@ -43,7 +45,7 @@ function CreateStoryModal() {
             <label for="titlebox" className="boldme">Title</label>
             <input id="titlebox" placeholder="New group title" value={title} onChange={(e) => setTitle(e.target.value)} className="cminputs"></input>
             <label for="tag">Tag</label>
-                <select id="tag" value={topic} onChange={(e) => setTopic(int(e.target.value))}>
+                <select id="tag" value={topic} onChange={(e) => setTopic(Number(e.target.value))}>
                     <option value="" disabled selected>(select one)</option>
                     <option value="1">Depression</option>
                     <option value="2">Anxiety</option>
