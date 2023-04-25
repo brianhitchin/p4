@@ -28,21 +28,24 @@ function CreateStoryModal() {
 
     return (
         <div className="createmain">
-            <h2>Write a new story!</h2>
-            <div className="centerme2">Please fill out the details below.</div>
-            <div className="centerme2">Thank you for sharing your story.</div>
-            <div className="grayline centerme2">You may edit any details at any time!</div>
-            <label for="titlebox">Title</label>
+            <div className="grayline cmdiv">
+                <h2>Write a new story!</h2>
+                <div className="centerme2">Please fill out the details below.</div>
+                <div className="centerme2">Thank you for sharing your story.</div>
+                <div className="centerme2">You may edit any details at any time!</div>
+            </div>
+            <label for="titlebox" className="boldme">Title</label>
             <input id="titlebox" placeholder="New group title" value={title} onChange={(e) => setTitle(e.target.value)} className="cminputs"></input>
-            <label for="moodbox">Mood</label>
-            <input id="moodbox" type="range" min="0" max="10" step="1" value={mood} onChange={(e) => setMood(e.target.value)} className="cminputs"></input>
-            <div className="thinborderme">{mood}</div>
-            <label for="previewbox">Preview</label>
+            <label for="moodbox" className="boldme">Mood: {mood}</label>
+            <div>
+                <input id="moodbox" type="range" min="0" max="10" step="1" value={mood} onChange={(e) => setMood(e.target.value)}></input>
+            </div>
+            <label for="previewbox" className="boldme">Preview</label>
             <input id="previewbox" className="cminputs" placeholder="Preview (keep it as short as possible!)" value={preview} onChange={(e) => setPreview(e.target.value)}></input>
-            <label for="urlbox">Title</label>
+            <label for="urlbox" className="boldme">Title</label>
             <input id="urlbox" className="cminputs" placeholder="Image url!" value={imageurl} onChange={(e) => setImageurl(e.target.value)}></input>
             <div><img src={imageurl.length > 5 ? imageurl : previewimg} alt="preview" className="previewimage thinborderme"></img></div>
-            <label for="bodybox">Body</label>
+            <label for="bodybox" className="boldme">Body</label>
             <textarea id="bodybox" className="cmbox" placeholder="Please write at least 30 characters." value={body} onChange={(e) => setBody(e.target.value)}></textarea>
             <div className="modalbuttonholder">
                 <button type="text" className="modalbutton boldme lineabove">Create</button>
