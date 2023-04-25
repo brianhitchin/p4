@@ -8,3 +8,31 @@
     background-color: rgba(200, 187, 226, 0.719);
     min-width: 700px;
 }
+
+.cminputs {
+    border: 2px solid black;
+    border-radius: 5px;
+    width: 350px;
+    padding: 5px;
+}
+
+.cmbox {
+    border: 2px solid black;
+    border-radius: 5px;
+    width: 350px;
+    height: 100px;
+    padding: 5px;
+}
+
+.previewimage {
+    max-width: 100px;
+    max-height: 100px;
+    min-width: 100px;
+    max-height: 100px;
+}
+
+.thinborderme {
+    border: 2px solid black;
+    padding: 10px;
+    background-color: white;
+}
