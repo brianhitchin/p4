@@ -8,6 +8,7 @@
     align-items: center;
     padding: 10px;
     background-color: rgba(200, 187, 226, 0.719);
+    min-width: 700px;
 }
 
 .modalbutton {
@@ -34,4 +35,9 @@
 
 .lineabove {
     padding-top: 10px;
+}
+
+.modalbuttonholder {
+    display: flex;
+    flex-direction: row;
 }

@@ -25,12 +25,14 @@ function EditStoryModal() {
     console.log(thisstory)
 
     return (
-        <div className="deletemain">
+        <div className="editmain">
             {thisstory && <h2>Confirm edit for '{thisstory.title}'</h2>}
-            <div>Please fill out the details below.</div>
-            <div className="grayline">Any unchanged field will remain as is!</div>
-            <button type="text" className="modalbutton boldme lineabove">Edit</button>
-            <button type="text"onClick={handleSubmitN} className="modalbutton redme boldme">Cancel</button>
+            <div className="centerme2">Please fill out the details below.</div>
+            <div className="grayline centerme2">Any unchanged field will remain as is!</div>
+            <div className="modalbuttonholder">
+                <button type="text" className="modalbutton boldme lineabove">Edit</button>
+                <button type="text"onClick={handleSubmitN} className="modalbutton redme boldme">Cancel</button>
+            </div>
         </div>
     );
 }

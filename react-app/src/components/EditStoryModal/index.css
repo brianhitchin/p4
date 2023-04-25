@@ -1,0 +1,10 @@
+.editmain {
+    border: 2px solid black;
+    display: flex;
+    flex-direction: column;
+    justify-self: center;
+    align-items: center;
+    padding: 10px;
+    background-color: rgba(200, 187, 226, 0.719);
+    min-width: 700px;
+}
