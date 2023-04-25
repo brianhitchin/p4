@@ -18,8 +18,10 @@ function DeleteExerciseModal() {
         <div className="deletemain">
             <h2>Confirm Delete</h2>
             <div className="grayline centerme2">Once you confirm delete, the exercise is permanently gone!</div>
-            <button type="text" className="modalbutton boldme">Delete</button>
-            <button type="text"onClick={handleSubmitN} className="modalbutton redme boldme">Go back...</button>
+            <div className="modalbuttonholder">
+                <button type="text" className="modalbutton boldme">Delete</button>
+                <button type="text" onClick={handleSubmitN} className="modalbutton redme boldme">Go back...</button>
+            </div>
         </div>
     );
 }
