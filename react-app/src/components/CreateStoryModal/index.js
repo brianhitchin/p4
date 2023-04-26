@@ -34,11 +34,17 @@ function CreateStoryModal() {
         if (!title) {
             errorz.push('Title cannot be empty.')
         }
+        if (title.length > 35) {
+            errorz.push('Title cannot be longer than 35 chars.')
+        }
         if (!mood) {
             errorz.push('Mood cannot be empty.')
         }
         if (!preview) {
             errorz.push('Preview cannot be empty.')
+        }
+        if (preview.length > 50) {
+            errorz.push('Preview cannot be longer than 50 chars.')
         }
         if (!body) {
             errorz.push('Body cannot be empty.')
@@ -78,7 +84,7 @@ function CreateStoryModal() {
                 ))}
             </ul>}
             <label for="titlebox" className="boldme">Title</label>
-            <input id="titlebox" placeholder="New story title" value={title} onChange={(e) => setTitle(e.target.value)} className="cminputs"></input>
+            <input id="titlebox" placeholder="New story title / Max 35 chars" value={title} onChange={(e) => setTitle(e.target.value)} className="cminputs"></input>
             <label for="tag">Tag</label>
             <select id="tag" value={topic} onChange={(e) => setTopic(Number(e.target.value))}>
                 <option value="" disabled selected>(select one)</option>
@@ -88,7 +94,7 @@ function CreateStoryModal() {
             <label for="moodbox" className="boldme">Mood: {mood}</label>
             <input id="moodbox" type="range" min="0" max="10" step="1" value={mood} onChange={(e) => setMood(e.target.value)}></input>
             <label for="previewbox" className="boldme">Preview</label>
-            <input id="previewbox" className="cminputs" placeholder="Preview (keep it as short as possible!)" value={preview} onChange={(e) => setPreview(e.target.value)}></input>
+            <input id="previewbox" className="cminputs" placeholder="Preview / Max 50 chars" value={preview} onChange={(e) => setPreview(e.target.value)}></input>
             <label for="urlbox" className="boldme">Image</label>
             <div>Preferably any image links. You can leave this blank, and come back to it!</div>
             <input id="urlbox" className="cminputs" placeholder="Image url!" value={imageurl} onChange={(e) => setImageurl(e.target.value)}></input>

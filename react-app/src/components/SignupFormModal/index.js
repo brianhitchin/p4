@@ -13,19 +13,25 @@ function SignupFormModal() {
 	const [errors, setErrors] = useState([]);
 	const { closeModal } = useModal();
 
+	let errorz = []
+
 	const handleSubmit = async (e) => {
 		e.preventDefault();
-		if (password === confirmPassword) {
-			const data = await dispatch(signUp(username, email, password));
+		setErrors([])
+		errorz = [];
+		if (password !== confirmPassword) {
+			errorz.push("Confirm Password field must be the same as the Password field")
+		}
+		if (!email.includes('@') || !email.includes('.')) {
+			errorz.push("Please put in correct email.")
+		}
+		if (errorz.length == 0) {
+			const data = dispatch(signUp(username, email, password));
 			if (data) {
-				setErrors(data);
+				errorz.push(data);
 			} else {
 				closeModal();
 			}
-		} else {
-			setErrors([
-				"Confirm Password field must be the same as the Password field",
-			]);
 		}
 	};
 

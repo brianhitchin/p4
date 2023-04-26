@@ -119,7 +119,7 @@ function OneStory() {
                             </div>
                         </div>
                         <div className='onestoryinnerbot'>
-                            <div>{rstory.body}</div>
+                            <div className='noof fw'>{rstory.body}</div>
                             <div className='comments boldme'>Comments and rating feature coming soon!</div>
                         </div>
                     </div>

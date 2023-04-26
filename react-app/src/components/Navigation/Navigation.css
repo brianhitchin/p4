@@ -41,7 +41,7 @@
 }
 
 .heme:hover {
-  border: 2px solid black;
+  background-color: rgba(200, 187, 226, 0.719);
   font-weight: bold;
   cursor: pointer;
 }
