@@ -33,25 +33,27 @@ def my_story():
 @login_required
 def new_story():
     user_id = user_id_generator()
-    try:
-        new_story = Story(
-            creatorId = int(user_id),
-            topicId = int(request.json.get('topicId')),
-            title = request.json.get('title'),
-            preview = request.json.get('preview'),
-            mood = int(request.json.get('mood')),
-            image_url = request.json.get('image_url'),
-            body = request.json.get('body')
-        )
-        db.session.add(new_story)
-        db.session.commit()
-        return new_story.to_dict()
-    except:
-        error_obj = {
-            "message": "Validation Error",
-            "errors": "Please fill out all the fields."
-        }
-        return error_obj, 400
+    print(request.json)
+    # try:
+    new_story = Story(
+        creatorId = int(user_id),
+        topicId = int(request.json.get('topicId')),
+        title = request.json.get('title'),
+        preview = request.json.get('preview'),
+        mood = int(request.json.get('mood')),
+        image_url = request.json.get('image_url'),
+        body = request.json.get('body')
+    )
+    db.session.add(new_story)
+    db.session.commit()
+    print(new_story)
+    return new_story.to_dict()
+   # except:
+   #     error_obj = {
+    #        "message": "Validation Error",
+   #         "errors": "Please fill out all the fields."
+   #     }
+   #     return error_obj, 400
 
 @story_routes.route('/<story_id>', methods=['DELETE'])
 @login_required
