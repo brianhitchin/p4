@@ -29,6 +29,7 @@ function CreateStoryModal() {
 
     const handleSubmit = (e) => {
         e.preventDefault();
+        errorz = []
         setErrors([])
         if (!title) {
             errorz.push('Title cannot be empty.')

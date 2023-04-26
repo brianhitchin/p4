@@ -24,24 +24,22 @@ def one_exercise(exercise_id):
 @login_required
 def create_exercise():
     user_id = user_id_generator()
-    try:
-        new_exercise = Exercise(
-            creatorId = int(user_id),
-            topicId = int(request.json.get('topicId')),
-            name = request.json.get('name'),
-            preview = request.json.get('preview'),
-            image_url = request.json.get('image_url'),
-            body = request.json.get('body')
-        )
-        db.session.add(new_exercise)
-        db.session.commit()
-        return new_exercise.to_dict()
-    except:
-        error_obj = {
-            "message": "Validation Error",
-            "errors": "Please fill out all the fields."
-        }
-        return error_obj, 400
+    new_exercise = Exercise(
+        creatorId = int(user_id),
+        topicId = int(request.json.get('topicId')),
+        name = request.json.get('name'),
+        preview = request.json.get('preview'),
+        image_url = request.json.get('image_url'),
+        body = request.json.get('body')
+    )
+    db.session.add(new_exercise)
+    db.session.commit()
+    return new_exercise.to_dict()
+        #error_obj = {
+        #    "message": "Validation Error",
+        #    "errors": "Please fill out all the fields."
+        #}
+        #return error_obj, 400
 
 @exercise_routes.route('/<exercise_id>', methods=['DELETE'])
 @login_required
