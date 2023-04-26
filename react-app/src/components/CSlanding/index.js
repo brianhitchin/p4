@@ -27,12 +27,15 @@ function CSlanding() {
 
     let laststory;
     let redirectId;
-    if (storystate) {
-        laststory = storystate[Object.keys(storystate).slice(-1)]
-        redirectId = laststory.id
-    }
 
-    console.log(laststory)
+    useEffect(() => {
+        if (storystate) {
+            laststory = storystate[Object.keys(storystate).slice(-1)]
+            redirectId = laststory.id
+        }
+    }, [storystate])
+
+
 
     return (
         <div className="csmain">

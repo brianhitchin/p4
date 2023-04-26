@@ -53,7 +53,7 @@ function Userlanding(){
                         <h3 className="centerh3">Read a sample story!</h3>
                         <div className="previewholder">
                             <div class="sampleimage">
-                                <img src={onestoryloaded[1].image_url} alt='sample story' className="sampleimageitself"></img>
+                                {onestoryloaded[1] && <img src={onestoryloaded[1].image_url} alt='sample story' className="sampleimageitself"></img>}
                             </div>
                             <div className="innerpreview">
                                 <div><span className="boldme">{"name: "}</span>{onestoryloaded[1].title}</div>
@@ -68,7 +68,7 @@ function Userlanding(){
                         <h3 className="centerh3">Try a random exercise!</h3>
                         <div className="previewholder">
                             <div class="sampleimage">
-                                <img src={oneexerciseloaded[1].image_url} alt='sample exercise' className="sampleimageitself"></img>
+                                {oneexerciseloaded[1] && <img src={oneexerciseloaded[1].image_url} alt='sample exercise' className="sampleimageitself"></img>}
                             </div>
                             <div className="innerpreview">
                                 <div><span className="boldme">{"name: "}</span>{oneexerciseloaded[1].name}</div>

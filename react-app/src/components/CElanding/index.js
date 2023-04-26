@@ -27,14 +27,17 @@ function CElanding() {
 
     let lastexer;
     let redirectId;
-    if (exerstate) {
-        lastexer = exerstate[Object.keys(exerstate).slice(-1)]
-        redirectId = lastexer.id
-    }
+
+    useEffect(() => {
+        if (exerstate) {
+            lastexer = exerstate[Object.keys(exerstate).slice(-1)]
+            redirectId = lastexer.id
+        }
+    }, [exerstate])
 
     return (
         <div className="csmain">
-            <h3 className="boldme">Story successfully written!</h3>
+            <h3 className="boldme">Exercise successfully written!</h3>
             <h3 className="boldme">Being integrated into the database...</h3>
             <img src={write} className="csgif"></img>
             <div className="csinner">
