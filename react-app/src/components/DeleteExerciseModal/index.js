@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import { useModal } from "../../context/Modal";
 import { useDispatch, useSelector } from "react-redux";
 import { DeleteExerciseThunk } from "../../store/exercise"
+import { useHistory } from 'react-router-dom'
 import "./index.css"
 
 function DeleteExerciseModal() {
@@ -11,6 +12,7 @@ function DeleteExerciseModal() {
     const [errors, setErrors] = useState([]);
     const thisexer = useSelector(state => state.exercise.single_exercise)
     const thisexeridid = thisexer[Object.keys(thisexer)[0]].id
+    const history = useHistory()
 
     const handleSubmit = (e) => {
         e.preventDefault();

@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import { useModal } from "../../context/Modal";
 import { useDispatch, useSelector } from "react-redux";
 import { AddExerciseThunk } from "../../store/exercise";
+import { useHistory } from 'react-router-dom'
 import previewimg from './preview.png'
 import "./index.css"
 
@@ -16,6 +17,7 @@ function CreateExerciseModal() {
     const [imageurl, setImageurl] = useState("")
     const [body, setBody] = useState("")
     const userId = useSelector(state => state.session.user)
+    const history = useHistory()
 
     let rId;
     if (userId) {
@@ -79,8 +81,8 @@ function CreateExerciseModal() {
             <label for="bodybox" className="boldme">Body</label>
             <textarea id="bodybox" className="cmbox" placeholder="Please write at least 30 characters." value={body} onChange={(e) => setBody(e.target.value)}></textarea>
             <div className="modalbuttonholder">
-                <button type="text" className="modalbutton boldme lineabove">Create</button>
-                <button type="text"onClick={handleSubmitN} className="modalbutton redme boldme">Cancel</button>
+                <button type="text" onClick={handleSubmit} className="modalbutton boldme lineabove">Create</button>
+                <button type="text" onClick={handleSubmitN} className="modalbutton redme boldme">Cancel</button>
             </div>
         </div>
     );
