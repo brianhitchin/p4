@@ -70,6 +70,7 @@ export const AddExerciseThunk = (value) => async dispatch => {
     if (response.ok) {
         const data = await response.json()
         dispatch(AddExercise(data))
+        return data.id
     }
 }
 

@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import { useModal } from "../../context/Modal";
 import { useDispatch, useSelector } from "react-redux";
+import { AddExerciseThunk } from "../../store/exercise";
 import previewimg from './preview.png'
 import "./index.css"
 
@@ -14,11 +15,44 @@ function CreateExerciseModal() {
     const [preview, setPreview] = useState("")
     const [imageurl, setImageurl] = useState("")
     const [body, setBody] = useState("")
+    const userId = useSelector(state => state.session.user)
 
+    let rId;
+    if (userId) {
+        rId = userId.id
+    }
 
     const handleSubmitN = (e) => {
         e.preventDefault();
         closeModal()
+    }
+
+    let errorz = []
+
+    const handleSubmit = (e) => {
+        e.preventDefault();
+        setErrors([])
+        if (!title) {
+            errorz.push('Title cannot be empty.')
+        }
+        if (!preview) {
+            errorz.push('Preview cannot be empty.')
+        }
+        if (!body) {
+            errorz.push('Body cannot be empty.')
+        }
+        setErrors(errorz)
+        if (!imageurl) {
+            if (errorz.length == 0) {
+                const data = dispatch(AddExerciseThunk({ title, preview, body, image_url: "https://thumbs.dreamstime.com/b/preview-icon-trendy-design-style-isolated-white-background-vector-simple-modern-flat-symbol-web-site-mobile-logo-app-135745554.jpg", creatorId: rId, topicId: topic }))
+                .then((res) => history.push(`/exercise/${res}`))
+            }
+        } else {
+            if (errorz.length == 0) {
+                const data = dispatch(AddExerciseThunk({ title, preview, body, image_url: imageurl, creatorId: rId, topicId: topic }))
+                .then((res) => history.push(`/exercise/${res}`))
+            }
+        }
     }
 
     return (

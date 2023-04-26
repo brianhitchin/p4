@@ -15,8 +15,6 @@ function DeleteStoryModal() {
     const thisstory = useSelector(state => state.story.single_story)
     const thisstoryid = thisstory[Object.keys(thisstory)[0]].id
 
-    console.log(thisstory, thisstoryid)
-
     const handleSubmit = (e) => {
         e.preventDefault();
         const data = dispatch(DeleteStoryThunk(thisstoryid)).then((_res) => closeModal()).then((_res) => history.push('/story'))

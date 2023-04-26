@@ -68,7 +68,7 @@
     flex-grow: 1;
     justify-content: center;
     flex-direction: column;
-    border-bottom: 1px solid gray;
+    border-bottom: 2px solid black;
 }
 
 .onestoryinnerbot {
