@@ -47,14 +47,14 @@ function CreateExerciseModal() {
         if (!imageurl) {
             if (errorz.length == 0) {
                 const data = dispatch(AddExerciseThunk({ preview, body, name: title, image_url: "https://thumbs.dreamstime.com/b/preview-icon-trendy-design-style-isolated-white-background-vector-simple-modern-flat-symbol-web-site-mobile-logo-app-135745554.jpg", creatorId: rId, topicId: topic }))
-                .then((_res) => closeModal())
                 .then((res) => history.push(`/exercise/${res}`))
+                .then((_res) => closeModal())
             }
         } else {
             if (errorz.length == 0) {
                 const data = dispatch(AddExerciseThunk({ preview, body, name: title, image_url: imageurl, creatorId: rId, topicId: topic }))
-                .then((_res) => closeModal())
                 .then((res) => history.push(`/exercise/${res}`))
+                .then((_res) => closeModal())
             }
         }
     }
@@ -82,7 +82,8 @@ function CreateExerciseModal() {
                 </select>
             <label for="previewbox" className="boldme">Preview</label>
             <input id="previewbox" className="cminputs" placeholder="Preview (keep it as short as possible!)" value={preview} onChange={(e) => setPreview(e.target.value)}></input>
-            <label for="urlbox" className="boldme">Title</label>
+            <label for="urlbox" className="boldme">Image</label>
+            <div>Preferably any image links. You can leave this blank, and come back to it!</div>
             <input id="urlbox" className="cminputs" placeholder="Image url!" value={imageurl} onChange={(e) => setImageurl(e.target.value)}></input>
             <div><img src={imageurl.length > 5 ? imageurl : previewimg} alt="preview" className="previewimage thinborderme"></img></div>
             <label for="bodybox" className="boldme">Body</label>
