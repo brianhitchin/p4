@@ -88,6 +88,7 @@ export const AddStoryThunk = (body) => async dispatch => {
     if (response.ok) {
         const data = await response.json();
         dispatch(AddStory(data));
+        return data.id
     }
 }
 

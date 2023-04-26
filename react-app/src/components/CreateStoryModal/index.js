@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import { useModal } from "../../context/Modal";
 import { useDispatch, useSelector } from "react-redux";
+import { useHistory } from 'react-router-dom'
 import { AddStoryThunk } from "../../store/story"
 import previewimg from './preview.png'
 import "./index.css"
@@ -17,16 +18,42 @@ function CreateStoryModal() {
     const [preview, setPreview] = useState("")
     const [imageurl, setImageurl] = useState("")
     const [body, setBody] = useState("")
+    const history = useHistory()
 
     let rId;
     if (userId) {
         rId = userId.id
     }
 
+    let errorz = []
+
     const handleSubmit = (e) => {
         e.preventDefault();
-        console.log(topic, title, mood, preview, imageurl, body, rId)
-        closeModal()
+        setErrors([])
+        if (!title) {
+            errorz.push('Title cannot be empty.')
+        }
+        if (!mood) {
+            errorz.push('Mood cannot be empty.')
+        }
+        if (!preview) {
+            errorz.push('Preview cannot be empty.')
+        }
+        if (!body) {
+            errorz.push('Body cannot be empty.')
+        }
+        setErrors(errorz)
+        if (!imageurl) {
+            if (errorz.length == 0) {
+                const data = dispatch(AddStoryThunk({ title, mood, preview, body, image_url: "https://thumbs.dreamstime.com/b/preview-icon-trendy-design-style-isolated-white-background-vector-simple-modern-flat-symbol-web-site-mobile-logo-app-135745554.jpg", creatorId: rId, topicId: topic }))
+                .then((res) => history.push(`/story/${res}`))
+            }
+        } else {
+            if (errorz.length == 0) {
+                const data = dispatch(AddStoryThunk({ title, mood, preview, body, image_url: imageurl, creatorId: rId, topicId: topic }))
+                .then((res) => history.push(`/story/${res}`))
+            }
+        }
     }
 
     const handleSubmitN = (e) => {
@@ -42,14 +69,19 @@ function CreateStoryModal() {
                 <div className="centerme2">Thank you for sharing your story.</div>
                 <div className="centerme2">You may edit any details at any time!</div>
             </div>
+            {errors.length > 0 && <ul className="redme errors">
+                {errors.map((error, idx) => (
+                    <li key={idx}>{error}</li>
+                ))}
+            </ul>}
             <label for="titlebox" className="boldme">Title</label>
             <input id="titlebox" placeholder="New group title" value={title} onChange={(e) => setTitle(e.target.value)} className="cminputs"></input>
             <label for="tag">Tag</label>
-                <select id="tag" value={topic} onChange={(e) => setTopic(Number(e.target.value))}>
-                    <option value="" disabled selected>(select one)</option>
-                    <option value="1">Depression</option>
-                    <option value="2">Anxiety</option>
-                </select>
+            <select id="tag" value={topic} onChange={(e) => setTopic(Number(e.target.value))}>
+                <option value="" disabled selected>(select one)</option>
+                <option value="1">Depression</option>
+                <option value="2">Anxiety</option>
+            </select>
             <label for="moodbox" className="boldme">Mood: {mood}</label>
             <input id="moodbox" type="range" min="0" max="10" step="1" value={mood} onChange={(e) => setMood(e.target.value)}></input>
             <label for="previewbox" className="boldme">Preview</label>

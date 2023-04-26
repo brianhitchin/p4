@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import { useModal } from "../../context/Modal";
 import { useDispatch, useSelector } from "react-redux";
+import previewimg from './preview.png'
 import "./index.css"
 
 function CreateExerciseModal() {
@@ -31,7 +32,7 @@ function CreateExerciseModal() {
             <label for="titlebox" className="boldme">Title</label>
             <input id="titlebox" placeholder="New group title" value={title} onChange={(e) => setTitle(e.target.value)} className="cminputs"></input>
             <label for="tag">Tag</label>
-                <select id="tag" value={topic} onChange={(e) => setTopic(int(e.target.value))}>
+                <select id="tag" value={topic} onChange={(e) => setTopic(Number(e.target.value))}>
                     <option value="" disabled selected>(select one)</option>
                     <option value="1">Depression</option>
                     <option value="2">Anxiety</option>

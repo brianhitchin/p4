@@ -111,11 +111,11 @@ function OneStory() {
                         <div className='onestoryinnertop'>
                             <div className='onestoryimgholder'><img src={rstory.image_url} alt="Story image" className='onestoryimg'></img></div>
                             <div className='ostopui'>
-                                <div><span className='boldme'>Written by:</span>{` ${rcreator.username}`}</div>
+                                {rcreator && <div><span className='boldme'>Written by:</span>{` ${rcreator.username}`}</div>}
                                 <div><span className='boldme'>Written at: </span>{` ${rstory.created_at}`}</div>
                                 <div><span className='boldme'>Mood: </span>{` ${rstory.mood} / 10`}</div>
                                 {thistopic && <div className="tagholder"><span>Tag: </span>{tagurl ? <img src={tagurl} alt='tag' className='tagimg'></img> : ''}</div>}
-                                <div><span>Read more of <span onClick={() => { alert('Feature coming soon!') }} className='buttonlike'>{`${rcreator.first_name} ${rcreator.last_name}`}</span>'s stories!</span></div>
+                                {rcreator && <div><span>Read more of <span onClick={() => { alert('Feature coming soon!') }} className='buttonlike'>{`${rcreator.first_name} ${rcreator.last_name}`}</span>'s stories!</span></div>}
                             </div>
                         </div>
                         <div className='onestoryinnerbot'>
