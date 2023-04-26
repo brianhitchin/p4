@@ -35,6 +35,8 @@ function CElanding() {
         }
     }, [exerstate])
 
+    console.log(lastexer)
+
     return (
         <div className="csmain">
             <h3 className="boldme">Exercise successfully written!</h3>
