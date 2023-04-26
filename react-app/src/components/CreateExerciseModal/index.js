@@ -46,12 +46,14 @@ function CreateExerciseModal() {
         setErrors(errorz)
         if (!imageurl) {
             if (errorz.length == 0) {
-                const data = dispatch(AddExerciseThunk({ title, preview, body, image_url: "https://thumbs.dreamstime.com/b/preview-icon-trendy-design-style-isolated-white-background-vector-simple-modern-flat-symbol-web-site-mobile-logo-app-135745554.jpg", creatorId: rId, topicId: topic }))
+                const data = dispatch(AddExerciseThunk({ preview, body, name: title, image_url: "https://thumbs.dreamstime.com/b/preview-icon-trendy-design-style-isolated-white-background-vector-simple-modern-flat-symbol-web-site-mobile-logo-app-135745554.jpg", creatorId: rId, topicId: topic }))
+                .then((_res) => closeModal())
                 .then((res) => history.push(`/exercise/${res}`))
             }
         } else {
             if (errorz.length == 0) {
-                const data = dispatch(AddExerciseThunk({ title, preview, body, image_url: imageurl, creatorId: rId, topicId: topic }))
+                const data = dispatch(AddExerciseThunk({ preview, body, name: title, image_url: imageurl, creatorId: rId, topicId: topic }))
+                .then((_res) => closeModal())
                 .then((res) => history.push(`/exercise/${res}`))
             }
         }
@@ -65,6 +67,11 @@ function CreateExerciseModal() {
                 <div className="centerme2">Thank you for sharing a new exercise.</div>
                 <div className="centerme2">You may edit any details at any time!</div>
             </div>
+            {errors.length > 0 && <ul className="redme errors">
+                {errors.map((error, idx) => (
+                    <li key={idx}>{error}</li>
+                ))}
+            </ul>}
             <label for="titlebox" className="boldme">Title</label>
             <input id="titlebox" placeholder="New group title" value={title} onChange={(e) => setTitle(e.target.value)} className="cminputs"></input>
             <label for="tag">Tag</label>

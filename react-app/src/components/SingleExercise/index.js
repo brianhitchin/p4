@@ -37,7 +37,7 @@ function SingleExercise() {
     const relvalue = () => {
         if (Object.values(userstate).length >= 1) {
             rexercise = exercisestate[exerciseId]
-            rcreator = userstate[exerciseId]
+            if (rexercise) {rcreator = userstate[rexercise.creatorId]}
         }
     }
 
