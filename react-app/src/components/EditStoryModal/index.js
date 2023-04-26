@@ -82,7 +82,7 @@ function EditStoryModal() {
             </ul>}
             <label for="titlebox" className="boldme">Title</label>
             <input id="titlebox" placeholder="New story title" value={title} onChange={(e) => setTitle(e.target.value)} className="cminputs"></input>
-            <label for="tag">Tag</label>
+            <label for="tag" className="boldme">Tag</label>
             <select id="tag" value={topic} onChange={(e) => setTopic(Number(e.target.value))}>
                 <option value="1" selected={topic == 1}>Depression</option>
                 <option value="2" selected={topic == 2}>Anxiety</option>

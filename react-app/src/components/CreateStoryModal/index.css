@@ -3,7 +3,7 @@
     flex-direction: column;
     justify-self: center;
     align-items: center;
-    background-color: rgba(200, 187, 226, 0.719);
+    background: linear-gradient(#FFFFFF, #F1D7F7);
     min-width: 700px;
     margin: 0px;
 }
