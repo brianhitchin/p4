@@ -1,0 +1,40 @@
+.csmain {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.csgif {
+    max-width: 250px;
+    max-height: 250px;
+    min-height: 250px;
+    min-width: 250px;
+}
+
+.csinner {
+    display: flex;
+    width: 100%;
+    flex-direction: row;
+    justify-content: center;
+}
+
+.cssinnerinner {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.buttonme2 {
+    background: linear-gradient(#FFFFFF, #F1D7F7);
+    border: 2px solid black;
+    border-radius: 5px;
+    padding: 10px;
+    font-size: 20px;
+}
+
+.buttonme2:hover {
+    background-color: white;
+    font-weight: bold;
+    cursor: pointer;
+}

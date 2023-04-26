@@ -49,7 +49,7 @@ function Userlanding(){
                 </div>
             </div>
             <div className="bottomholder">
-                {Object.values(onestoryloaded).length >= 1 && <div className="samples hoverme" onClick={() => {history.push('/story/1')}}>
+                {onestoryloaded && <div className="samples hoverme" onClick={() => {history.push('/story/1')}}>
                         <h3 className="centerh3">Read a sample story!</h3>
                         <div className="previewholder">
                             <div class="sampleimage">
@@ -64,7 +64,7 @@ function Userlanding(){
                         </div>
                     </div>
                     }
-                {Object.values(oneexerciseloaded).length >= 1 && <div className="samples hoverme" onClick={() => {history.push('/exercise/1')}}>
+                {oneexerciseloaded && <div className="samples hoverme" onClick={() => {history.push('/exercise/1')}}>
                         <h3 className="centerh3">Try a random exercise!</h3>
                         <div className="previewholder">
                             <div class="sampleimage">
