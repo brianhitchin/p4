@@ -1,7 +1,9 @@
 import React, { useState } from "react";
 import { useModal } from "../../context/Modal";
 import { useDispatch, useSelector } from "react-redux";
-import { useHistory } from 'react-router-dom'
+import { useHistory, useParams } from 'react-router-dom'
+import { EditStoryThunk } from "../../store/story";
+import previewimg from './preview.png'
 import "./index.css"
 
 function EditStoryModal() {
@@ -10,13 +12,16 @@ function EditStoryModal() {
     const { closeModal } = useModal();
     const [errors, setErrors] = useState([]);
     const storystate = useSelector(state => state.story.single_story)
+    const userId = useSelector(state => state.session.user)
     
     let thisstory = null;
+    let thisstoryid;
     if (storystate) {
         thisstory = storystate[Object.keys(storystate)[0]]
+        thisstoryid = thisstory.id
     }
 
-    const [topic, setTopic] = useState(thisstory.topic)
+    const [topic, setTopic] = useState(thisstory.topicId)
     const [title, setTitle] = useState(thisstory.title)
     const [mood, setMood] = useState(thisstory.mood)
     const [preview, setPreview] = useState(thisstory.preview)
@@ -54,12 +59,12 @@ function EditStoryModal() {
         setErrors(errorz)
         if (!imageurl) {
             if (errorz.length == 0) {
-                const data = dispatch(AddStoryThunk({ title, mood, preview, body, image_url: "https://thumbs.dreamstime.com/b/preview-icon-trendy-design-style-isolated-white-background-vector-simple-modern-flat-symbol-web-site-mobile-logo-app-135745554.jpg", creatorId: rId, topicId: topic }))
+                const data = dispatch(EditStoryThunk(thisstoryid, { title, mood, preview, body, image_url: "https://thumbs.dreamstime.com/b/preview-icon-trendy-design-style-isolated-white-background-vector-simple-modern-flat-symbol-web-site-mobile-logo-app-135745554.jpg", creatorId: rId, topicId: topic }))
                 .then((_res) => closeModal())
             }
         } else {
             if (errorz.length == 0) {
-                const data = dispatch(AddStoryThunk({ title, mood, preview, body, image_url: imageurl, creatorId: rId, topicId: topic }))
+                const data = dispatch(EditStoryThunk(thisstoryid, { title, mood, preview, body, image_url: imageurl, creatorId: rId, topicId: topic }))
                 .then((_res) => closeModal())
             }
         }

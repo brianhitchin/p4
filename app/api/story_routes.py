@@ -82,19 +82,20 @@ def editstory(story_id):
     if not story_dict.get("creatorId") == user_id:
         error_obj = {"errors": "Unauthorized - only creator may edit the post."}
         return error_obj, 403
-    try:
-        story_exist.topicId = request.json.get('topicId')
-        story_exist.title = request.json.get('title')
-        story_exist.mood = request.json.get('mood')
-        story_exist.preview = request.json.get('preview')
-        story_exist.image_url = request.json.get('image_url')
-        story_exist.body = request.json.get('body')
-        story_exist.updated_at = db.func.now()
-        db.session.commit()
-        return story_exist.to_dict()
-    except:
-        error_obj = {
-            "message": "Validation Error",
-            "errors": "Please fill out all the fields."
-        }
-        return error_obj, 400
+    print('!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!', request.json)
+    story_exist.topicId = request.json.get('topicId')
+    story_exist.title = request.json.get('title')
+    story_exist.mood = request.json.get('mood')
+    story_exist.preview = request.json.get('preview')
+    story_exist.image_url = request.json.get('image_url')
+    story_exist.body = request.json.get('body')
+    story_exist.updated_at = db.func.now()
+    db.session.commit()
+    print('!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!', story_exist.to_dict())
+    return story_exist.to_dict()
+    #except:
+    #    error_obj = {
+    #        "message": "Validation Error",
+    #        "errors": "Please fill out all the fields."
+    #    }
+    #    return error_obj, 400
