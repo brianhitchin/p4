@@ -33,6 +33,7 @@ function CreateExerciseModal() {
 
     const handleSubmit = (e) => {
         e.preventDefault();
+        errorz = [];
         setErrors([])
         if (!title) {
             errorz.push('Title cannot be empty.')
@@ -46,13 +47,13 @@ function CreateExerciseModal() {
         setErrors(errorz)
         if (!imageurl) {
             if (errorz.length == 0) {
-                const data = dispatch(AddExerciseThunk({ preview, body, name: title, image_url: "https://thumbs.dreamstime.com/b/preview-icon-trendy-design-style-isolated-white-background-vector-simple-modern-flat-symbol-web-site-mobile-logo-app-135745554.jpg", creatorId: rId, topicId: topic }))
+                const data = dispatch(AddExerciseThunk({ preview, body, name: title, image_url: "https://thumbs.dreamstime.com/b/preview-icon-trendy-design-style-isolated-white-background-vector-simple-modern-flat-symbol-web-site-mobile-logo-app-135745554.jpg", creatorId: rId, topicId: topic ? topic : 1 }))
                 .then((_res) => closeModal())
                 .then((_res) => history.push('/cexercise'))
             }
         } else {
             if (errorz.length == 0) {
-                const data = dispatch(AddExerciseThunk({ preview, body, name: title, image_url: imageurl, creatorId: rId, topicId: topic }))
+                const data = dispatch(AddExerciseThunk({ preview, body, name: title, image_url: imageurl, creatorId: rId, topicId: topic ? topic : 1 }))
                 .then((_res) => closeModal())
                 .then((_res) => history.push('/cexercise'))
             }
