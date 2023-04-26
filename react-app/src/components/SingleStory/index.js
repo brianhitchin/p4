@@ -2,7 +2,7 @@ import React, { useRef } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { useParams, NavLink, useHistory } from 'react-router-dom'
 import { useEffect, useState } from 'react';
-import { OneStoryThunk } from '../../store/story';
+import { OneStoryThunk, DeleteStoryThunk, EditStoryThunk } from '../../store/story';
 import { AllUsersThunk } from '../../store/user';
 import { AllTopicThunk } from '../../store/topic';
 import OpenModalButton from '../OpenModalButton'
@@ -83,8 +83,6 @@ function OneStory() {
         document.addEventListener('click', closeMenu);
         return () => document.removeEventListener("click", closeMenu);
     }, [closeMenu]);
-
-    console.log(rstory, rcreator)
 
     return (
         <div className='onestorymain'>

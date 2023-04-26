@@ -17,20 +17,21 @@
 }
 
 .onestoryimgholder {
-    max-width: 250px;
-    max-height: 250px;
-    min-width: 250px;
-    min-height: 250px;
+    max-width: 200px;
+    max-height: 200px;
+    min-width: 200px;
+    min-height: 200px;
 }
 
 .onestoryimg {
-    flex-shrink: 0;
-    min-width: 100%;
-    max-width: 100%;
+    max-width: 200px;
+    max-height: 200px;
+    min-width: 200px;
+    min-height: 200px;
 }
 
 .ostop {
-    border-bottom: 1px solid rgb(0, 0, 0);
+    border-bottom: 2px solid rgb(0, 0, 0);
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -48,10 +49,8 @@
     width: 100%;
     display: flex;
     flex-direction: row;
-    max-width: 260px;
-    max-height: 260px;
-    min-width: 260px;
-    min-height: 260px;
+    max-height: 220px;
+    min-height: 220px;
 }
 
 .buttonlike {

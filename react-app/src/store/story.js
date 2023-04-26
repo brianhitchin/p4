@@ -158,7 +158,7 @@ const storyReducer = (state = initialState, action) => {
         case DELETE_STORY:
             newState = { ...state }
             delete newState.all_stories[action.id];
-            delete newState.my_stories[action.id];
+            //delete newState.my_stories[action.id];
             delete newState.single_story[action.id];
             return newState 
         default:
