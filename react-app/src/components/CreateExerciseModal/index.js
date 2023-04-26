@@ -47,14 +47,14 @@ function CreateExerciseModal() {
         if (!imageurl) {
             if (errorz.length == 0) {
                 const data = dispatch(AddExerciseThunk({ preview, body, name: title, image_url: "https://thumbs.dreamstime.com/b/preview-icon-trendy-design-style-isolated-white-background-vector-simple-modern-flat-symbol-web-site-mobile-logo-app-135745554.jpg", creatorId: rId, topicId: topic }))
-                .then((res) => history.push(`/exercise/${res}`))
                 .then((_res) => closeModal())
+                .then((_res) => history.push('/cexercise'))
             }
         } else {
             if (errorz.length == 0) {
                 const data = dispatch(AddExerciseThunk({ preview, body, name: title, image_url: imageurl, creatorId: rId, topicId: topic }))
-                .then((res) => history.push(`/exercise/${res}`))
                 .then((_res) => closeModal())
+                .then((_res) => history.push('/cexercise'))
             }
         }
     }

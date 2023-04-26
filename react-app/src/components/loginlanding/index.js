@@ -14,8 +14,8 @@ function Userlanding(){
     const onestoryloaded = useSelector((state) => state.story.single_story)
     const oneexerciseloaded = useSelector((state) => state.exercise.single_exercise)
     const dispatch = useDispatch();
-    const [exstory, setExstory] = useState({})
-    const [exexercise, setExexercise] = useState({})
+    const [exstory, setExstory] = useState(null)
+    const [exexercise, setExexercise] = useState(null)
     const history = useHistory();
 
     useEffect(() => {
@@ -49,7 +49,7 @@ function Userlanding(){
                 </div>
             </div>
             <div className="bottomholder">
-                {onestoryloaded && <div className="samples hoverme" onClick={() => {history.push('/story/1')}}>
+                {exstory && <div className="samples hoverme" onClick={() => {history.push('/story/1')}}>
                         <h3 className="centerh3">Read a sample story!</h3>
                         <div className="previewholder">
                             <div class="sampleimage">
@@ -64,7 +64,7 @@ function Userlanding(){
                         </div>
                     </div>
                     }
-                {oneexerciseloaded && <div className="samples hoverme" onClick={() => {history.push('/exercise/1')}}>
+                {exexercise && <div className="samples hoverme" onClick={() => {history.push('/exercise/1')}}>
                         <h3 className="centerh3">Try a random exercise!</h3>
                         <div className="previewholder">
                             <div class="sampleimage">

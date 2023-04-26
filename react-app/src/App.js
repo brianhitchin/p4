@@ -13,6 +13,7 @@ import AllExercises from "./components/AllExercise";
 import OneStory from "./components/SingleStory";
 import SingleExercise from "./components/SingleExercise";
 import CSlanding from "./components/CSlanding";
+import CElanding from "./components/CElanding";
 
 function App() {
   const dispatch = useDispatch();
@@ -37,6 +38,11 @@ function App() {
         <Route path='/cstory'>
           <Navigation isLoaded={isLoaded} />
           <CSlanding />
+          <Footerfunc />
+        </Route>
+        <Route path='/cexercise'>
+          <Navigation isLoaded={isLoaded} />
+          <CElanding />
           <Footerfunc />
         </Route>
         <Route path='/story/:storyId'>

@@ -1,20 +1,20 @@
 import React, { useEffect, useState } from "react"
 import { useSelector, useDispatch } from "react-redux";
 import { useHistory } from "react-router-dom"
-import { AllStoryThunk } from "../../store/story";
+import { AllExerciseThunk } from "../../store/exercise"
 import write from './write.gif'
 import t1 from './t1.png'
 import t2 from './t2.png'
 import './index.css'
 
-function CSlanding() {
+function CElanding() {
 
-    const storystate = useSelector((state) => state.story.all_stories)
+    const exerstate = useSelector((state) => state.exercise.all_exercises)
     const history = useHistory();
     const dispatch = useDispatch();
 
     useEffect(() => {
-        dispatch(AllStoryThunk())
+        dispatch(AllExerciseThunk())
     }, [])
 
     /*
@@ -25,14 +25,12 @@ function CSlanding() {
     }, [history])
     */
 
-    let laststory;
+    let lastexer;
     let redirectId;
-    if (storystate) {
-        laststory = storystate[Object.keys(storystate).slice(-1)]
-        redirectId = laststory.id
+    if (exerstate) {
+        lastexer = exerstate[Object.keys(exerstate).slice(-1)]
+        redirectId = lastexer.id
     }
-
-    console.log(laststory)
 
     return (
         <div className="csmain">
@@ -41,20 +39,20 @@ function CSlanding() {
             <img src={write} className="csgif"></img>
             <div className="csinner">
                 <div className="cssinnerinner">
-                    <div className="buttonme2" onClick={() => {history.push('/story')}}>Go back to story</div>
+                    <div className="buttonme2" onClick={() => {history.push('/exercise')}}>Go back to exercise</div>
                 </div>
                 <div className="cssinnerinner">
-                    <div className="buttonme2" onClick={() => {history.push(`/story/${redirectId}`)}}>Go to new story</div>
-                    {laststory && 
-                        <div className='borderme2 asitems' onClick={() => {history.push(`/story/${redirectId}`)}}>
+                    <div className="buttonme2" onClick={() => {history.push(`/exercise/${redirectId}`)}}>Go to new exercise</div>
+                    {lastexer && 
+                        <div className='borderme2 asitems' onClick={() => {history.push(`/exercise/${redirectId}`)}}>
                             <div className="previewholder">
                                 <div class="sampleimage2">
-                                    <img src={laststory.image_url} alt='sample story' className="sampleimageitself2"></img>
+                                    <img src={lastexer.image_url} alt='sample story' className="sampleimageitself2"></img>
                                 </div>
                                 <div className="innerpreview">
-                                    <div><span className="boldme">{"name: "}</span>{laststory.title}</div>
-                                    <div className="tagholder"><img src={laststory.topicId == 1 ? t1 : t2} alt="tag" className="tagimg"></img></div>
-                                    <div className="boldme">{laststory.preview}</div>
+                                    <div><span className="boldme">{"name: "}</span>{lastexer.name}</div>
+                                    <div className="tagholder"><img src={lastexer.topicId == 1 ? t1 : t2} alt="tag" className="tagimg"></img></div>
+                                    <div className="boldme">{lastexer.preview}</div>
                                 </div>
                             </div>
                         </div>
@@ -65,4 +63,4 @@ function CSlanding() {
     )
 }
 
-export default CSlanding
+export default CElanding
