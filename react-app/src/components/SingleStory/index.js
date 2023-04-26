@@ -37,7 +37,7 @@ function OneStory() {
     const relvalue = () => {
         if (Object.values(userstate).length >= 1) {
             rstory = storystate[storyId]
-            rcreator = userstate[storyId]
+            if (rstory) {rcreator = userstate[rstory.creatorId]}
         }
     }
 
@@ -83,6 +83,8 @@ function OneStory() {
         document.addEventListener('click', closeMenu);
         return () => document.removeEventListener("click", closeMenu);
     }, [closeMenu]);
+
+    console.log(rstory, rcreator)
 
     return (
         <div className='onestorymain'>
