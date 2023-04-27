@@ -13,7 +13,6 @@ function CElanding() {
     const history = useHistory();
     const dispatch = useDispatch();
     const sessionUser = useSelector((state) => state.session.user);
-    if (!sessionUser) return <Redirect to="/login" />;
     
     useEffect(() => {
         dispatch(AllExerciseThunk())
@@ -37,7 +36,7 @@ function CElanding() {
         }
     }, [exerstate])
 
-    console.log(lastexer)
+    if (!sessionUser) return <Redirect to="/login" />;
 
     return (
         <div className="csmain">

@@ -32,6 +32,7 @@ function SignupFormPage() {
     if (!email.includes('@') || !email.includes('.')) {
       errorz.push("Please put in correct email format.")
     }
+    setErrors(errorz)
     if (errorz.length == 0) {
       const data = dispatch(signUp(username, email, password));
     }

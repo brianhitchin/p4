@@ -13,7 +13,6 @@ function CSlanding() {
     const history = useHistory();
     const dispatch = useDispatch();
     const sessionUser = useSelector((state) => state.session.user);
-    if (!sessionUser) return <Redirect to="/login" />;
 
     useEffect(() => {
         dispatch(AllStoryThunk())
@@ -37,7 +36,7 @@ function CSlanding() {
         }
     }, [storystate])
 
-
+    if (!sessionUser) return <Redirect to="/login" />;
 
     return (
         <div className="csmain">
