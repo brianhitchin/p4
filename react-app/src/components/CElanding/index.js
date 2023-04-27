@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react"
 import { useSelector, useDispatch } from "react-redux";
-import { useHistory } from "react-router-dom"
+import { useHistory, Redirect } from "react-router-dom"
 import { AllExerciseThunk } from "../../store/exercise"
 import write from './write.gif'
 import t1 from './t1.png'
@@ -12,7 +12,9 @@ function CElanding() {
     const exerstate = useSelector((state) => state.exercise.all_exercises)
     const history = useHistory();
     const dispatch = useDispatch();
-
+    const sessionUser = useSelector((state) => state.session.user);
+    if (!sessionUser) return <Redirect to="/login" />;
+    
     useEffect(() => {
         dispatch(AllExerciseThunk())
     }, [])

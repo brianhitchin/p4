@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import { useModal } from "../../context/Modal";
 import { useDispatch, useSelector } from "react-redux";
 import { AddExerciseThunk } from "../../store/exercise";
-import { useHistory } from 'react-router-dom'
+import { useHistory, Redirect } from 'react-router-dom'
 import previewimg from './preview.png'
 import "./index.css"
 
@@ -18,6 +18,9 @@ function CreateExerciseModal() {
     const [body, setBody] = useState("")
     const userId = useSelector(state => state.session.user)
     const history = useHistory()
+
+    const sessionUser = useSelector((state) => state.session.user);
+    if (!sessionUser) return <Redirect to="/login" />;
 
     let rId;
     if (userId) {

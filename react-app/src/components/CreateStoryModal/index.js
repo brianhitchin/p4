@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { useModal } from "../../context/Modal";
 import { useDispatch, useSelector } from "react-redux";
-import { useHistory } from 'react-router-dom'
+import { useHistory, Redirect } from 'react-router-dom'
 import { AddStoryThunk } from "../../store/story"
 import previewimg from './preview.png'
 import "./index.css"

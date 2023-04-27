@@ -118,7 +118,7 @@ function SingleExercise() {
                             </div>
                         </div>
                         <div className='onestoryinnerbot'>
-                            <div>{rexercise.body}</div>
+                            <div className='noof fw'>{rexercise.body}</div>
                             <div className='comments boldme'>Comments and rating feature coming soon!</div>
                         </div>
                     </div>

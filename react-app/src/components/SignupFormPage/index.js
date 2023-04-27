@@ -20,17 +20,22 @@ function SignupFormPage() {
 
   if (sessionUser) return <Redirect to="/" />;
 
+  let errorz = []
+
   const handleSubmit = async (e) => {
     e.preventDefault();
-    if (password === confirmPassword) {
-      const data = await dispatch(signUp(username, email, password, firstName, lastName));
-      if (data) {
-        setErrors(data)
-      }
-    } else {
-      setErrors(['Confirm Password field must be the same as the Password field']);
+    setErrors([])
+		errorz = [];
+    if (password !== confirmPassword) {
+			errorz.push("Confirm Password field must be the same as the Password field")
+		}
+    if (!email.includes('@') || !email.includes('.')) {
+      errorz.push("Please put in correct email format.")
     }
-  };
+    if (errorz.length == 0) {
+      const data = dispatch(signUp(username, email, password));
+    }
+  }
 
   const demoHandle = async (e) => {
     e.preventDefault();
