@@ -34,7 +34,7 @@ function SignupFormPage() {
     }
     setErrors(errorz)
     if (errorz.length == 0) {
-      const data = dispatch(signUp(username, email, password));
+      const data = dispatch(signUp(username, email, password, firstName, lastName));
     }
   }
 
