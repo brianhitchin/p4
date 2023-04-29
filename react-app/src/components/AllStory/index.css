@@ -36,21 +36,26 @@
 
 .allstorybot {
     display: flex;
-    width: 90%;
+    width: calc(60% + 320px);
     flex-direction: row;
-    flex-wrap: wrap;
 }
 
 .filteroption {
-    width: 120px;
-    max-width: 120px;
+    display: flex;
+    width: 150px;
+    max-width: 150px;
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    height: 150px;
+    height: 200px;
     border: 2px solid black;
     border-radius: 10px;
-    background-color: rgb(193, 174, 212);
+    background-color: rgb(207, 194, 220);
+}
+
+.filteroption2 {
+    width: 120px;
+    max-width: 120px;
 }
 
 .asright {
@@ -113,12 +118,12 @@
 
 .sf {
     overflow: auto;
-    border: 1px solid black;
+    border: 2px solid black;
     border-radius: 5px;
     padding: 5px 5px;
     cursor: pointer;  
 }
 
 .sf:focus {
-    border: 1px solid blue;
+    border: 2px solid blue;
 }

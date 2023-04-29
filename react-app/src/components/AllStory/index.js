@@ -57,10 +57,10 @@ function AllStories() {
             </div>
             <div className="allstorybot">
                 <div className="filteroption">
-                    <form action="#">
+                    <form action="#" className="centerme">
                         <label for="topic">Filter by:</label>
                         <select name="languages" id="topic" value={filtered} onChange={(e) => Number(setFiltered(e.target.value))} className="sf">
-                            <option selected={selected}>Pick a filter</option>
+                            <option selected={"selected"}>Pick a filter</option>
                             <option value="1">Depression</option>
                             <option value="2">Anxiety</option>
                         </select>
@@ -85,6 +85,8 @@ function AllStories() {
                             </div>
                         )
                     })}
+                </div>
+                <div className="filteroption2">
                 </div>
             </div>
         </div>
