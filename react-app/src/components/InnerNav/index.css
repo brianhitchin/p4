@@ -6,7 +6,7 @@
     height: 100px;
     overflow: hidden;
     margin-bottom: 10px;
-    margin-top: 10px;
+    background-color: linear-gradient(#FFFFFF, #caa1ce);
 }
 
 .buttonimg {
@@ -30,5 +30,7 @@
     justify-content: space-evenly;
     align-items: center;
     border-radius: 10px;
+    border-left: 2px solid black;
+    border-right: 2px solid black;
     border-bottom: 2px solid black;
 }

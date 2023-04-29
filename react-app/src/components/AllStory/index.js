@@ -57,8 +57,9 @@ function AllStories() {
             </div>
             <div className="allstorybot">
                 <div className="filteroption">
-                    <form action="#" className="centerme">
-                        <label for="topic">Filter by:</label>
+                    <form action="#" className="centered">
+                        <span className="boldme">Filter by:</span>
+                        <label for="topic"></label>
                         <select name="languages" id="topic" value={filtered} onChange={(e) => Number(setFiltered(e.target.value))} className="sf">
                             <option selected={"selected"}>Pick a filter</option>
                             <option value="1">Depression</option>
