@@ -11,7 +11,7 @@ function Innernav() {
     return (
         <div className='innerdivmain'>
             <div className='iistyle'>
-                <div className='boldme'>
+                <div className='boldme wavyme'>
                     Where would you like to go?
                 </div>
                 <div>

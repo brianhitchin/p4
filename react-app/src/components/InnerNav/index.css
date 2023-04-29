@@ -16,12 +16,14 @@
     padding: 0px;
     border: none;
     background: none;
+    border-radius: 10px;
 }
 
 .buttonimg:hover {
     border-radius: 5px;
     background: whitesmoke;
     border: 2px solid black;
+    padding: 10px;
 }
 
 .iistyle {
@@ -35,5 +37,5 @@
     border-left: 2px solid black;
     border-right: 2px solid black;
     border-bottom: 2px solid black;
-    background: linear-gradient(#FFFFFF, #caa1ce);
+    background: linear-gradient(#FFFFFF, #ccb8cecf);
 }
