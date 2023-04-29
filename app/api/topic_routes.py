@@ -1,5 +1,5 @@
 from flask import Blueprint, request
-from app.models import Topic, db
+from app.models import Topic, db, Story
 from flask_login import login_required, current_user
 
 topic_routes = Blueprint('topic', __name__)
@@ -9,6 +9,11 @@ def user_id_generator():
 
 @topic_routes.route('/')
 def initial():
+    all_topics = Topic.query.all()
+    return {"all_topics": [topic.to_dict() for topic in all_topics]}, 200
+
+@topic_routes.route('/<topic_id>/story')
+def filtered():
     all_topics = Topic.query.all()
     return {"all_topics": [topic.to_dict() for topic in all_topics]}, 200
 

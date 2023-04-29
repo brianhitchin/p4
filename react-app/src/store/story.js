@@ -6,10 +6,18 @@ const GET_ONE_STORY = 'story/getone'
 const ADD_STORY = 'story/add'
 const EDIT_STORY = 'story/edit'
 const DELETE_STORY = 'story/delete'
+const FILTER_STORY = 'story/filter'
 
 export const All_story = (payload) => {
     return {
         type: ALL_STORIES,
+        payload
+    }
+}
+
+export const Filtered_story = (payload) => {
+    return {
+        type: FILTER_STORY,
         payload
     }
 }
@@ -120,12 +128,27 @@ export const EditStoryThunk = (id, body) => async dispatch => {
     }
 }
 
+export const FilterStoryThunk = (topicId) => async dispatch => {
+    const response = await fetch(`/api/topic/${topicId}/story`)
+
+    if (response.ok) {
+        const data = await response.json();
+        dispatch(Filtered_story(data));
+    }
+}
+
 const storyReducer = (state = initialState, action) => {
     let newState;
     switch (action.type) {
         case ALL_STORIES:
             newState = {...state, all_stories: {}};
             action.payload.all_stories.forEach((story) => {
+                newState.all_stories[story.id] = story
+            });
+            return newState;
+        case FILTER_STORY:
+            newState = {...state, all_stories: {}};
+            action.payload.filtered_stories.forEach((story) => {
                 newState.all_stories[story.id] = story
             });
             return newState;
