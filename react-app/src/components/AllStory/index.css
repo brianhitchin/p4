@@ -24,7 +24,7 @@
     border-bottom: 2px solid black;
     border-right: 2px solid black;
     border-left: 2px solid black;
-    background-color: linear-gradient(#FFFFFF, #caa1ce);
+    background: linear-gradient(#FFFFFF, #caa1ce);
 }
 
 .writestoryimg {

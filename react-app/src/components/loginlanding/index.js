@@ -57,8 +57,8 @@ function Userlanding(){
                             </div>
                             <div className="innerpreview">
                                 {onestoryloaded[1] && <div><span className="boldme">{"name: "}</span>{onestoryloaded[1].title}</div>}
-                                {onestoryloaded[1] && <div className="tagholder"><img src={onestoryloaded[1].topicId == 1 ? t1 : t2} alt="tag" className="tagimg"></img></div>}
-                                {onestoryloaded[1] && <div className="centerme2">{onestoryloaded[1].preview}</div>}
+                                {onestoryloaded[1] && <div className="tagholder"><span className="boldme">{"tag: "}</span><img src={onestoryloaded[1].topicId == 1 ? t1 : t2} alt="tag" className="tagimg"></img></div>}
+                                {onestoryloaded[1] && <div className="centerme2"><span className="boldme">{"preview: "}</span>{onestoryloaded[1].preview}</div>}
                                 {onestoryloaded[1] && <div><span className="boldme">{"written: "}</span>{onestoryloaded[1].created_at}</div>}
                             </div>
                         </div>
@@ -72,8 +72,8 @@ function Userlanding(){
                             </div>
                             <div className="innerpreview">
                                 {oneexerciseloaded[1] && <div><span className="boldme">{"name: "}</span>{oneexerciseloaded[1].name}</div>}
-                                {oneexerciseloaded[1] && <div className="tagholder"><img src={oneexerciseloaded[1].topicId == 1 ? t1 : t2} alt="tag" className="tagimg"></img></div>}
-                                {oneexerciseloaded[1] && <div className="centerme2">{oneexerciseloaded[1].preview}</div>}
+                                {oneexerciseloaded[1] && <div className="tagholder"><span className="boldme">{"tag: "}</span><img src={oneexerciseloaded[1].topicId == 1 ? t1 : t2} alt="tag" className="tagimg"></img></div>}
+                                {oneexerciseloaded[1] && <div className="centerme2"><span className="boldme">{"about: "}</span>{oneexerciseloaded[1].preview}</div>}
                                 {oneexerciseloaded[1] && <div><span className="boldme">{"written: "}</span>{oneexerciseloaded[1].created_at}</div>}
                             </div>
                         </div>

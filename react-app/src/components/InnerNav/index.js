@@ -15,10 +15,10 @@ function Innernav() {
                     Where would you like to go?
                 </div>
                 <div>
-                    <button type='button'><img src={storybutton} alt="Story" className="buttonimg" onClick={() => {history.push('/story')}}></img></button>
+                    <div><img src={storybutton} alt="Story" className="buttonimg" onClick={() => {history.push('/story')}}></img></div>
                 </div>
                 <div>
-                    <button type='button'><img src={exercisebutton} alt="Exercise" className="buttonimg" onClick={() => {history.push('/exercise')}}></img></button>
+                    <div><img src={exercisebutton} alt="Exercise" className="buttonimg" onClick={() => {history.push('/exercise')}}></img></div>
                 </div>
             </div>
         </div>
