@@ -16,6 +16,7 @@ function AllStories() {
     const ulRef = useRef()
     const history = useHistory()
     const [showMenu, setShowMenu] = useState(false);
+    const [filtered, setFiltered] = useState(false);
 
     useEffect(() => {
         dispatch(AllStoryThunk())
@@ -55,24 +56,36 @@ function AllStories() {
                 </div>
             </div>
             <div className="allstorybot">
-                {allstorysession && Object.keys(allstorysession).map((istory, idx) => {
-                    const story = allstorysession[istory]
-                    return (
-                        <div key={idx} className='borderme2 asitems' onClick={() => { history.push(`/story/${story.id}`) }}>
-                            <div className="previewholder">
-                                <div class="sampleimage2">
-                                    <img src={story.image_url} alt='sample story' className="sampleimageitself2"></img>
-                                </div>
-                                <div className="innerpreview">
-                                    <div><span className="boldme">{"name: "}</span>{story.title}</div>
-                                    <div className="tagholder"><img src={story.topicId == 1 ? t1 : t2} alt="tag" className="tagimg"></img></div>
-                                    <div className="boldme">{story.preview}</div>
-                                    <div><span className="boldme">{"written: "}</span>{story.created_at}</div>
+                <div className="filteroption">
+                    <form action="#">
+                        <label for="topic">Filter by:</label>
+                        <select name="languages" id="topic" value={filtered} onChange={(e) => Number(setFiltered(e.target.value))} className="sf">
+                            <option selected={selected}>Pick a filter</option>
+                            <option value="1">Depression</option>
+                            <option value="2">Anxiety</option>
+                        </select>
+                    </form>
+                </div>
+                <div className="asright">
+                    {allstorysession && Object.keys(allstorysession).map((istory, idx) => {
+                        const story = allstorysession[istory]
+                        return (
+                            <div key={idx} className='borderme2 asitems' onClick={() => { history.push(`/story/${story.id}`) }}>
+                                <div className="previewholder">
+                                    <div class="sampleimage2">
+                                        <img src={story.image_url} alt='sample story' className="sampleimageitself2"></img>
+                                    </div>
+                                    <div className="innerpreview">
+                                        <div><span className="boldme">{"name: "}</span>{story.title}</div>
+                                        <div className="tagholder"><img src={story.topicId == 1 ? t1 : t2} alt="tag" className="tagimg"></img></div>
+                                        <div className="boldme">{story.preview}</div>
+                                        <div><span className="boldme">{"written: "}</span>{story.created_at}</div>
+                                    </div>
                                 </div>
                             </div>
-                        </div>
-                    )
-                })}
+                        )
+                    })}
+                </div>
             </div>
         </div>
     )

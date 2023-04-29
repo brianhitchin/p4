@@ -36,11 +36,31 @@
 
 .allstorybot {
     display: flex;
-    width: 60%;
+    width: 90%;
     flex-direction: row;
     flex-wrap: wrap;
+}
+
+.filteroption {
+    width: 120px;
+    max-width: 120px;
+    flex-direction: column;
     align-items: center;
     justify-content: center;
+    height: 150px;
+    border: 2px solid black;
+    border-radius: 10px;
+    background-color: rgb(193, 174, 212);
+}
+
+.asright {
+    width: calc(100% - 120px);
+    display: flex;
+    flex-direction: row;
+    align-content: center;
+    align-items: center;
+    justify-content: center;
+    flex-wrap: wrap;
 }
 
 .borderme2 {
@@ -48,7 +68,7 @@
 }
 
 .asitems {
-    background-color: rgba(200, 187, 226, 0.719);
+    background-color: rgba(205, 197, 223, 0.719);
     overflow: hidden;
     display: flex;
     height: 180px;
@@ -74,8 +94,8 @@
 }
 
 .sampleimageitself2 {
-    min-height: 130px;
-    min-width: 170px;
+    width:100%;
+    height:100%;
     object-fit: cover;
 }
 
@@ -89,4 +109,16 @@
     background-color: white;
     font-weight: bold;
     cursor: pointer;
+}
+
+.sf {
+    overflow: auto;
+    border: 1px solid black;
+    border-radius: 5px;
+    padding: 5px 5px;
+    cursor: pointer;  
+}
+
+.sf:focus {
+    border: 1px solid blue;
 }
