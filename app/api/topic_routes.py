@@ -13,9 +13,13 @@ def initial():
     return {"all_topics": [topic.to_dict() for topic in all_topics]}, 200
 
 @topic_routes.route('/<topic_id>/story')
-def filtered():
-    all_topics = Topic.query.all()
-    return {"all_topics": [topic.to_dict() for topic in all_topics]}, 200
+def filtered(topic_id):
+    topic_exist = Topic.query.get(topic_id)
+    if not topic_exist:
+        error_obj = {"errors": "Topic with the specified id could not be found."}
+        return error_obj, 404
+    filtered_stories = Story.query.filter(Story.topicId == topic_id).all()
+    return {"filtered_stories": [story.to_dict() for story in filtered_stories]}, 200
 
 @topic_routes.route('/', methods=['POST'])
 @login_required
