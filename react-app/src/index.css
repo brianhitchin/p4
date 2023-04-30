@@ -15,7 +15,7 @@ html {
 body {
     height: 100%;
     font-family: 'Jost', serif;
-    background: linear-gradient(90deg, rgba(65, 65, 207, 0.53) 0%, rgba(255, 255, 255, 0) 10%, rgba(255, 255, 255, 0) 50%, rgba(255, 255, 255, 0) 90%, rgba(65, 65, 207, 0.53) 100%);
+    background: linear-gradient(90deg, rgba(120, 120, 200, 0.53) 0%, rgba(255, 255, 255, 0) 10%, rgba(255, 255, 255, 0) 50%, rgba(255, 255, 255, 0) 90%, rgba(120, 120, 200, 0.53) 100%);
     /*background: url("./maybebg.png") 100% 100% no-repeat;
     background-size: cover;
     background-attachment: fixed;*/

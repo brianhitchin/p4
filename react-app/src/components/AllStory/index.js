@@ -1,7 +1,7 @@
 import React, { useState, useEffect, useRef } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { Redirect, useHistory, NavLink } from "react-router-dom";
-import { AllStoryThunk } from "../../store/story";
+import { AllStoryThunk, FilterStoryThunk } from "../../store/story";
 import writestory from "./writestory.webp"
 import OpenModalButton from '../OpenModalButton'
 import CreateStoryModal from "../CreateStoryModal";
@@ -19,8 +19,10 @@ function AllStories() {
     const [filtered, setFiltered] = useState(false);
 
     useEffect(() => {
-        dispatch(AllStoryThunk())
-    }, [])
+        if (!filtered) {
+            dispatch(AllStoryThunk())
+        }
+    }, [filtered])
 
     const openMenu = () => {
         if (showMenu) return;
@@ -42,6 +44,12 @@ function AllStories() {
     const topictran = (val) => {
         return val == 1 ? "depression" : "anxiety"
     }
+
+    useEffect(() => {
+        if (filtered) {
+            dispatch(FilterStoryThunk(filtered))
+        }
+    }, [filtered])
 
     return (
         <div className="allstorymain">
@@ -71,6 +79,7 @@ function AllStories() {
                         {filtered && <div className="appa">
                             <div className="boldme">Active filters:</div>
                             <div className="thiaf">{topictran(filtered)}</div>
+                            <button className="buttonme" onClick={() => {setFiltered(false)}}>Clear filter</button>
                         </div>}
                     </form>
                 </div>
@@ -85,7 +94,7 @@ function AllStories() {
                                     </div>
                                     <div className="innerpreview">
                                         <div><span className="boldme">{"Name: "}</span>{story.title}</div>
-                                        <div className="tagholder"><span className="boldme">{"Tag:: "}</span><img src={story.topicId == 1 ? t1 : t2} alt="tag" className="tagimg"></img></div>
+                                        <div className="tagholder"><span className="boldme">{"Tag: "}</span><img src={story.topicId == 1 ? t1 : t2} alt="tag" className="tagimg"></img></div>
                                         <div className="boldme"><span className="boldme">{"Preview: "}</span>{story.preview}</div>
                                         <div><span className="boldme">{"Written: "}</span>{story.created_at}</div>
                                     </div>

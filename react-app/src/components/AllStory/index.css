@@ -31,7 +31,7 @@
 
 .thiaf {
     width: 100%;
-    text-align: center;
+    display: flex;
 }
 
 .graybig {
@@ -100,8 +100,8 @@
 
 .asitems:hover {
     background-color: white;
-    border: 3px solid black;
     cursor: pointer;
+    box-shadow: 3px 3px 3px rgb(0, 0, 0);
 }
 
 .sampleimage2 {
