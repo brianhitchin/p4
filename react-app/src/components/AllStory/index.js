@@ -39,6 +39,10 @@ function AllStories() {
         return () => document.removeEventListener("click", closeMenu);
     }, [closeMenu]);
 
+    const topictran = (val) => {
+        return val == 1 ? "depression" : "anxiety"
+    }
+
     return (
         <div className="allstorymain">
             <div className="allstorytop">
@@ -59,15 +63,14 @@ function AllStories() {
                 <div className="filteroption">
                     <form action="#" className="centered">
                         <div className="boldme">Filter by:</div>
-                        <label for="topic"></label>
                         <select name="languages" id="topic" value={filtered} onChange={(e) => Number(setFiltered(e.target.value))} className="sf">
                             <option selected={"selected"}>Pick a filter</option>
                             <option value="1">Depression</option>
                             <option value="2">Anxiety</option>
                         </select>
                         {filtered && <div className="appa">
-                            <span className="boldme">Active filters:</span>
-                            <span></span>
+                            <div className="boldme">Active filters:</div>
+                            <div className="thiaf">{topictran(filtered)}</div>
                         </div>}
                     </form>
                 </div>
