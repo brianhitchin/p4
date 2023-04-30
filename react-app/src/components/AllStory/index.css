@@ -23,7 +23,7 @@
     padding-bottom: 10px;
     height: 90px;
     border: 2px solid black;
-    background: linear-gradient(#FFFFFF, #caa1ce);
+    background: linear-gradient(#FFFFFF, #ccb8cecf);
 }
 
 .writestoryimg {
@@ -49,7 +49,7 @@
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    height: 200px;
+    height: 300px;
     border: 2px solid black;
     border-radius: 10px;
     background-color: rgb(207, 194, 220);

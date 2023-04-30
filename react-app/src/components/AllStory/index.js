@@ -77,10 +77,10 @@ function AllStories() {
                                         <img src={story.image_url} alt='sample story' className="sampleimageitself2"></img>
                                     </div>
                                     <div className="innerpreview">
-                                        <div><span className="boldme">{"name: "}</span>{story.title}</div>
-                                        <div className="tagholder"><img src={story.topicId == 1 ? t1 : t2} alt="tag" className="tagimg"></img></div>
-                                        <div className="boldme">{story.preview}</div>
-                                        <div><span className="boldme">{"written: "}</span>{story.created_at}</div>
+                                        <div><span className="boldme">{"Name: "}</span>{story.title}</div>
+                                        <div className="tagholder"><span className="boldme">{"Tag:: "}</span><img src={story.topicId == 1 ? t1 : t2} alt="tag" className="tagimg"></img></div>
+                                        <div className="boldme"><span className="boldme">{"Preview: "}</span>{story.preview}</div>
+                                        <div><span className="boldme">{"Written: "}</span>{story.created_at}</div>
                                     </div>
                                 </div>
                             </div>
