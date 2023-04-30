@@ -20,10 +20,11 @@
     display: flex;
     justify-content: space-between;
     align-items: center;
-    padding-bottom: 10px;
     height: 90px;
     border: 2px solid black;
     background: linear-gradient(#FFFFFF, #ccb8cecf);
+    border-radius: 10px;
+    margin-bottom: 10px;
 }
 
 .writestoryimg {
@@ -52,7 +53,7 @@
     height: 300px;
     border: 2px solid black;
     border-radius: 10px;
-    background-color: rgb(207, 194, 220);
+    background-color: rgba(219, 203, 235, 0.462);
 }
 
 .filteroption2 {
@@ -134,4 +135,9 @@
     flex-direction: column;
     align-items: center;
     height: 100%;
+}
+
+.appa {
+    padding-top: 5px;
+    border-top: 2px solid black;
 }

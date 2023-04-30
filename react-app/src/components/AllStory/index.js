@@ -65,6 +65,10 @@ function AllStories() {
                             <option value="1">Depression</option>
                             <option value="2">Anxiety</option>
                         </select>
+                        {filtered && <div className="appa">
+                            <span className="boldme">Active filters:</span>
+                            <span></span>
+                        </div>}
                     </form>
                 </div>
                 <div className="asright">
