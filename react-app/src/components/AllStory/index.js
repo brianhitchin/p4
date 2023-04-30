@@ -44,7 +44,7 @@ function AllStories() {
             <div className="allstorytop">
                 <div>
                     <span className="bigfont2">Stories</span>
-                    <span>Share and read stories.</span>
+                    <span className="graybig">Share and read stories.</span>
                 </div>
                 <div className="ditto buttonme">
                     <img src={writestory} alt="Write a story!" className="writestoryimg"></img>
@@ -58,7 +58,7 @@ function AllStories() {
             <div className="allstorybot">
                 <div className="filteroption">
                     <form action="#" className="centered">
-                        <span className="boldme">Filter by:</span>
+                        <div className="boldme">Filter by:</div>
                         <label for="topic"></label>
                         <select name="languages" id="topic" value={filtered} onChange={(e) => Number(setFiltered(e.target.value))} className="sf">
                             <option selected={"selected"}>Pick a filter</option>
