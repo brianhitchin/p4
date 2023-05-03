@@ -32,6 +32,7 @@
 .thiaf {
     width: 100%;
     display: flex;
+    margin-top: 2px;
 }
 
 .graybig {
