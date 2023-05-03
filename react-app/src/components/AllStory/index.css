@@ -20,8 +20,25 @@
     display: flex;
     justify-content: space-between;
     align-items: center;
-    padding-bottom: 10px;
-    border-bottom: 2px solid black;
+    height: 90px;
+    padding-left: 5px;
+    padding-right: 5px;
+    border: 2px solid black;
+    background: linear-gradient(#FFFFFF, #ccb8cecf);
+    border-radius: 10px;
+    margin-bottom: 10px;
+}
+
+.thiaf {
+    width: 100%;
+    display: flex;
+    margin-top: 2px;
+}
+
+.graybig {
+    color: rgb(69, 69, 69);
+    text-decoration: rgb(69, 69, 69) underline;
+    font-weight: bold;
 }
 
 .writestoryimg {
@@ -36,11 +53,36 @@
 
 .allstorybot {
     display: flex;
-    width: 60%;
+    width: calc(60% + 320px);
     flex-direction: row;
-    flex-wrap: wrap;
+}
+
+.filteroption {
+    display: flex;
+    width: 150px;
+    max-width: 150px;
+    flex-direction: column;
     align-items: center;
     justify-content: center;
+    height: 300px;
+    border: 2px solid black;
+    border-radius: 10px;
+    background-color: rgba(219, 203, 235, 0.462);
+}
+
+.filteroption2 {
+    width: 120px;
+    max-width: 120px;
+}
+
+.asright {
+    width: calc(100% - 120px);
+    display: flex;
+    flex-direction: row;
+    align-content: center;
+    align-items: center;
+    justify-content: center;
+    flex-wrap: wrap;
 }
 
 .borderme2 {
@@ -48,7 +90,7 @@
 }
 
 .asitems {
-    background-color: rgba(200, 187, 226, 0.719);
+    background-color: rgba(205, 197, 223, 0.719);
     overflow: hidden;
     display: flex;
     height: 180px;
@@ -59,8 +101,8 @@
 
 .asitems:hover {
     background-color: white;
-    border: 3px solid black;
     cursor: pointer;
+    box-shadow: 3px 3px 3px rgb(0, 0, 0);
 }
 
 .sampleimage2 {
@@ -74,8 +116,8 @@
 }
 
 .sampleimageitself2 {
-    min-height: 130px;
-    min-width: 170px;
+    width:100%;
+    height:100%;
     object-fit: cover;
 }
 
@@ -89,4 +131,30 @@
     background-color: white;
     font-weight: bold;
     cursor: pointer;
+}
+
+.sf {
+    overflow: auto;
+    border: 2px solid black;
+    border-radius: 5px;
+    cursor: pointer;  
+}
+
+.sf:focus {
+    border: 2px solid blue;
+}
+
+.centered {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    height: 100%;
+}
+
+.appa {
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    padding-top: 5px;
+    border-top: 2px solid black;
 }

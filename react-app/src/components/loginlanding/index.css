@@ -12,8 +12,12 @@
     flex-direction: row;
     justify-content: center;
     border-radius: 10px;
-    background-color: rgba(200, 187, 226, 0.719);
+    background-color: #dcd4dd98;
     border: 2px solid black;
+}
+
+.underlineme {
+    text-decoration: underline;
 }
 
 .landingintro {
@@ -41,7 +45,7 @@
     flex-direction: column;
     overflow: hidden;
     align-items: center;
-    background-color: rgba(200, 187, 226, 0.719);
+    background-color: #dcd4dd98;
     border-radius: 10px;
     border: 2px solid black;   
     justify-content: center;
@@ -65,7 +69,8 @@
     width: 90%;
     justify-content: center;
     align-items: center;
-    border-bottom: 1px solid gray;
+    border-bottom: 2px solid black;
+    padding-bottom: 5px;
 }
 
 .previewholder {
@@ -81,7 +86,7 @@
     height: 100%;
     flex-wrap: wrap;
     justify-content: center;
-    align-items: center;
+    align-items: flex-start;
 }
 
 .hoverme:hover {

@@ -7,7 +7,7 @@ import LoginFormModal from "../LoginFormModal";
 import SignupFormModal from "../SignupFormModal";
 import usericon from './usericon.png'
 import gh from './gh.png'
-import li from './li.webp'
+import li from './lili.png'
 import './Navigation.css';
 
 function ProfileButton({ user }) {
@@ -59,7 +59,7 @@ function ProfileButton({ user }) {
             <span>{'Hello, ' + user.first_name + ' ' + user.last_name}</span>
             <span>{'Logged in as ' + user.username}</span>
             <span>{user.email}</span>
-            <span className="bordertop toppadding heme" onClick={() => {history.push('/story')}}>Story</span>
+            <span className="bordertop toppadding heme topmargin" onClick={() => {history.push('/story')}}>Story</span>
             <span onClick={() => {history.push('/exercise')}} className="heme">Exercise</span>
             <span className="bordertop">
               <button onClick={handleLogout} className="topmargin normalbutton">Log Out</button>

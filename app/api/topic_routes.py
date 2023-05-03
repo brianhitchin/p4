@@ -1,5 +1,5 @@
 from flask import Blueprint, request
-from app.models import Topic, db
+from app.models import Topic, db, Story, Exercise
 from flask_login import login_required, current_user
 
 topic_routes = Blueprint('topic', __name__)
@@ -11,6 +11,24 @@ def user_id_generator():
 def initial():
     all_topics = Topic.query.all()
     return {"all_topics": [topic.to_dict() for topic in all_topics]}, 200
+
+@topic_routes.route('/<topic_id>/story')
+def filtered(topic_id):
+    topic_exist = Topic.query.get(topic_id)
+    if not topic_exist:
+        error_obj = {"errors": "Topic with the specified id could not be found."}
+        return error_obj, 404
+    filtered_stories = Story.query.filter(Story.topicId == topic_id).all()
+    return {"filtered_stories": [story.to_dict() for story in filtered_stories]}, 200
+
+@topic_routes.route('/<topic_id>/exercise')
+def efiltered(topic_id):
+    topic_exist = Topic.query.get(topic_id)
+    if not topic_exist:
+        error_obj = {"errors": "Topic with the specified id could not be found."}
+        return error_obj, 404
+    exercises = Exercise.query.filter(Exercise.topicId == topic_id).all()
+    return {"filtered_exercises": [exercise.to_dict() for exercise in exercises]}, 200
 
 @topic_routes.route('/', methods=['POST'])
 @login_required

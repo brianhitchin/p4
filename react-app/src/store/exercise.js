@@ -5,10 +5,18 @@ const GET_ONE_EXERCISE = 'exercise/one'
 const ADD_EXERCISE = 'exercise/add'
 const EDIT_EXERCISE = 'exercise/edit'
 const DELETE_EXERCISE = 'exercise/delete'
+const FILTER_EXERCISE = 'exercise/filter'
 
 export const AllExercise = (payload) => {
     return {
         type: ALL_EXERCISE,
+        payload
+    }
+}
+
+export const Filtered_exercise = (payload) => {
+    return {
+        type: FILTER_EXERCISE,
         payload
     }
 }
@@ -102,12 +110,27 @@ export const DeleteExerciseThunk = (id) => async dispatch => {
     }
 }
 
+export const FilterExerciseThunk = (topicId) => async dispatch => {
+    const response = await fetch(`/api/topic/${topicId}/exercise`)
+
+    if (response.ok) {
+        const data = await response.json();
+        dispatch(Filtered_exercise(data));
+    }
+}
+
 const exerciseReducer = (state = initialState, action) => {
     let newState;
     switch (action.type) {
         case ALL_EXERCISE:
             newState = { ...state, all_exercises: {}};
             action.payload.all_exercises.forEach((exr) => {
+                newState.all_exercises[exr.id] = exr
+            });
+            return newState;
+        case FILTER_EXERCISE:
+            newState = {...state, all_exercises: {}};
+            action.payload.filtered_exercises.forEach((exr) => {
                 newState.all_exercises[exr.id] = exr
             });
             return newState;

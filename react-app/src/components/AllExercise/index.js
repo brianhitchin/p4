@@ -1,7 +1,7 @@
 import React, { useState, useEffect, useRef } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { Redirect, useHistory, NavLink } from "react-router-dom";
-import { AllExercise, AllExerciseThunk } from "../../store/exercise"
+import { AllExercise, AllExerciseThunk, FilterExerciseThunk } from "../../store/exercise"
 import OpenModalButton from '../OpenModalButton'
 import CreateExerciseModal from "../CreateExerciseModal";
 import exericon from "./exericon.png"
@@ -16,10 +16,13 @@ function AllExercises() {
     const history = useHistory();
     const ulRef = useRef()
     const [showMenu, setShowMenu] = useState(false);
+    const [filtered, setFiltered] = useState(false);
 
     useEffect(() => {
-        dispatch(AllExerciseThunk())
-    }, [])
+        if (!filtered) {
+            dispatch(AllExerciseThunk())
+        }
+    }, [filtered])
 
     const openMenu = () => {
         if (showMenu) return;
@@ -33,10 +36,20 @@ function AllExercises() {
         }
     };
 
+    const topictran = (val) => {
+        return val == 1 ? "depression" : "anxiety"
+    }
+
     useEffect(() => {
         document.addEventListener('click', closeMenu);
         return () => document.removeEventListener("click", closeMenu);
     }, [closeMenu]);
+
+    useEffect(() => {
+        if (filtered) {
+            dispatch(FilterExerciseThunk(filtered))
+        }
+    }, [filtered])
 
     return (
         <div className="allstorymain">
@@ -55,6 +68,22 @@ function AllExercises() {
                 </div>
             </div>
             <div className="allstorybot">
+                <div className="filteroption">
+                    <form action="#" className="centered">
+                        <div className="boldme">Filter by:</div>
+                        <select name="languages" id="topic" value={filtered} onChange={(e) => Number(setFiltered(e.target.value))} className="sf">
+                            <option selected={"selected"}>Pick a filter</option>
+                            <option value="1">Depression</option>
+                            <option value="2">Anxiety</option>
+                        </select>
+                        {filtered && <div className="appa">
+                            <div className="boldme">Active filters:</div>
+                            <div className="thiaf">{topictran(filtered)}</div>
+                            <button className="buttonme" onClick={() => { setFiltered(false) }}>Clear filter</button>
+                        </div>}
+                    </form>
+                </div>
+                <div className="asright">
                 {allexercisesession && Object.keys(allexercisesession).map((iexercise, idx) => {
                     const exercise = allexercisesession[iexercise]
                     return (
@@ -64,15 +93,18 @@ function AllExercises() {
                                     <img src={exercise.image_url} alt='sample exercise' className="sampleimageitself2"></img>
                                 </div>
                                 <div className="innerpreview">
-                                    <div><span className="boldme">{"name: "}</span>{exercise.name}</div>
-                                    <div className="tagholder"><img src={exercise.topicId == 1 ? t1 : t2} alt="tag" className="tagimg"></img></div>
-                                    <div className="boldme">{exercise.preview}</div>
-                                    <div><span className="boldme">{"written: "}</span>{exercise.created_at}</div>
+                                    <div><span className="boldme">{"Name: "}</span>{exercise.name}</div>
+                                    <div className="tagholder"><span className="boldme">{"Tag: "}</span><img src={exercise.topicId == 1 ? t1 : t2} alt="tag" className="tagimg"></img></div>
+                                    <div className="boldme"><span className="boldme">{"Preview:: "}</span>{exercise.preview}</div>
+                                    <div><span className="boldme">{"Written: "}</span>{exercise.created_at}</div>
                                 </div>
                             </div>
                         </div>
                     )
                 })}
+                </div>
+                <div className="filteroption2">
+                </div>
             </div>
         </div>
     )

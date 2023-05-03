@@ -56,10 +56,10 @@ function Userlanding(){
                                 {onestoryloaded[1] && <img src={onestoryloaded[1].image_url} alt='sample story' className="sampleimageitself"></img>}
                             </div>
                             <div className="innerpreview">
-                                {onestoryloaded[1] && <div><span className="boldme">{"name: "}</span>{onestoryloaded[1].title}</div>}
-                                {onestoryloaded[1] && <div className="tagholder"><img src={onestoryloaded[1].topicId == 1 ? t1 : t2} alt="tag" className="tagimg"></img></div>}
-                                {onestoryloaded[1] && <div className="centerme2">{onestoryloaded[1].preview}</div>}
-                                {onestoryloaded[1] && <div><span className="boldme">{"written: "}</span>{onestoryloaded[1].created_at}</div>}
+                                {onestoryloaded[1] && <div><span className="boldme">{"Name: "}</span><span className="underlineme">{onestoryloaded[1].title}</span></div>}
+                                {onestoryloaded[1] && <div className="tagholder"><span className="boldme">{"Tag: "}</span><img src={onestoryloaded[1].topicId == 1 ? t1 : t2} alt="tag" className="tagimg"></img></div>}
+                                {onestoryloaded[1] && <div className="centerme2"><span className="boldme">{"Preview: "}</span>{onestoryloaded[1].preview}</div>}
+                                {onestoryloaded[1] && <div><span className="boldme">{"Written: "}</span>{onestoryloaded[1].created_at}</div>}
                             </div>
                         </div>
                     </div>
@@ -71,10 +71,10 @@ function Userlanding(){
                                 {oneexerciseloaded[1] && <img src={oneexerciseloaded[1].image_url} alt='sample exercise' className="sampleimageitself"></img>}
                             </div>
                             <div className="innerpreview">
-                                {oneexerciseloaded[1] && <div><span className="boldme">{"name: "}</span>{oneexerciseloaded[1].name}</div>}
-                                {oneexerciseloaded[1] && <div className="tagholder"><img src={oneexerciseloaded[1].topicId == 1 ? t1 : t2} alt="tag" className="tagimg"></img></div>}
-                                {oneexerciseloaded[1] && <div className="centerme2">{oneexerciseloaded[1].preview}</div>}
-                                {oneexerciseloaded[1] && <div><span className="boldme">{"written: "}</span>{oneexerciseloaded[1].created_at}</div>}
+                                {oneexerciseloaded[1] && <div><span className="boldme">{"Name: "}</span><span className="underlineme">{oneexerciseloaded[1].name}</span></div>}
+                                {oneexerciseloaded[1] && <div className="tagholder"><span className="boldme">{"Tag: "}</span><img src={oneexerciseloaded[1].topicId == 1 ? t1 : t2} alt="tag" className="tagimg"></img></div>}
+                                {oneexerciseloaded[1] && <div className="centerme2"><span className="boldme">{"Preview: "}</span>{oneexerciseloaded[1].preview}</div>}
+                                {oneexerciseloaded[1] && <div><span className="boldme">{"Written: "}</span>{oneexerciseloaded[1].created_at}</div>}
                             </div>
                         </div>
                     </div>
