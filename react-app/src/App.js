@@ -14,6 +14,7 @@ import OneStory from "./components/SingleStory";
 import SingleExercise from "./components/SingleExercise";
 import CSlanding from "./components/CSlanding";
 import CElanding from "./components/CElanding";
+import Home from "./components/AllGroups";
 
 function App() {
   const dispatch = useDispatch();
@@ -33,6 +34,11 @@ function App() {
         </Route>
         <Route path="/login" exact>
           <LoginFormPage />
+          <Footerfunc />
+        </Route>
+        <Route path="/testing" exact>
+          <Navigation isLoaded={isLoaded} />
+          <Home />
           <Footerfunc />
         </Route>
         <Route path='/cstory'>
