@@ -1,0 +1,30 @@
+.center {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+}
+
+.map-container {
+    width: 500px;
+    height: 500px;
+}
+
+.agbot {
+    width: 60%;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+}
+
+.glist {
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.border {
+    border: 2px solid black;
+    margin-right: 15px;
+}
