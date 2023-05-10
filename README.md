@@ -1,7 +1,7 @@
 <h1 style="text-align: center;"> Welcome to NeverAlone!</h1>
 
 <p align="center">
-Smack is a project developed to emulate <a href="https://slack.com">Slack</a>, built with flask backend and react frontend.
+Come share stories and exercises! You can again be NeverAlone!
 </p>
 
 <p align="center">
