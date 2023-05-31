@@ -31,6 +31,10 @@ function OneStory() {
         dispatch(AllTopicThunk())
     }, [])
 
+    useEffect(() => {
+        document.title = 'NA | Single Story';
+      }, []);
+
     let rstory = null;
     let rcreator = null;
 

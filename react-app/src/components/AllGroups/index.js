@@ -1,9 +1,13 @@
 /* global google */
-import React from "react"
+import React, { useEffect } from "react"
 import { GoogleMap, useLoadScript, Marker } from "@react-google-maps/api"
 import "./index.css"
 
 export default function Home() {
+
+    useEffect(() => {
+        document.title = 'NA | Groups';
+      }, []);
 
     const { isLoaded } = useLoadScript({
         googleMapsApiKey: process.env.REACT_APP_GOOGLE_MAPS_API_KEY

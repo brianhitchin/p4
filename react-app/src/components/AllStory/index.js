@@ -24,6 +24,10 @@ function AllStories() {
         }
     }, [filtered])
 
+    useEffect(() => {
+        document.title = 'NA | All Stories';
+      }, []);
+
     const openMenu = () => {
         if (showMenu) return;
         setShowMenu(true);

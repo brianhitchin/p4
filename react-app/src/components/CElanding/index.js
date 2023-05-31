@@ -18,6 +18,10 @@ function CElanding() {
         dispatch(AllExerciseThunk())
     }, [])
 
+    useEffect(() => {
+        document.title = 'NA | Created!';
+      }, []);
+
     /*
     useEffect(() => {
         setTimeout(() => {
