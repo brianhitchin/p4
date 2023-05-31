@@ -47,7 +47,6 @@ function OneStory() {
 
     const ocheck = () => {
         if (rstory && thisuserstate) {
-            console.log('ocheck', rstory.creatorId, thisuserstate.id)
             return rstory.creatorId == thisuserstate.id
         }
     }
