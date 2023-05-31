@@ -31,6 +31,10 @@ function SingleExercise() {
         dispatch(AllTopicThunk())
     }, [])
 
+    useEffect(() => {
+        document.title = 'NA | Single Exercise';
+      }, []);
+
     let rexercise = null;
     let rcreator = null;
 

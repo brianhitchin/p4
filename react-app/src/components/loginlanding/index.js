@@ -30,6 +30,10 @@ function Userlanding(){
         }
     }, [oneexerciseloaded])
 
+    useEffect(() => {
+        document.title = 'NA | Home';
+      }, []);
+
     if (!sessionUser) return <Redirect to="/login" />;
 
     const today = new Date();

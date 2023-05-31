@@ -18,6 +18,10 @@ function CSlanding() {
         dispatch(AllStoryThunk())
     }, [])
 
+    useEffect(() => {
+        document.title = 'NA | Created!';
+      }, []);
+
     /*
     useEffect(() => {
         setTimeout(() => {

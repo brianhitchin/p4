@@ -24,6 +24,10 @@ function AllExercises() {
         }
     }, [filtered])
 
+    useEffect(() => {
+        document.title = 'NA | All Exercises';
+      }, []);
+
     const openMenu = () => {
         if (showMenu) return;
         setShowMenu(true);
