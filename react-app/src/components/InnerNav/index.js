@@ -16,13 +16,13 @@ function Innernav() {
                     Where would you like to go?
                 </div>
                 <div>
-                    <div><img src={storybutton} alt="Story" className="buttonimg" onClick={() => {history.push('/story')}}></img></div>
+                    <div><img src={storybutton} alt="Story" className="buttonimg pocu" onClick={() => {history.push('/story')}}></img></div>
                 </div>
                 <div>
-                    <div><img src={exercisebutton} alt="Exercise" className="buttonimg" onClick={() => {history.push('/exercise')}}></img></div>
+                    <div><img src={exercisebutton} alt="Exercise" className="buttonimg pocu" onClick={() => {history.push('/exercise')}}></img></div>
                 </div>
                 <div>
-                    <div><img src={groupbutton} alt="Group" className="buttonimg" onClick={() => {history.push('/testing')}}></img></div>
+                    <div><img src={groupbutton} alt="Group" className="buttonimg pocu" onClick={() => {history.push('/testing')}}></img></div>
                 </div>
             </div>
         </div>
