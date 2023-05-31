@@ -38,6 +38,7 @@ function App() {
         </Route>
         <Route path="/testing" exact>
           <Navigation isLoaded={isLoaded} />
+          <Innernav />
           <Home />
           <Footerfunc />
         </Route>
