@@ -1,5 +1,5 @@
 /* global google */
-import React from "react"
+import React, { useEffect } from "react"
 import { GoogleMap, useLoadScript, Marker } from "@react-google-maps/api"
 import "./index.css"
 
