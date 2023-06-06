@@ -16,7 +16,7 @@ def get_groups():
 @login_required
 def create_membership(group_id):
     user_id = user_id_generator()
-    mchk = Membership.query.filter(Membership.userId == user_id, Membership.groupId = group_id).first()
+    mchk = Membership.query.filter(Membership.userId == user_id, Membership.groupId == group_id).first()
     if mchk:
         return mchk.to_dict()
     nm = Membership(
