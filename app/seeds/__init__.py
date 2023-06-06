@@ -1,6 +1,6 @@
 from flask.cli import AppGroup
 from app.models.db import db, environment, SCHEMA
-from app.models import User, Exercise, Story, Topic, CommentE, CommentS
+from app.models import User, Exercise, Story, Topic, CommentE, CommentS, Membership, Group
 from sqlalchemy.sql import text
 
 # Creates a seed group to hold our commands
@@ -83,6 +83,27 @@ def undo_stories():
         
     db.session.commit()
 
+def seed_groups():
+    g1 = Group(
+        creatorId=1, topicId=1, title='Washington support group', description="Open to all residents of Washington, staffed with professionals.")
+    g2 = Group(
+        creatorId=2, topicId=2, title='Cupid mental health clinic', description="Everyone deserves a second chance. Many leave with a new life.")
+    g3 = Group(
+        creatorId=3, topicId=1, title='NA public facility', description="First NeverAlone backed facility. Officially open to serve the community.")
+
+    db.session.add(g1)
+    db.session.add(g2)
+    db.session.add(g3)
+    db.session.commit()
+
+def undo_groups():
+    if environment == "production":
+        db.session.execute(f"TRUNCATE table {SCHEMA}.groups RESTART IDENTITY CASCADE;")
+    else:
+        db.session.execute(text("DELETE FROM stories"))
+        
+    db.session.commit()
+
 def seed_topics():
     depression = Topic(topic="Depression", creatorId=1)
     anxiety = Topic(topic="Anxiety", creatorId=2)
@@ -100,17 +121,17 @@ def undo_topics():
 
 def seed_comments():
     comment1 = CommentS(
-        creatorId=1, content='I like it! Keep it up!', rating=5)
+        creatorId=1, storyId=3, body='I like it! Keep it up!', rating=5)
     comment2 = CommentS(
-        creatorId=2, content='Great work! Post more please :)', rating=4)
+        creatorId=2, storyId=1, body='Great work! Post more please :)', rating=4)
     comment3 = CommentS(
-        creatorId=3, content='Very average post, I must confess. Hence the very average score.', rating=3)
+        creatorId=3, storyId=2, body='Very average post, I must confess. Hence the very average score.', rating=3)
     comment4 = CommentS(
-        creatorId=1, content='I might be in a bad mood.', rating=2)
+        creatorId=1, storyId=2, body='I might be in a bad mood.', rating=2)
     comment5 = CommentS(
-        creatorId=2, content='I usually do not give out 5 often, but I think this post deserved it.', rating=5)
+        creatorId=2, storyId=3, body='I usually do not give out 5 often, but I think this post deserved it.', rating=5)
     comment6 = CommentS(
-        creatorId=3, content='Whoever the dev is really needs to implement subscription system....', rating=4)
+        creatorId=3, storyId=1, body='Whoever the dev is really needs to implement subscription system....', rating=4)
 
     db.session.add(comment1)
     db.session.add(comment2)
@@ -130,17 +151,17 @@ def undo_comments():
 
 def seed_commente():
     comment7 = CommentE(
-        creatorId=1, content='What is after like?', rating=3)
+        creatorId=1, exerciseId=3, body='What is after like?', rating=3)
     comment8 = CommentE(
-        creatorId=2, content='this is great. My back has been hurting. I might give it a go.', rating=3)
+        creatorId=2, exerciseId=1, body='this is great. My back has been hurting. I might give it a go.', rating=3)
     comment9 = CommentE(
-        creatorId=3, content='Exceptional. Splendid. Magnificent. Need I go on more?', rating=5)
+        creatorId=3, exerciseId=2, body='Exceptional. Splendid. Magnificent. Need I go on more?', rating=5)
     comment10 = CommentE(
-        creatorId=1, content='I might be in a great mood.', rating=5)
+        creatorId=1, exerciseId=2, body='I might be in a great mood.', rating=5)
     comment11 = CommentE(
-        creatorId=2, content='I deeply regret reading this. Unfortunately my house is not equipped with a eye wash station.', rating=1)
+        creatorId=2, exerciseId=3, body='I deeply regret reading this. Unfortunately my house is not equipped with a eye wash station.', rating=1)
     comment12 = CommentE(
-        creatorId=3, content='Thanks! THis was pretty good!', rating=4)
+        creatorId=3, exerciseId=1, body='Thanks! This was pretty good!', rating=4)
 
     db.session.add(comment7)
     db.session.add(comment8)
@@ -158,11 +179,36 @@ def undo_commente():
         
     db.session.commit()
 
+def seed_memberships():
+    m1 = Membership(
+        userId=1, groupId=1, role='Admin')
+    m2 = Membership(
+        userId=2, groupId=2, role='Admin')
+    m3 = Membership(
+        userId=3, groupId=3, role='Admin')
+
+    db.session.add(m1)
+    db.session.add(m2)
+    db.session.add(m3)
+    db.session.commit()
+
+def undo_memberships():
+    if environment == "production":
+        db.session.execute(f"TRUNCATE table {SCHEMA}.memberships RESTART IDENTITY CASCADE;")
+    else:
+        db.session.execute(text("DELETE FROM stories"))
+        
+    db.session.commit()
+
 # Creates the `flask seed all` command
 @seed_commands.command('all')
 def seed():
     if environment == 'production':
         # Before seeding, truncate all tables prefixed with schema name
+        undo_commente()
+        undo_comments()
+        undo_memberships()
+        undo_groups()
         undo_stories()
         undo_exercises()
         undo_topics()
@@ -173,12 +219,20 @@ def seed():
     seed_topics()
     seed_exercises()
     seed_stories()
+    seed_groups()
+    seed_memberships()
+    seed_comments()
+    seed_commente()
     # Add other seed functions here
 
 
 # Creates the `flask seed undo` command
 @seed_commands.command('undo')
 def undo():
+        undo_commente()
+        undo_comments()
+        undo_memberships()
+        undo_groups()
         undo_stories()
         undo_exercises()
         undo_topics()

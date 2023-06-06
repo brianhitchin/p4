@@ -21,7 +21,7 @@ class User(db.Model, UserMixin):
     topics = db.relationship("Topic", back_populates="towner", cascade="all, delete, delete-orphan")
     groups = db.relationship("Group", back_populates="gowner", cascade="all, delete, delete-orphan")
     memberships = db.relationship("Membership", back_populates="mowner", cascade="all, delete, delete-orphan")
-    storycomments = db.relationship("CommentS", back_populates="scommentowner", cascade="all, delete, delete-orphan")
+    scomments = db.relationship("CommentS", back_populates="scommentowner", cascade="all, delete, delete-orphan")
     ecomments = db.relationship("CommentE", back_populates="ecommentowner", cascade="all, delete, delete-orphan")
     
 

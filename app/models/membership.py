@@ -19,11 +19,8 @@ class Membership(db.Model):
     def to_dict(self):
         return {
             'id': self.id,
-            'creatorId': self.creatorId,
-            'topicId': self.topicId,
-            'name': self.name,
-            'image_url': self.image_url,
-            'preview': self.preview,
-            'body': self.body,
+            'userId': self.userId,
+            'groupId': self.groupId,
+            'role': self.role,
             'created_at': self.created_at
         }

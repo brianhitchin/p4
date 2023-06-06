@@ -11,8 +11,6 @@ class Group(db.Model):
     topicId = db.Column(db.Integer, db.ForeignKey(add_prefix_for_prod("topics.id")), nullable=False)
     title = db.Column(db.String, nullable=False)
     description = db.Column(db.Integer, nullable=False)
-    lat = db.Column(db.Numeric, nullable=False)
-    lng = db.Column(db.Numeric, nullable=False)
     created_at = db.Column(db.DateTime, default=db.func.now())
     updated_at = db.Column(db.DateTime, default=db.func.now())
 
@@ -26,9 +24,6 @@ class Group(db.Model):
             'creatorId': self.creatorId,
             'topicId': self.topicId,
             'title': self.title,
-            'mood': self.mood,
-            'image_url': self.image_url,
-            'preview': self.preview,
-            'body': self.body,
+            'description': self.description,
             'created_at': self.created_at
         }
