@@ -19,6 +19,11 @@ class User(db.Model, UserMixin):
     exercises = db.relationship("Exercise", back_populates="eowner", cascade="all, delete, delete-orphan")
     stories = db.relationship("Story", back_populates="sowner", cascade="all, delete, delete-orphan")
     topics = db.relationship("Topic", back_populates="towner", cascade="all, delete, delete-orphan")
+    groups = db.relationship("Group", back_populates="gowner", cascade="all, delete, delete-orphan")
+    memberships = db.relationship("Membership", back_populates="mowner", cascade="all, delete, delete-orphan")
+    storycomments = db.relationship("CommentS", back_populates="scommentowner", cascade="all, delete, delete-orphan")
+    ecomments = db.relationship("CommentE", back_populates="ecommentowner", cascade="all, delete, delete-orphan")
+    
 
     @property
     def password(self):

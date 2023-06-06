@@ -1,6 +1,6 @@
 from flask.cli import AppGroup
 from app.models.db import db, environment, SCHEMA
-from app.models import User, Exercise, Story, Topic
+from app.models import User, Exercise, Story, Topic, CommentE, CommentS
 from sqlalchemy.sql import text
 
 # Creates a seed group to hold our commands
@@ -98,6 +98,65 @@ def undo_topics():
         
     db.session.commit()
 
+def seed_comments():
+    comment1 = CommentS(
+        creatorId=1, content='I like it! Keep it up!', rating=5)
+    comment2 = CommentS(
+        creatorId=2, content='Great work! Post more please :)', rating=4)
+    comment3 = CommentS(
+        creatorId=3, content='Very average post, I must confess. Hence the very average score.', rating=3)
+    comment4 = CommentS(
+        creatorId=1, content='I might be in a bad mood.', rating=2)
+    comment5 = CommentS(
+        creatorId=2, content='I usually do not give out 5 often, but I think this post deserved it.', rating=5)
+    comment6 = CommentS(
+        creatorId=3, content='Whoever the dev is really needs to implement subscription system....', rating=4)
+
+    db.session.add(comment1)
+    db.session.add(comment2)
+    db.session.add(comment3)
+    db.session.add(comment4)
+    db.session.add(comment5)
+    db.session.add(comment6)
+    db.session.commit()
+
+def undo_comments():
+    if environment == "production":
+        db.session.execute(f"TRUNCATE table {SCHEMA}.comments RESTART IDENTITY CASCADE;")
+    else:
+        db.session.execute(text("DELETE FROM exercises"))
+        
+    db.session.commit()
+
+def seed_commente():
+    comment7 = CommentE(
+        creatorId=1, content='What is after like?', rating=3)
+    comment8 = CommentE(
+        creatorId=2, content='this is great. My back has been hurting. I might give it a go.', rating=3)
+    comment9 = CommentE(
+        creatorId=3, content='Exceptional. Splendid. Magnificent. Need I go on more?', rating=5)
+    comment10 = CommentE(
+        creatorId=1, content='I might be in a great mood.', rating=5)
+    comment11 = CommentE(
+        creatorId=2, content='I deeply regret reading this. Unfortunately my house is not equipped with a eye wash station.', rating=1)
+    comment12 = CommentE(
+        creatorId=3, content='Thanks! THis was pretty good!', rating=4)
+
+    db.session.add(comment7)
+    db.session.add(comment8)
+    db.session.add(comment9)
+    db.session.add(comment10)
+    db.session.add(comment11)
+    db.session.add(comment12)
+    db.session.commit()
+
+def undo_commente():
+    if environment == "production":
+        db.session.execute(f"TRUNCATE table {SCHEMA}.commente RESTART IDENTITY CASCADE;")
+    else:
+        db.session.execute(text("DELETE FROM exercises"))
+        
+    db.session.commit()
 
 # Creates the `flask seed all` command
 @seed_commands.command('all')
