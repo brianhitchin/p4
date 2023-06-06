@@ -18,6 +18,7 @@ class Exercise(db.Model):
 
     eowner = db.relationship("User", back_populates="exercises")
     etopic = db.relationship("Topic", back_populates="exercisetopic")
+    exercisecomments = db.relationship("CommentE", back_populates="ecommentexercise", cascade="all, delete, delete-orphan")
 
     def to_dict(self):
         return {
