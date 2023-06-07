@@ -89,3 +89,21 @@ def edit_channel(exercise_id):
             "errors": "Please fill out all the fields."
         }
         return error_obj, 400
+
+@exercise_routes.route('/<exercise_id>/comment', methods=['POST'])
+@login_required
+def post_comment(exercise_id):
+    user_id = user_id_generator()
+    exercise_exist = Exercise.query.get(exercise_id)
+    if not exercise_exist:
+        error_obj = {"errors": "Exercise with the specified id could not be found."}
+        return error_obj, 404
+    if (request.json.get('body') and request.json.get('rating')):
+        nc = CommentE(
+            creatorId=user_id, exerciseId=exercise_id, body=request.json.get('body'), rating=int(request.json.get('rating'))
+        )
+        db.session.add(nc)
+        db.session.commit()
+        return nc.to_dict()
+    error_obj = {"message": "Didn't work!"}
+    return error_obj, 400
