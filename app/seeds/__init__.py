@@ -85,11 +85,11 @@ def undo_stories():
 
 def seed_groups():
     g1 = Group(
-        creatorId=1, topicId=1, title='Washington support group', description="Open to all residents of Washington, staffed with professionals.")
+        creatorId=1, topicId=1, title='Washington support group')
     g2 = Group(
-        creatorId=2, topicId=2, title='Cupid mental health clinic', description="Everyone deserves a second chance. Many leave with a new life.")
+        creatorId=2, topicId=2, title='Cupid mental health clinic')
     g3 = Group(
-        creatorId=3, topicId=1, title='NA public facility', description="First NeverAlone backed facility. Officially open to serve the community.")
+        creatorId=3, topicId=1, title='NA public facility')
 
     db.session.add(g1)
     db.session.add(g2)

@@ -10,7 +10,6 @@ class Group(db.Model):
     creatorId = db.Column(db.Integer, db.ForeignKey(add_prefix_for_prod("users.id")), nullable=False)
     topicId = db.Column(db.Integer, db.ForeignKey(add_prefix_for_prod("topics.id")), nullable=False)
     title = db.Column(db.String, nullable=False)
-    description = db.Column(db.String, nullable=False)
     created_at = db.Column(db.DateTime, default=db.func.now())
     updated_at = db.Column(db.DateTime, default=db.func.now())
 
@@ -24,6 +23,5 @@ class Group(db.Model):
             'creatorId': self.creatorId,
             'topicId': self.topicId,
             'title': self.title,
-            'description': self.description,
             'created_at': self.created_at
         }
