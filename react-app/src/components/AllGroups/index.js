@@ -54,13 +54,14 @@ export default function Home() {
                     )}
                 </div>
                 <div className="glist">
+                    <div className="underlineme">Please contact the admin to have your group added.</div>
                     {groupstate && Object.keys(groupstate).map((groupid) => {
                         const group = groupstate[groupid]
                         return (
                             <div className="innerg">
                                 <div><span className="boldme">Name: </span>{group.title}</div>
-                                <div><img src={group.topicId == 1 ? t1 : t2} alt="tag" className="tagimg"></img></div>
-                                <div><span className="boldme">Members: </span>{group.members.length}</div>
+                                <div className="centerme"><span className="boldme">About: </span><img src={group.topicId == 1 ? t1 : t2} alt="tag" className="tagimg"></img></div>
+                                <div><span className="boldme">Members #: </span>{group.members.length}</div>
                             </div>
                         )
                     })}
