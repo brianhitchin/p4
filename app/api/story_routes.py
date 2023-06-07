@@ -100,3 +100,23 @@ def editstory(story_id):
             "errors": "Please fill out all the fields."
         }
         return error_obj, 400
+
+@story_routes.route('/<story_id>/comment', methods=['POST'])
+@login_required
+def post_comment(story_id):
+    user_id = user_id_generator()
+    story_exist = Story.query.get(story_id)
+    if not story_exist:
+        error_obj = {"errors": "Story with the specified id could not be found."}
+        return error_obj, 404
+    if (request.json.get('body') and request.json.get('rating')):
+        nc = CommentS(
+            creatorId=user_id, storyId=story_id, body=request.json.get('body'), rating=int(request.json.get('rating'))
+        )
+        db.session.add(nc)
+        db.session.commit()
+        return nc.to_dict()
+    error_obj = {"message": "Didn't work!"}
+    return error_obj, 400
+
+
