@@ -35,9 +35,9 @@ export default function Home() {
 
     const translate = (val) => {
         switch (val) {
-            case 1:
+            case "1":
                 return 'Seattle, WA'
-            case 2:
+            case "2":
                 return 'San Francisco, CA'
             default:
                 return 'Temecula, CA'
@@ -72,8 +72,7 @@ export default function Home() {
                             <div className="innerg">
                                 <div><span className="boldme">Name: </span>{group.title}</div>
                                 <div className="centerme"><span className="boldme">About: </span><img src={group.topicId == 1 ? t1 : t2} alt="tag" className="tagimg"></img></div>
-                                <div><span className="boldme">Location: </span>{translate(groupid)}</div>
-                                <div><span className="boldme">Members #: </span>{group.members.length}</div>
+                                <div><span className="boldme">Location: </span>{translate(groupid)} / <span className="boldme">Members #: </span>{group.members.length}</div>
                             </div>
                         )
                     })}

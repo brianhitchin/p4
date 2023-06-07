@@ -33,7 +33,7 @@ function OneStory() {
 
     useEffect(() => {
         document.title = 'NA | Single Story';
-      }, []);
+    }, []);
 
     let rstory = null;
     let rcreator = null;
@@ -41,7 +41,7 @@ function OneStory() {
     const relvalue = () => {
         if (Object.values(userstate).length >= 1) {
             rstory = storystate[storyId]
-            if (rstory) {rcreator = userstate[rstory.creatorId]}
+            if (rstory) { rcreator = userstate[rstory.creatorId] }
         }
     }
 
@@ -87,7 +87,16 @@ function OneStory() {
         return () => document.removeEventListener("click", closeMenu);
     }, [closeMenu]);
 
-    if (rstory) {console.log(rstory)}
+    if (rstory) { console.log(rstory) }
+
+    const bsplit = (x) => {
+        const y = x.split(" ")
+        const ans = []
+        ans.push(y[1])
+        ans.push(y[2])
+        ans.push(y[3])
+        return ans.join(' ')
+    }
 
     return (
         <div className='onestorymain'>
@@ -98,17 +107,17 @@ function OneStory() {
                         {ocheck() ? <div className="modalwrapper">
                             <div>
                                 <OpenModalButton
-                                buttonText="Edit Story"
-                                onItemClick={closeMenu}
-                                modalComponent={<EditStoryModal />}
-                            />
+                                    buttonText="Edit Story"
+                                    onItemClick={closeMenu}
+                                    modalComponent={<EditStoryModal />}
+                                />
                             </div>
                             <div>
                                 <OpenModalButton
-                                buttonText="Delete Story"
-                                onItemClick={closeMenu}
-                                modalComponent={<DeleteStoryModal />}
-                            />
+                                    buttonText="Delete Story"
+                                    onItemClick={closeMenu}
+                                    modalComponent={<DeleteStoryModal />}
+                                />
                             </div>
                         </div> : <div onClick={() => { alert('Favorite and Rating features coming soon!') }}><img src={starbg} alt='rating' className='starimg'></img></div>}
                     </div>
@@ -125,8 +134,18 @@ function OneStory() {
                         </div>
                         <div className='onestoryinnerbot'>
                             <div className='noof fw'>{rstory.body}</div>
-                            <div className='comments boldme'>Comments:
-                                
+                            <div className='comments boldme'>
+                                Comments
+                                <div className='cinner'>
+                                    {rstory && rstory.comments.map((comment) => {
+                                        return (
+                                            <div className='icom'>
+                                                <div className='icomtop'>{comment.body}</div>
+                                                <div>{`Rating: ${comment.rating}/5 • Written at: ${bsplit(comment.created_at)}`}</div>
+                                            </div>
+                                        )
+                                    })}
+                                </div>
                             </div>
                         </div>
                     </div>
