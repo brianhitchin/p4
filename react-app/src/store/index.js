@@ -5,13 +5,15 @@ import storyReducer from './story';
 import exerciseReducer from './exercise';
 import userReducer from './user';
 import topicReducer from './topic';
+import groupReducer from './group'
 
 const rootReducer = combineReducers({
   session: reducer,
   story: storyReducer,
   exercise: exerciseReducer,
   user: userReducer,
-  topic: topicReducer
+  topic: topicReducer,
+  group: groupReducer
 });
 
 

@@ -1,12 +1,20 @@
 /* global google */
 import React, { useEffect } from "react"
 import { GoogleMap, useLoadScript, Marker } from "@react-google-maps/api"
+import { useDispatch, useSelector } from "react-redux";
+import { AllGroupThunk } from "../../store/group";
 import "./index.css"
+import t1 from './t1.png'
+import t2 from './t2.png'
 
 export default function Home() {
 
+    const dispatch = useDispatch()
+    const groupstate = useSelector(state => state.group.all_groups)
+
     useEffect(() => {
         document.title = 'NA | Groups';
+        dispatch(AllGroupThunk())
       }, []);
 
     const { isLoaded } = useLoadScript({
@@ -46,7 +54,16 @@ export default function Home() {
                     )}
                 </div>
                 <div className="glist">
-                    Groups will be added soon!
+                    {groupstate && Object.keys(groupstate).map((groupid) => {
+                        const group = groupstate[groupid]
+                        return (
+                            <div className="innerg">
+                                <div><span className="boldme">Name: </span>{group.title}</div>
+                                <div><img src={group.topicId == 1 ? t1 : t2} alt="tag" className="tagimg"></img></div>
+                                <div><span className="boldme">Members: </span>{group.members.length}</div>
+                            </div>
+                        )
+                    })}
                 </div>
             </div>
         </div>
