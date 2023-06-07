@@ -1,5 +1,5 @@
 from flask import Blueprint, request
-from app.models import Story, db
+from app.models import Story, db, CommentS
 from flask_login import login_required, current_user
 
 story_routes = Blueprint('story', __name__)
@@ -18,7 +18,11 @@ def one_story(story_id):
     if not one_story:
         error_obj = {"errors": "Story with the specified id could not be found."}
         return error_obj, 404
-    return {"single_story": [one_story.to_dict()]}, 200
+    one_story_dict = one_story.to_dict()
+    its_comments = CommentS.query.filter(CommentS.storyId == story_id).all()
+    if its_comments:
+        one_story_dict["comments"] = [comments.to_dict() for comments in its_comments]
+    return {"single_story": [one_story_dict]}, 200
 
 @story_routes.route('/mine')
 @login_required
