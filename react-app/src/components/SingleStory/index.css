@@ -135,7 +135,7 @@
 }
 
 .icom {
-    height: 100px;
+    max-height: 200px;
     border-radius: 10px;
     border: 2px solid gray;
     box-shadow: 2px 2px 2px black;
@@ -144,8 +144,29 @@
     display: flex;
     flex-direction: column;
     justify-content: center;
+    text-overflow: ellipsis;
 }
 
 .icomtop {
+    padding-bottom: 5px;
     border-bottom: 1px solid gray;
+}
+
+.commentbox {
+    border: 2px solid black;
+    border-radius: 10px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.graysmall {
+    color: darkgray;
+    font-size: 14px;
+    text-decoration: underline;
+}
+
+.commentform {
+    display: flex;
+    flex-direction: column;
 }

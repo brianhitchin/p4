@@ -135,7 +135,6 @@ function OneStory() {
                         <div className='onestoryinnerbot'>
                             <div className='noof fw'>{rstory.body}</div>
                             <div className='comments boldme'>
-                                Comments
                                 <div className='cinner'>
                                     {rstory && rstory.comments.map((comment) => {
                                         return (
@@ -145,6 +144,21 @@ function OneStory() {
                                             </div>
                                         )
                                     })}
+                                    <div className='commentbox'>
+                                        <h3>Write a comment!</h3>
+                                        {thisuserstate && <div>
+                                            <span>Commenting as •</span><span className='graysmall'>{`${thisuserstate.first_name} ${thisuserstate.last_name}`}</span>
+                                        </div>}
+                                        <form className='commentform'>
+                                            <label for="commentbody">comment</label>
+                                            <input type="textarea" name="commentbody" />
+
+                                            <label for="rating">rating</label>
+                                            <input type="range" min="0" max="5" />
+
+                                            <input type="submit" value="Post" />
+                                        </form>
+                                    </div>
                                 </div>
                             </div>
                         </div>
