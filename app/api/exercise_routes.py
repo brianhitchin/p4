@@ -1,5 +1,5 @@
 from flask import Blueprint, request
-from app.models import Exercise, db
+from app.models import Exercise, db, CommentE
 from flask_login import login_required, current_user
 
 exercise_routes = Blueprint('exercise', __name__)
@@ -18,7 +18,11 @@ def one_exercise(exercise_id):
     if not one_exercise:
         error_obj = {"errors": "Exercise with the specified id could not be found."}
         return error_obj, 404
-    return {"single_exercise": [one_exercise.to_dict()]}, 200
+    one_exercise_dict = one_exercise.to_dict()
+    its_comments = CommentE.query.filter(CommentE.exerciseId == exercise_id).all()
+    if its_comments:
+        one_exercise_dict["comments"] = [comments.to_dict() for comments in its_comments]
+    return {"single_exercise": [one_exercise_dict]}, 200
 
 @exercise_routes.route('/', methods=['POST'])
 @login_required
