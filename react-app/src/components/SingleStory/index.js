@@ -23,6 +23,7 @@ function OneStory() {
     const thisuserstate = useSelector(state => state.session.user)
     const topicstate = useSelector(state => state.topic.all_topics)
     const [showMenu, setShowMenu] = useState(false);
+    const [ rating, setRating ] = useState(3)
     const ulRef = useRef();
 
     useEffect(() => {
@@ -151,12 +152,13 @@ function OneStory() {
                                         </div>}
                                         <form className='commentform'>
                                             <label for="commentbody">comment</label>
-                                            <input type="textarea" name="commentbody" />
+                                            <input type="textarea" name="commentbody" className='cinp'/>
 
                                             <label for="rating">rating</label>
-                                            <input type="range" min="0" max="5" />
-
-                                            <input type="submit" value="Post" />
+                                            <div className='boldme circle'>{` ${rating} `}</div>
+                                            <input type="range" min="1" max="5" value={rating} onChange={(e) => setRating(Number(e.target.value))}/>
+                                            
+                                            <input type="submit" value="Post comment!" className='cbut'/>
                                         </form>
                                     </div>
                                 </div>

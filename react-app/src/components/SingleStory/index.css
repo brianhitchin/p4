@@ -169,4 +169,34 @@
 .commentform {
     display: flex;
     flex-direction: column;
+    max-width: 100%;
+}
+
+.cinp {
+    width: 300px;
+    height: 100px;
+}
+
+.cinp:active {
+    border: 2px solid black;
+}
+
+.circle {
+    height: 20px;
+    width: 20px;
+    min-width: 20px;
+    min-height: 20px;
+    padding: 5px;
+    border: 2px solid black;
+}
+
+.cbut {
+    padding: 10px;
+    border-radius: 10px;
+    border: 2px solid black;
+}
+
+.cbut:hover {
+    cursor: pointer;
+    box-shadow: 5px 5px 5px black;
 }
