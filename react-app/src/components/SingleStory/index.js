@@ -87,6 +87,8 @@ function OneStory() {
         return () => document.removeEventListener("click", closeMenu);
     }, [closeMenu]);
 
+    if (rstory) {console.log(rstory)}
+
     return (
         <div className='onestorymain'>
             {rstory &&
@@ -123,7 +125,9 @@ function OneStory() {
                         </div>
                         <div className='onestoryinnerbot'>
                             <div className='noof fw'>{rstory.body}</div>
-                            <div className='comments boldme'>Comments and rating feature coming soon!</div>
+                            <div className='comments boldme'>Comments:
+                                
+                            </div>
                         </div>
                     </div>
                 </>

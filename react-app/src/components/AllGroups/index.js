@@ -33,6 +33,17 @@ export default function Home() {
         map.fitBounds(bounds, 10);
     };
 
+    const translate = (val) => {
+        switch (val) {
+            case 1:
+                return 'Seattle, WA'
+            case 2:
+                return 'San Francisco, CA'
+            default:
+                return 'Temecula, CA'
+        }
+    }
+
     return (
         <div className="allstorymain">
             <div className="allstorytop">
@@ -61,6 +72,7 @@ export default function Home() {
                             <div className="innerg">
                                 <div><span className="boldme">Name: </span>{group.title}</div>
                                 <div className="centerme"><span className="boldme">About: </span><img src={group.topicId == 1 ? t1 : t2} alt="tag" className="tagimg"></img></div>
+                                <div><span className="boldme">Location: </span>{translate(groupid)}</div>
                                 <div><span className="boldme">Members #: </span>{group.members.length}</div>
                             </div>
                         )
