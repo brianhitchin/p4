@@ -6,6 +6,14 @@ const ADD_EXERCISE = 'exercise/add'
 const EDIT_EXERCISE = 'exercise/edit'
 const DELETE_EXERCISE = 'exercise/delete'
 const FILTER_EXERCISE = 'exercise/filter'
+const ADD_COMMENT = 'exercise/addcomment'
+
+export const Add_CommentE = (payload) => {
+    return {
+        type: ADD_COMMENT,
+        payload
+    }
+}
 
 export const AllExercise = (payload) => {
     return {
@@ -46,6 +54,21 @@ export const DeleteExercise = (id) => {
     return {
         type: DELETE_EXERCISE,
         id
+    }
+}
+
+export const AddCommentEThunk = (id, value) => async dispatch => {
+    const response = await fetch(`/api/exercise/${id}/comment`, {
+        method: 'POST', 
+        headers: {
+            'Content-Type': 'application/json'
+        },
+        body: JSON.stringify(value)
+    })
+
+    if (response.ok) {
+        const data = await response.json()
+        dispatch(Add_CommentE(data))
     }
 }
 
@@ -128,6 +151,13 @@ const exerciseReducer = (state = initialState, action) => {
                 newState.all_exercises[exr.id] = exr
             });
             return newState;
+        case ADD_COMMENT:
+            newState = {...state}
+            let key = Object.keys(newState.single_exercise)
+            let sstate = newState.single_exercise[key]
+            let legth = sstate.comments.length
+            sstate.comments.push(action.payload)
+            return newState
         case FILTER_EXERCISE:
             newState = {...state, all_exercises: {}};
             action.payload.filtered_exercises.forEach((exr) => {

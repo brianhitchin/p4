@@ -168,7 +168,7 @@ function OneStory() {
                                     modalComponent={<DeleteStoryModal />}
                                 />
                             </div>
-                        </div> : <div onClick={() => { alert('Favorite and Rating features coming soon!') }} className='stars'><img src={starbg} alt='rating' className='starimg'></img><span>{`Average rating: ${avgRating(rstory.comments)} / 5`}</span></div>}
+                        </div> : <div className='stars'><img src={starbg} alt='rating' className='starimg'></img><span>{`Average rating: ${avgRating(rstory.comments)} / 5`}</span></div>}
                     </div>
                     <div className='onestoryinnermain'>
                         <div className='onestoryinnertop'>
