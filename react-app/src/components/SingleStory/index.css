@@ -200,3 +200,13 @@
     cursor: pointer;
     box-shadow: 5px 5px 5px black;
 }
+
+.stars {
+    display: flex;
+    align-items: center;
+}
+
+.brownme {
+    color: brown;
+    text-decoration: underline;
+}

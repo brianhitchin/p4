@@ -99,6 +99,18 @@ function OneStory() {
         return ans.join(' ')
     }
 
+    const posthandler = (e) => {
+        e.preventDefault();
+    }
+
+    const avgRating = (reviews) => {
+        let value = 0;
+        for (let review of reviews) {
+            value += review.rating
+        }
+        return value / reviews.length
+    }
+
     return (
         <div className='onestorymain'>
             {rstory &&
@@ -106,6 +118,7 @@ function OneStory() {
                     <div className='ostop'>
                         <h2>{rstory.title}</h2>
                         {ocheck() ? <div className="modalwrapper">
+                            <div onClick={() => { alert('Favorite and Rating features coming soon!') }} className='stars'><img src={starbg} alt='rating' className='starimg'></img><span>{`Average rating: ${avgRating(rstory.comments)} / 5`}</span></div>
                             <div>
                                 <OpenModalButton
                                     buttonText="Edit Story"
@@ -120,7 +133,7 @@ function OneStory() {
                                     modalComponent={<DeleteStoryModal />}
                                 />
                             </div>
-                        </div> : <div onClick={() => { alert('Favorite and Rating features coming soon!') }}><img src={starbg} alt='rating' className='starimg'></img></div>}
+                        </div> : <div onClick={() => { alert('Favorite and Rating features coming soon!') }} className='stars'><img src={starbg} alt='rating' className='starimg'></img><span>{`Average rating: ${avgRating(rstory.comments)} / 5`}</span></div>}
                     </div>
                     <div className='onestoryinnermain'>
                         <div className='onestoryinnertop'>
@@ -155,10 +168,10 @@ function OneStory() {
                                             <input type="textarea" name="commentbody" className='cinp'/>
 
                                             <label for="rating">rating</label>
-                                            <div className='boldme circle'>{` ${rating} `}</div>
+                                            <span className='boldme centerme brownme'>{` ${rating} `}</span>
                                             <input type="range" min="1" max="5" value={rating} onChange={(e) => setRating(Number(e.target.value))}/>
                                             
-                                            <input type="submit" value="Post comment!" className='cbut'/>
+                                            <input type="submit" value="Post comment!" className='cbut' onClick={posthandler}/>
                                         </form>
                                     </div>
                                 </div>
