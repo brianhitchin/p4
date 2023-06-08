@@ -99,7 +99,7 @@ function AllExercises() {
                                 <div className="innerpreview">
                                     <div><span className="boldme">{"Name: "}</span>{exercise.name}</div>
                                     <div className="tagholder"><span className="boldme">{"Tag: "}</span><img src={exercise.topicId == 1 ? t1 : t2} alt="tag" className="tagimg"></img></div>
-                                    <div className="boldme"><span className="boldme">{"Preview:: "}</span>{exercise.preview}</div>
+                                    <div className="boldme"><span className="boldme">{"Preview: "}</span>{exercise.preview}</div>
                                     <div><span className="boldme">{"Written: "}</span>{exercise.created_at}</div>
                                 </div>
                             </div>
