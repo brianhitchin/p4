@@ -2,7 +2,7 @@ import React, { useRef } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { useParams, NavLink, useHistory } from 'react-router-dom'
 import { useEffect, useState } from 'react';
-import { OneExerciseThunk } from '../../store/exercise';
+import { OneExerciseThunk, AddCommentEThunk } from '../../store/exercise';
 import { AllUsersThunk } from '../../store/user';
 import { AllTopicThunk } from '../../store/topic';
 import OpenModalButton from '../OpenModalButton'
@@ -115,6 +115,12 @@ function SingleExercise() {
         if (postcom.length < 10) { errorz.push('Comment must be at least 10 characters long.') }
         if (postcom.length > 200) { errorz.push('Comment cannot be longer than 200 characters.') }
         setErrors(errorz)
+        if (errorz.length == 0) {
+            dispatch(AddCommentEThunk(rexercise.id, { body: postcom, rating }))
+            .then((res) => setComments([...comments, res]))
+            setPostcom("")
+            setRating(3)
+        }
     }
 
     const avgRating = (reviews) => {
@@ -162,7 +168,7 @@ function SingleExercise() {
                                     modalComponent={<DeleteExerciseModal />}
                                 />
                             </div>
-                        </div> : <div onClick={() => { alert('Favorite and Rating features coming soon!') }}><img src={starbg} alt='rating' className='starimg'></img></div>}
+                        </div> : <div className='stars'><img src={starbg} alt='rating' className='starimg'></img><span>{`Average rating: ${avgRating(rexercise.comments)} / 5`}</span></div>}
                     </div>
                     <div className='onestoryinnermain'>
                         <div className='onestoryinnertop'>
