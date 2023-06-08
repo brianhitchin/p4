@@ -7,6 +7,14 @@ const ADD_STORY = 'story/add'
 const EDIT_STORY = 'story/edit'
 const DELETE_STORY = 'story/delete'
 const FILTER_STORY = 'story/filter'
+const ADD_COMMENT = 'story/addcomment'
+
+export const Add_Comment = (payload) => {
+    return {
+        type: ADD_COMMENT,
+        payload
+    }
+}
 
 export const All_story = (payload) => {
     return {
@@ -54,6 +62,21 @@ export const DeleteStory = (id) => {
     return {
         type: DELETE_STORY,
         id
+    }
+}
+
+export const AddCommentThunk = (id, body) => async dispatch => {
+    const response = await fetch(`/api/story/${id}/comment`, {
+        method: 'POST', 
+        headers: {
+            'Content-Type': 'application/json'
+        },
+        body: JSON.stringify(body)
+    })
+
+    if (response.ok) {
+        const data = await response.json()
+        dispatch(Add_Comment(data))
     }
 }
 
@@ -146,6 +169,13 @@ const storyReducer = (state = initialState, action) => {
                 newState.all_stories[story.id] = story
             });
             return newState;
+        case ADD_COMMENT:
+            newState = {...state}
+            let key = Object.keys(newState.single_story)
+            let sstate = newState.single_story[key]
+            let legth = sstate.comments.length
+            sstate.comments.push(action.payload)
+            return newState
         case FILTER_STORY:
             newState = {...state, all_stories: {}};
             action.payload.filtered_stories.forEach((story) => {
