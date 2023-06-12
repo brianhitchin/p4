@@ -154,6 +154,7 @@ function SingleExercise() {
                     <div className='ostop'>
                         <h2>{rexercise.name}</h2>
                         {ocheck() ? <div className="modalwrapper">
+                        <div className='stars'><img src={starbg} alt='rating' className='starimg'></img><span>{`Average rating: ${avgRating(rexercise.comments)} / 5`}</span></div>
                             <div>
                                 <OpenModalButton
                                     buttonText="Edit Exercise"
